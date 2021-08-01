@@ -7,5 +7,9 @@
  *
  */
 public class Bill {
-
+	private String username;
+	private int amount;
+	private int month;
+	private int year;
+	
 }
