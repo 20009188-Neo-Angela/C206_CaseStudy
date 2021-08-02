@@ -1,5 +1,6 @@
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class C206_CaseStudy {
 	
@@ -49,7 +50,9 @@ public class C206_CaseStudy {
 				
 				int itemOption = Helper.readInt("Enter option: ");
 				
+				
 				if (itemOption == 1) {
+					C206_CaseStudy.setHeader("VIEW");
 					for (western i : westernArr) {
 						System.out.println("Western Food: " + i.getName());
 					}
@@ -71,7 +74,7 @@ public class C206_CaseStudy {
 					System.out.println("");
 
 				} else if (itemOption == 2) {
-
+					C206_CaseStudy.setHeader("DELETE");
 					String category = Helper.readString("Choose a category to delete from: ");
 
 					if (category.equalsIgnoreCase("western")) {
@@ -112,6 +115,7 @@ public class C206_CaseStudy {
 					
 
 				} else if (itemOption == 3) {
+					C206_CaseStudy.setHeader("ADD");
 					String category = Helper.readString("Choose a category to add to: ");
 
 					if (category.equalsIgnoreCase("western")) {
@@ -160,6 +164,28 @@ public class C206_CaseStudy {
 				
 			}else if (option == 3) {
 				//Ying Teng Monthly Menu
+				monthlyMenu();
+				
+				int monthlyOption = Helper.readInt("Enter option to select Monthly Menu > ");
+				
+				if(monthlyOption == 1 ) {
+					C206_CaseStudy.setHeader("CREATE MONTHLY MENU");
+					String menu = createMonthlyMenu();
+					System.out.println(menu);
+				
+					
+				}else if (monthlyOption == 2) {
+					C206_CaseStudy.setHeader("VIEW MONTHLY MENU");
+					
+					
+				}else if (monthlyOption == 3) {
+					C206_CaseStudy.setHeader("DELETE MONTHLY MENU");
+					
+					
+				}else {
+					System.out.println("Invalid option");
+				}
+						
 				
 				
 				
@@ -204,10 +230,16 @@ public class C206_CaseStudy {
 	}
 
 	private static void itemMenu() {
-		System.out.println("1: Show all Inside Menu Bank");
-		System.out.println("2: Remove a item from menu bank");
-		System.out.println("3: Add a item into menu bank");
+		System.out.println("1. Show all Inside Menu Bank");
+		System.out.println("2. Remove an Item from Menu Bank");
+		System.out.println("3. Add an Item into Menu Bank");
 
+	}
+	
+	private static void monthlyMenu() {
+		System.out.println("1. Create Monthly Menu");
+		System.out.println("2. View Monthly Menu");
+		System.out.println("3. Delete Monthly Menu");
 	}
 	
 	//================================================ OPTION 1 USER ACCOUNT  ================================================
@@ -233,7 +265,47 @@ public class C206_CaseStudy {
 	//=============================================== OPTION 3 MONTHLY MENU ==================================================
 	
 	
-	
+	public static String createMonthlyMenu() {
+		
+		int year = Helper.readInt("Enter year: ");
+		int firstDay = Helper.readInt("Enter first day of the year(0-6): ");
+		int month = Helper.readInt("Enter month (1-12): \n");
+		int spaces = firstDay -2;
+		String monthlyMenu = "";
+		int numOfDays = 0;
+		int[] days = {
+               31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31
+            };
+		String[] months = {
+                "January", "February", "March",
+                "April", "May", "June",
+                "July", "August", "September",
+                "October", "November", "December"
+            };
+		
+			// print calendar header
+            // Display the month and year
+		 	monthlyMenu = ("          "+ months[month-1] + " " + year + "\n");
+				 
+			// Display the lines
+			monthlyMenu += ("_____________________________________\n");
+			monthlyMenu +=("   Sun  Mon Tue  Wed  Thu   Fri  Sat\n");
+	             
+	        // spaces required
+	        spaces = (days[month-1] + spaces)%7;
+                 
+            // print the calendar
+	        for (int i = 0; i < spaces; i++)
+	        	monthlyMenu += ("     ");
+            for (int i = 1; i <= days[month-1]; i++) {
+            	monthlyMenu += String.format(" %3d ", i);
+                if (((i + spaces) % 7 == 0) || (i == days[month])) 
+                	monthlyMenu += "\n";
+            }
+ 
+ 
+			return monthlyMenu;
+	}
 	
 	
 	
