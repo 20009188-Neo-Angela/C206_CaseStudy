@@ -11,7 +11,6 @@ public class Account {
 	private String password;
 	
 	private String formClass;
-	private double credit;
 	private String paymentMethods;
 	
 	
@@ -22,7 +21,6 @@ public class Account {
 		this.username = username;
 		this.password = password;
 		this.formClass = formClass;
-		this.credit = credit;
 		this.paymentMethods = paymentMethods;
 	}
 
@@ -36,10 +34,6 @@ public class Account {
 
 	public String getFormClass() {
 		return formClass;
-	}
-
-	public double getCredit() {
-		return credit;
 	}
 
 	public String getPaymentMethods() {
