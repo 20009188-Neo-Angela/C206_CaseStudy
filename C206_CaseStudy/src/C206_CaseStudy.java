@@ -12,6 +12,8 @@ public class C206_CaseStudy {
 		ArrayList<Fruits> fruitsArr = new ArrayList<Fruits>();
 		ArrayList<Bill> orderBillArr = new ArrayList<Bill>();
 		ArrayList<Account> accountArr = new ArrayList <Account> ();
+		
+		accountArr.add(new Account("Roy Tan", "schoolR0ck$", "4E4","Credit Card, Account Credit"));
 
 		westernArr.add(new western("Fries"));
 		westernArr.add(new western("Pizza"));
@@ -49,11 +51,12 @@ public class C206_CaseStudy {
 				
 				if(accountOption ==1 ) {
 					C206_CaseStudy.setHeader("Create Account");
-						Account acc = inputAccount();
-						C206_CaseStudy.addAccount(accountArr, acc);
+					Account acc = inputAccount();
+					C206_CaseStudy.addAccount(accountArr, acc);
 					
 					}else if (accountOption == 2 ) {
-						//viewAccount(accountArr);
+						C206_CaseStudy.setHeader("View Account");
+						C206_CaseStudy.viewAccount(accountArr);
 						
 					}else if (accountOption == 3) {
 						C206_CaseStudy.setHeader("DELETE ORDER BILL");
@@ -294,8 +297,11 @@ public class C206_CaseStudy {
 		
 		String username = Helper.readString("Enter username: ");
 		String password = Helper.readString("Enter password: ");
+		String formClass = Helper.readString("Enter Form Class: ");
+		String paymentMethods = Helper.readString("Enter Payment Methods: ");
 		
-		Account acc = new Account(username,password);
+		
+		Account acc = new Account(username,password, formClass, paymentMethods);
 		return acc;
 	}
 	
@@ -306,7 +312,21 @@ public class C206_CaseStudy {
 	
 	// View User Account
 	
-		
+	public static String retrieveAccount(ArrayList<Account> accountArr) {
+		String output = "";
+
+		for (Account a : accountArr ) {
+
+			output += String.format("%-10s %-15s %-12s %-10s\n", a.getUsername(), a.getPassword(),a.getFormClass(),a.getPaymentMethods());
+		}
+		return output;
+	}
+	public static void viewAccount(ArrayList<Account> accountArr) {
+		String output = String.format("%-10s %-15s %-12s %-10s \n", "USERNAME", "PASSWORD",
+				"FORM CLASS", "PAYMENT METHOD");
+		 output += retrieveAccount(accountArr);	
+		System.out.println(output);
+	}
 	
 	
 	
