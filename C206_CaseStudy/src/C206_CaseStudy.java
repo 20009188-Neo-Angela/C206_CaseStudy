@@ -32,7 +32,7 @@ public class C206_CaseStudy {
 		fruitsArr.add(new Fruits("WaterMelon"));
 		fruitsArr.add(new Fruits("BlueBerry"));
 
-		
+		orderBillArr.add(new Bill("t0326720i",1000, 01, 2021));
 		int option = 0;
 		
 		while (option != OPTION_QUIT) {
@@ -204,8 +204,7 @@ public class C206_CaseStudy {
 					C206_CaseStudy.setHeader("CREATE ORDER BILL ");
 					//createOrderBill();
 				}else if (billOptions == 2 ) {
-					C206_CaseStudy.setHeader("VIEW ORDER BILL");
-					//viewOrderBill();
+					viewOrderBill(orderBillArr);
 				}else if (billOptions == 3) {
 					C206_CaseStudy.setHeader("DELETE ORDER BILL");
 					//deleteOrderBill();
@@ -348,13 +347,15 @@ public class C206_CaseStudy {
 	
 		
 	
-	public static void viewOrderBill(ArrayList<Bill>orderBillArr) {
-			String output = String.format("%-10s %-10d %-10d %-10d", "USERNAME", "AMOUNT" , "MONTH", "YEAR ");
+	public static String viewOrderBill(ArrayList<Bill>orderBillArr) {
+			C206_CaseStudy.setHeader("VIEW ORDER BILL");
+			String output = " ";
+			output = String.format("%-10s %-10s %-10s %-10s ", "USERNAME", "AMOUNT" , "MONTH", "YEAR ");
 			for (Bill b :  orderBillArr) {
-				output += String.format("%-10s %-10d %-10d %-10d ", b.getUsername(), b.getAmount(), b.getMonth(),  b.getYear());
+				output += String.format("%-10s %-10d %-10d %-10d \n", b.getUsername(), b.getAmount(), b.getMonth(),  b.getYear());
 				
 		}
-			System.out.println(output);
+			return output;
 	}
 	
 	public static void deleteOrderBill() {
