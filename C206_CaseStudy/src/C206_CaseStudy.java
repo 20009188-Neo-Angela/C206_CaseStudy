@@ -204,7 +204,7 @@ public class C206_CaseStudy {
 					C206_CaseStudy.setHeader("CREATE ORDER BILL ");
 					//createOrderBill();
 				}else if (billOptions == 2 ) {
-					viewOrderBill(orderBillArr);
+					viewOrderBill();
 				}else if (billOptions == 3) {
 					C206_CaseStudy.setHeader("DELETE ORDER BILL");
 					//deleteOrderBill();
