@@ -1,6 +1,5 @@
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class C206_CaseStudy {
 	
@@ -197,9 +196,15 @@ public class C206_CaseStudy {
 				
 			}else if (option == 5) {
 				// Syazwan Bills 
-				
-				
-				
+				menuBill();
+				int billOptions = Helper.readInt("Enter option > ");
+				if (billOptions == 1) {
+					//createOrderBill();
+				}else if (billOptions == 2 ) {
+					//viewOrderBill();
+				}else if (billOptions == 3) {
+					//deleteOrderBill();
+				}
 			}else if (option == OPTION_QUIT) {
 				System.out.println("Bye!");
 			}else {
@@ -240,6 +245,11 @@ public class C206_CaseStudy {
 		System.out.println("1. Create Monthly Menu");
 		System.out.println("2. View Monthly Menu");
 		System.out.println("3. Delete Monthly Menu");
+	}
+	private static void menuBill() {
+		System.out.println("1. Create Order Bill ");
+		System.out.println("2. View Order Bill ");
+		System.out.println("3. Delete Order Bill");
 	}
 	
 	//================================================ OPTION 1 USER ACCOUNT  ================================================
@@ -305,7 +315,7 @@ public class C206_CaseStudy {
  
  
 			return monthlyMenu;
-	}
+	}}
 	
 	
 	
@@ -320,10 +330,18 @@ public class C206_CaseStudy {
 	
 	
 	//=============================================== OPTION 5 BILL ==================================================
-	
-	
-	
-	
-	
-
-}
+	/*public static String createOrderBill() {
+		String username = Helper.readString("Enter username > ");
+		int bill = Helper.readInt("Enter amount to bill > ");
+		int month = Helper.readInt("Enter month in this format : MM > ");
+		int year = Helper.readInt("Enter year in this format : YYYY > ");
+			
+	}
+	return 
+	public static String viewOrderBill() {
+		
+	}
+	public static String deleteOrderBill() {
+		
+	}
+}*/
