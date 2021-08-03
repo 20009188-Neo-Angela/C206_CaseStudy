@@ -35,7 +35,7 @@ public class C206_CaseStudy {
 		fruitsArr.add(new Fruits("WaterMelon"));
 		fruitsArr.add(new Fruits("BlueBerry"));
 
-		orderBillArr.add(new Bill("t0326720i",1000, 01, 2021));
+		orderBillArr.add(new Bill("t0326720i","drinks", 1000 , "01/2012"));
 		int option = 0;
 		
 		while (option != OPTION_QUIT) {
@@ -228,9 +228,11 @@ public class C206_CaseStudy {
 				
 				if (billOptions == 1) {
 					C206_CaseStudy.setHeader("CREATE ORDER BILL ");
-					//createOrderBill();
+					createOrderBill(orderBillArr);
 				}else if (billOptions == 2 ) {
-					viewOrderBill(orderBillArr);
+					C206_CaseStudy.setHeader("VIEW ORDER BILL");
+					String orderBill = viewOrderBill(orderBillArr);
+					System.out.println(orderBill);
 				}else if (billOptions == 3) {
 					C206_CaseStudy.setHeader("DELETE ORDER BILL");
 					//deleteOrderBill();
@@ -400,13 +402,15 @@ public class C206_CaseStudy {
 	
 	
 	//=============================================== OPTION 5 BILL ==================================================
-	public static void createOrderBill() {
+	public static void createOrderBill(ArrayList<Bill>orderBillArr) {
 		String username = Helper.readString("Enter username > ");
+		String menu = Helper.readString("Enter menu category > ");
 		int bill = Helper.readInt("Enter amount to bill > ");
-		int month = Helper.readInt("Enter month in this format : MM > ");
-		int year = Helper.readInt("Enter year in this format : YYYY > ");
+		String date = Helper.readString("Enter month in this format : MM/YYYY > ");
 		
-			
+		Bill ob1 = new Bill(username, menu, bill,date);
+
+		System.out.println("Order Bill Added!");
 	}
 	
 		
@@ -414,9 +418,9 @@ public class C206_CaseStudy {
 	public static String viewOrderBill(ArrayList<Bill>orderBillArr) {
 			C206_CaseStudy.setHeader("VIEW ORDER BILL");
 			String output = " ";
-			output = String.format("%-10s %-10s %-10s %-10s ", "USERNAME", "AMOUNT" , "MONTH", "YEAR ");
+			output = String.format("%-10s %-10s %-10s %-10s \n", "USERNAME", "MENU" , "AMOUNT", "DATE ");
 			for (Bill b :  orderBillArr) {
-				output += String.format("%-10s %-10d %-10d %-10d \n", b.getUsername(), b.getAmount(), b.getMonth(),  b.getYear());
+				output += String.format("%-10s %-10s %-10d %-10s \n", b.getUsername(),b.getMenu(),b.getAmount(), b.getDate());
 				
 		}
 			return output;
