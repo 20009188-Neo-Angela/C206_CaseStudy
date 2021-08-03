@@ -11,7 +11,6 @@ public class C206_CaseStudy {
 		ArrayList<drinks> drinksArr = new ArrayList<drinks>();
 		ArrayList<Fruits> fruitsArr = new ArrayList<Fruits>();
 		ArrayList<Bill> orderBillArr = new ArrayList<Bill>();
-		ArrayList<Account> accountArr = new ArrayList <Account> ();
 
 		westernArr.add(new western("Fries"));
 		westernArr.add(new western("Pizza"));
@@ -33,7 +32,7 @@ public class C206_CaseStudy {
 		fruitsArr.add(new Fruits("WaterMelon"));
 		fruitsArr.add(new Fruits("BlueBerry"));
 
-		orderBillArr.add(new Bill("t0326720i",1000, 01, 2021));
+		orderBillArr.add(new Bill("t0326720i", "drinks", 1000 , "01/2012"));
 		int option = 0;
 		
 		while (option != OPTION_QUIT) {
@@ -43,30 +42,8 @@ public class C206_CaseStudy {
 			
 			if(option == 1) {
 				// Hannah User Account 
-				accountMenu();
 				
-				int accountOption = Helper.readInt("Enter option: ");
-				
-				if(accountOption ==1 ) {
-					C206_CaseStudy.setHeader("Create Account");
-						Account acc = inputAccount();
-						C206_CaseStudy.addAccount(accountArr, acc);
-					
-					}else if (accountOption == 2 ) {
-						//viewAccount(accountArr);
-						
-					}else if (accountOption == 3) {
-						C206_CaseStudy.setHeader("DELETE ORDER BILL");
-						//deleteAccount(accountArr);
-						
-					}else {
-						System.out.println("Invalid option!");
-					}
-					
-					
-				}
-				
-		else if (option == 2) {
+			}else if (option == 2) {
 				// Kidson Menu Items
 				
 				itemMenu();
@@ -225,9 +202,11 @@ public class C206_CaseStudy {
 				
 				if (billOptions == 1) {
 					C206_CaseStudy.setHeader("CREATE ORDER BILL ");
-					//createOrderBill();
+					createOrderBill(orderBillArr);
 				}else if (billOptions == 2 ) {
-					viewOrderBill(orderBillArr);
+					C206_CaseStudy.setHeader("VIEW ORDER BILL");
+					String orderBill = viewOrderBill(orderBillArr);
+					System.out.println(orderBill);
 				}else if (billOptions == 3) {
 					C206_CaseStudy.setHeader("DELETE ORDER BILL");
 					//deleteOrderBill();
@@ -263,12 +242,6 @@ public class C206_CaseStudy {
 		System.out.println(header);
 		Helper.line(80, "-");
 	}
-	
-	private static void accountMenu() {
-		System.out.println("1. Create Account");
-		System.out.println("2. View Account");
-		System.out.println("3. Delete Account");
-	}
 
 	private static void itemMenu() {
 		System.out.println("1. Show all Inside Menu Bank");
@@ -289,24 +262,11 @@ public class C206_CaseStudy {
 	
 	//================================================ OPTION 1 USER ACCOUNT  ================================================
 	
-	// Add user account
-	public static Account inputAccount () {
-		
-		String username = Helper.readString("Enter username: ");
-		String password = Helper.readString("Enter password: ");
-		
-		Account acc = new Account(username,password);
-		return acc;
-	}
 	
-	public static void addAccount(ArrayList<Account> accountList, Account acc) {
-		accountList.add(acc);
-		System.out.println("User Account Created!");
-	}
 	
-	// View User Account
 	
-		
+	
+	
 	
 	
 	
@@ -378,23 +338,28 @@ public class C206_CaseStudy {
 	
 	
 	//=============================================== OPTION 5 BILL ==================================================
-	public static void createOrderBill() {
+	
+	public static void createOrderBill(ArrayList<Bill>orderBillArr) {
 		String username = Helper.readString("Enter username > ");
+		String menu = Helper.readString("Enter menu category > ");
 		int bill = Helper.readInt("Enter amount to bill > ");
-		int month = Helper.readInt("Enter month in this format : MM > ");
-		int year = Helper.readInt("Enter year in this format : YYYY > ");
-		
+		String date = Helper.readString("Enter month in this format : MM/YYYY >   /    ");
+				
+		Bill ob1 = new Bill(username, menu, bill,date);
+
+		System.out.println("Order Bill Added!");
 			
 	}
+
 	
 		
 	
 	public static String viewOrderBill(ArrayList<Bill>orderBillArr) {
-			C206_CaseStudy.setHeader("VIEW ORDER BILL");
+			
 			String output = " ";
-			output = String.format("%-10s %-10s %-10s %-10s ", "USERNAME", "AMOUNT" , "MONTH", "YEAR ");
+			output = String.format("%-10s %-10s %-10s %-10s \n", "USERNAME", "AMOUNT" , "MONTH", "DATE ");
 			for (Bill b :  orderBillArr) {
-				output += String.format("%-10s %-10d %-10d %-10d \n", b.getUsername(), b.getAmount(), b.getMonth(),  b.getYear());
+				output += String.format("%-10s %-10d %-10d %-10d \n", b.getUsername(), b.getMenu(), b.getAmount(), b.getDate());
 				
 		}
 			return output;
