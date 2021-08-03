@@ -16,7 +16,7 @@ public class Account {
 	
 	
 	
-	public Account(String username, String password, String formClass, double credit, String paymentMethods) {
+	public Account(String username, String password, String formClass, String paymentMethods) {
 		super();
 		this.username = username;
 		this.password = password;
