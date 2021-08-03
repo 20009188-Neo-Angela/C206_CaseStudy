@@ -357,9 +357,9 @@ public class C206_CaseStudy {
 	public static String viewOrderBill(ArrayList<Bill>orderBillArr) {
 			
 			String output = " ";
-			output = String.format("%-10s %-10s %-10s %-10s \n", "USERNAME", "AMOUNT" , "MONTH", "DATE ");
+			output = String.format("%-10s %-10s %-10s %-10s \n", "USERNAME", "MENU" , "AMOUNT", "DATE ");
 			for (Bill b :  orderBillArr) {
-				output += String.format("%-10s %-10d %-10d %-10d \n", b.getUsername(), b.getMenu(), b.getAmount(), b.getDate());
+				output += String.format("%-10s %-10s %-10d %-10s \n", b.getUsername(),b.getMenu(),b.getAmount(), b.getDate());
 				
 		}
 			return output;
