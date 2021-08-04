@@ -7,26 +7,28 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class C206_CaseStudyTest {
-	
-	private ArrayList<Account> accountArr;
-	//Just do like this add yours 
-	
+	private ArrayList <Bill> orderBillArr;
 	public C206_CaseStudyTest() {
 		super();
+		
 	}
-
-	@Before
+		@Before
 	public void setUp() throws Exception {
 	}
-
+	
+	
+	
+		// TODO Auto-generated constructor stub
+	
 	@After
 	public void tearDown() throws Exception {
-		
-		accountArr = null;
 	}
+	
 
 	@Test
 	public void c206_test() {
+		
+	orderBillArr = null;
 		//fail("Not yet implemented"); 
 		assertTrue("C206_CaseStudy_SampleTest ",true);
 	}
