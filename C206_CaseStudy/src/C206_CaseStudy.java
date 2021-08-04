@@ -1,5 +1,6 @@
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class C206_CaseStudy {
 	
@@ -61,7 +62,7 @@ public class C206_CaseStudy {
 						
 					}else if (accountOption == 3) {
 						C206_CaseStudy.setHeader("DELETE ORDER BILL");
-						//deleteAccount(accountArr);
+						C206_CaseStudy.deleteAccount(accountArr);
 						
 					}else {
 						System.out.println("Invalid option!");
@@ -332,6 +333,30 @@ public class C206_CaseStudy {
 	}
 	
 	// Delete User Account
+	public static String retrieveAccount2s(ArrayList<Account> accountArr) {
+		String output = "";
+
+		for (Account a : accountArr ) {
+
+			output += String.format("%-10s %-15s %-12s %-10s\n", a.getUsername(), a.getPassword(),a.getFormClass(),a.getPaymentMethods());
+		}
+		return output;
+	}
+	public static void deleteAccount(ArrayList<Account> accountArr) {
+
+		// Using this method because I cant remove while iterating. 
+		
+		Iterator<Account> itr = accountArr.iterator(); 
+		String username = Helper.readString("Enter username: ");
+		String password = Helper.readString("Enter password: ");
+		while (itr.hasNext()) { 
+			Account a = itr.next(); 
+			if(username.equals(a.getUsername())&& password.equals(a.getPassword() )) { 
+				itr.remove(); } 
+			}
+
+		
+	}
 	
 	
 	
