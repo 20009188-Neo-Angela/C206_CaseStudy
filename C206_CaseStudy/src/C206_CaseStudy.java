@@ -453,7 +453,7 @@ public class C206_CaseStudy {
 	}
 	
 	public static void deleteOrderBill(ArrayList<Bill>orderBillArr) {
-
+			//boolean isFound to check whether the conditions are met 
 		   boolean isFound = false;
 		   String userDelete = Helper.readString("Enter username to delete > ");
 		   
