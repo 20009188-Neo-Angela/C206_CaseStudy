@@ -36,6 +36,7 @@ public class C206_CaseStudy {
 		fruitsArr.add(new Fruits("BlueBerry"));
 
 		orderBillArr.add(new Bill("t0326720i","drinks", 1000 , "01/2012"));
+		orderBillArr.add(new Bill("lol", "western", 1500, "02/2021"));
 		int option = 0;
 		
 		while (option != OPTION_QUIT) {
@@ -235,7 +236,7 @@ public class C206_CaseStudy {
 					System.out.println(orderBill);
 				}else if (billOptions == 3) {
 					C206_CaseStudy.setHeader("DELETE ORDER BILL");
-					//deleteOrderBill();
+					deleteOrderBill(orderBillArr);
 				}else {
 					System.out.println("Invalid option!");
 				}
@@ -426,7 +427,22 @@ public class C206_CaseStudy {
 			return output;
 	}
 	
-	public static void deleteOrderBill() {
-		
+	public static void deleteOrderBill(ArrayList<Bill>orderBillArr) {
+
+		   boolean isFound = false;
+		   String userDelete = Helper.readString("Enter username to delete > ");
+		   
+		   for (int i=0; i<orderBillArr.size(); i++){
+			if (orderBillArr.get(i) != null && orderBillArr.get(i).getUsername().equals(userDelete)) {
+			   orderBillArr.remove(i);
+			   isFound = true;
+			   System.out.println("Username: "+ userDelete  +" is deleted");
+			   break;
+			}
+		   }
+		   if (isFound == false){
+			System.out.println("Username not found");
+		   }	
+
 	}
 }
