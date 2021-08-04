@@ -7,13 +7,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class C206_CaseStudyTest {
-	
-	private ArrayList<Account> accountArr;
-	//hi here
-	
-	public C206_CaseStudyTest() {
-		super();
-	}
 
 	@Before
 	public void setUp() throws Exception {
@@ -21,8 +14,7 @@ public class C206_CaseStudyTest {
 
 	@After
 	public void tearDown() throws Exception {
-		
-		accountArr = null;
+	
 	}
 
 	@Test
