@@ -1,10 +1,19 @@
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 public class C206_CaseStudyTest {
+	
+	private ArrayList<Account> accountArr;
+	//Just do like this add yours 
+	
+	public C206_CaseStudyTest() {
+		super();
+	}
 
 	@Before
 	public void setUp() throws Exception {
@@ -12,6 +21,8 @@ public class C206_CaseStudyTest {
 
 	@After
 	public void tearDown() throws Exception {
+		
+		accountArr = null;
 	}
 
 	@Test
