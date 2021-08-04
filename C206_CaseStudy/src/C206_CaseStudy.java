@@ -1,16 +1,14 @@
 
 import java.util.ArrayList;
-<<<<<<< HEAD
 import java.util.Random;
-=======
 import java.util.Iterator;
->>>>>>> branch 'master' of https://github.com/20009188-Neo-Angela/C206_CaseStudy.git
 
 public class C206_CaseStudy {
 	
 	private static final int OPTION_QUIT = 6;
 	public static ArrayList<western> westernArr = new ArrayList<western>();
 	public static ArrayList<asian> asianArr = new ArrayList<asian>();
+	public static ArrayList<Vegetarian> vegetarianArr = new ArrayList<Vegetarian>();
 	public static ArrayList<drinks> drinksArr = new ArrayList<drinks>();
 	public static ArrayList<Fruits> fruitsArr = new ArrayList<Fruits>();
 	
@@ -41,6 +39,10 @@ public class C206_CaseStudy {
 		fruitsArr.add(new Fruits("Orange"));
 		fruitsArr.add(new Fruits("WaterMelon"));
 		fruitsArr.add(new Fruits("BlueBerry"));
+		
+		vegetarianArr.add(new Vegetarian("Vegi Burger"));
+		vegetarianArr.add(new Vegetarian("BlueBerry"));
+		vegetarianArr.add(new Vegetarian("BlueBerry"));
 
 		orderBillArr.add(new Bill("t0326720i","drinks", 1000 , "01/2012"));
 		orderBillArr.add(new Bill("lol", "western", 1500, "02/2021"));
@@ -205,6 +207,7 @@ public class C206_CaseStudy {
 				if(monthlyOption == 1 ) {
 					C206_CaseStudy.setHeader("CREATE MONTHLY MENU");
 					String menu = createMonthlyMenu();
+					System.out.println(menu);
 					System.out.println("Menu Created!");
 								
 				}else if (monthlyOption == 2) {
@@ -379,8 +382,6 @@ public class C206_CaseStudy {
 	public static String randomWestern() {
 		Random rand = new Random();
 		int randomInt = rand.nextInt(westernArr.size());
-		
-		//System.out.println(westernArr.get(randomInt).getName());
 		return westernArr.get(randomInt).getName();
 	
 	}
@@ -388,42 +389,48 @@ public class C206_CaseStudy {
 	public static String randomAsian() {
 		Random rand = new Random();
 		int randomInt = rand.nextInt(asianArr.size());
-		
 		return westernArr.get(randomInt).getName();
 	
 	}
 	
-	public static void randomDrink() {
+	public static String randomVegetarian() {
+		Random rand = new Random();
+		int randomInt = rand.nextInt(vegetarianArr.size());
+		return vegetarianArr.get(randomInt).getName();
+	
+	}
+	
+	
+	public static String randomDrink() {
 		Random rand = new Random();
 		int randomInt = rand.nextInt(drinksArr.size());
-		
-		System.out.println(drinksArr.get(randomInt).getName());
+		return drinksArr.get(randomInt).getName();
+
 	
 	}
 	
-	public static void randomFruit() {
+	public static String randomFruit() {
 		Random rand = new Random();
 		int randomInt = rand.nextInt(fruitsArr.size());
-		
-		System.out.println(fruitsArr.get(randomInt).getName());
+		return fruitsArr.get(randomInt).getName();
 	
 	}
+		
 	
 	public static String createMonthlyMenu() {
 		
 		int year = Helper.readInt("Enter year: ");
 		int firstDay = Helper.readInt("Enter first day of the month(1(Mon)-7 (Sun)): ");
-		int month = Helper.readInt("Enter month (1-12): \n");
-		int spaces = firstDay;
+		int month = Helper.readInt("Enter month (1-12): ");
 		String monthlyMenu = "";
 		int[] days = {
                0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31
             };
 		String[] months = {
-                "January", "February", "March",
-                "April", "May", "June",
-                "July", "August", "September",
-                "October", "November", "December"
+                "JANUARY", "FEBRUARY", "MARCH",
+                "APRIL", "MAY", "JUNE",
+                "JULY", "AUGUST", "SEPTEMBER",
+                "OCTOBER", "NOVEMBER", "DECEMBER"
             };
 		
 		String[] dayname = {
@@ -434,77 +441,46 @@ public class C206_CaseStudy {
 		
 			// print calendar header
             // Display the month and year
-		 	monthlyMenu = ("          "+ months[month-1] + " " + year + "\n");
+		 	monthlyMenu = ("\n        "+ months[month-1] + " " + year+ "\n");
 				 
 			// Display the lines
-			monthlyMenu += ("_____________________________________\n");
-//			monthlyMenu +=("   Sun  Mon Tue  Wed  Thu   Fri  Sat\n");
-	             
-	        // spaces required
-//	        spaces = (days[month+1] + spaces)%7;
-//	        System.out.println(spaces);
-                 
-            // print the calendar
-//	        for (int i = 0; i < spaces; i++)
-//	        	monthlyMenu += ("     ");
-//            for (int i = 1; i <= days[month+1]; i++) {
+			monthlyMenu += (" __________________________________\n\n");
+			
 	        int maxday = 5;
 	        int fullweek = 7;
-//	        System.out.println(days[month]);
-//	        System.out.println(firstDay);
+
             for (int i = 1 , j = firstDay; i <= days[month]; i++, j++) {
 
             	if (j <= maxday) {
-                monthlyMenu += String.format("%3d ", i);
+                monthlyMenu += String.format("%5d ", i);
                 monthlyMenu += months[month-1];
 
-                monthlyMenu += "  (" + dayname[j] + ")";
-                monthlyMenu += "\n";
-                
-                monthlyMenu += "Western: ";
-            	monthlyMenu += randomWestern();
-            	monthlyMenu += "\n";
+                monthlyMenu += "  (" + dayname[j] + ")\n"; 
+                monthlyMenu += "  --------------------------\n";
+                monthlyMenu += String.format("     %5s: %s \n", "Western",  randomWestern());
+                monthlyMenu += String.format("     %5s: %s \n", "Asian",  randomAsian());
+                monthlyMenu += String.format("     %5s: %s \n", "Vegetarian",  randomVegetarian());
+                monthlyMenu += String.format("     %5s: %s \n", "Drinks",  randomDrink());
+                monthlyMenu += String.format("     %5s: %s \n\n", "Fruit",  randomFruit());
 
-                monthlyMenu += "Asian: ";
-            	monthlyMenu += randomAsian();
-            	monthlyMenu += "\n";
-            	monthlyMenu += "\n";
-//            	System.out.println("in1");
             }
             	if (j > maxday && j <= fullweek) {
-                    monthlyMenu += String.format("%3d ", i);
+                    monthlyMenu += String.format("%5d ", i);
                     monthlyMenu += months[month-1];
 
-                    monthlyMenu += "  (" + dayname[j] + ")";
-                    monthlyMenu += "\n";
-                    
-                    
-                    
-            		monthlyMenu += "Its weekend";
-            		monthlyMenu += "\n";
-                	monthlyMenu += "\n";
-//            		System.out.println("in12");
+                    monthlyMenu += "  (" + dayname[j] + ")\n";
+                    monthlyMenu += "  --------------------------\n";
+                    monthlyMenu += "     WEEKEND!\n\n";
+
             	}
             	if (j == fullweek) {
             		j = 0;
-//            		System.out.println("in3");
             	}
-            	
-            	
-            	
-//            	System.out.println(monthlyMenu);
-            	
-//				
-//				randomAsian();
-//				randomDrink();
-//				randomFruit();
-//                if (((i + spaces) % 7 == 0) || (i == days[month+1])) 
-//                	monthlyMenu += "\n";
-            }
- 
-           
+           }
 			return monthlyMenu;
 	}
+	
+	
 	
 	
 	
