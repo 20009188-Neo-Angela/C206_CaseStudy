@@ -15,6 +15,7 @@ public class C206_CaseStudy {
 	public static void main(String[] args) {
 		
 		
+		ArrayList<LunchBox> lunchBoxList = new ArrayList<LunchBox>();
 		ArrayList<Bill> orderBillArr = new ArrayList<Bill>();
 		ArrayList<Account> accountArr = new ArrayList <Account> ();
 		
@@ -227,6 +228,27 @@ public class C206_CaseStudy {
 				
 			}else if (option == 4) {
 				// Angela Lunch Box Order
+				lunchBox();
+				
+				int choice = Helper.readInt("Enter option > ");
+				
+				if (choice == 1) {
+					
+					
+					
+				} else if (choice == 2) {
+					
+					
+					
+				} else if (choice == 3) {
+					
+					
+					
+				} else {
+					
+					System.out.println("Invalid Option!");
+					
+				}
 				
 				
 				
@@ -296,6 +318,13 @@ public class C206_CaseStudy {
 		System.out.println("2. View Monthly Menu");
 		System.out.println("3. Delete Monthly Menu");
 	}
+	
+	private static void lunchBox() {
+		System.out.println("1. Add/Place Lunch Box Order");
+		System.out.println("2. View Lunch Box Order");
+		System.out.println("3. Delete/Cancel Lunch Box Order");
+	}
+	
 	private static void menuBill() {
 		System.out.println("1. Create Order Bill ");
 		System.out.println("2. View Order Bill ");
