@@ -11,6 +11,7 @@ public class C206_CaseStudy {
 	public static ArrayList<Vegetarian> vegetarianArr = new ArrayList<Vegetarian>();
 	public static ArrayList<drinks> drinksArr = new ArrayList<drinks>();
 	public static ArrayList<Fruits> fruitsArr = new ArrayList<Fruits>();
+	public static String monthlyMenu ="";
 	
 	public static void main(String[] args) {
 		
@@ -205,17 +206,20 @@ public class C206_CaseStudy {
 				int monthlyOption = Helper.readInt("Enter option to select Monthly Menu > ");
 				
 				if(monthlyOption == 1 ) {
-					C206_CaseStudy.setHeader("CREATE MONTHLY MENU");
-					String menu = createMonthlyMenu();
-					System.out.println(menu);
+					createMonthlyMenu();
 					System.out.println("Menu Created!");
 								
 				}else if (monthlyOption == 2) {
-					C206_CaseStudy.setHeader("VIEW MONTHLY MENU");
+					
+					String menu = viewMonthlyMenu();
+					System.out.println(menu);
+					
 					
 	
 				}else if (monthlyOption == 3) {
-					C206_CaseStudy.setHeader("DELETE MONTHLY MENU");
+					String output = deleteMonthlyMenu();
+					System.out.println(output);
+					
 					
 					
 				}else {
@@ -369,8 +373,36 @@ public class C206_CaseStudy {
 	//=============================================== OPTION 2 MENU ITEMS ==================================================
 	
 	
+	public static void addWestern(ArrayList<western> westernArr, western cc) {
+		
+		westernArr.add(cc);
+		System.out.println("Western added");
+	}
 	
+	public static void addAsian(ArrayList<asian> asianArr, asian cc) {
+		
+		asianArr.add(cc);
+		System.out.println("Asian added");
+	}
 	
+	public static void addVegetarian(ArrayList<Vegetarian> vegetarianArr, Vegetarian cc) {
+	
+		vegetarianArr.add(cc);
+		System.out.println("Vegetarian added");
+	}
+
+	public static void addDrinks(ArrayList<drinks> drinksArr, drinks cc) {
+	
+		drinksArr.add(cc);
+		System.out.println("Drinks added");
+	}
+
+	public static void addFruits(ArrayList<Fruits> fruitsArr, Fruits cc) {
+	
+		fruitsArr.add(cc);
+		System.out.println("Fruits added");
+	}
+
 	
 	
 	
@@ -422,7 +454,6 @@ public class C206_CaseStudy {
 		int year = Helper.readInt("Enter year: ");
 		int firstDay = Helper.readInt("Enter first day of the month(1(Mon)-7 (Sun)): ");
 		int month = Helper.readInt("Enter month (1-12): ");
-		String monthlyMenu = "";
 		int[] days = {
                0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31
             };
@@ -480,10 +511,31 @@ public class C206_CaseStudy {
 			return monthlyMenu;
 	}
 	
+
 	
+	public static String viewMonthlyMenu() {
+		String output = "";
+		if(monthlyMenu.isEmpty()) {
+			output = "There is no menu to view!";
+			
+		}else {
+			C206_CaseStudy.setHeader("MONTHLY MENU");
+			output = monthlyMenu;
+		}
+		return output;
+	}
 	
-	
-	
+	public static String deleteMonthlyMenu() {
+		String output = "";
+		if(monthlyMenu.isEmpty()) {
+			output = "There is no menu to delete!";
+			
+		}else {
+			monthlyMenu = "";
+			output = "Menu deleted!";
+		}
+		return output;
+	}
 	
 	
 	
