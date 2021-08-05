@@ -208,7 +208,7 @@ public class C206_CaseStudy {
 				
 				if(monthlyOption == 1 ) {
 					createMonthlyMenu();
-					System.out.println("Menu Created!");
+					System.out.println("Menu Successfully Created!");
 								
 				}else if (monthlyOption == 2) {
 					
