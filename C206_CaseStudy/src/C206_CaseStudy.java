@@ -637,6 +637,7 @@ public class C206_CaseStudy {
 		int orderedDrink = Helper.readInt("Enter the price of the drinks > ");
 		int orderedFruit = Helper.readInt("Enter the price of fruits > ");
 		
+		//lol
 		int dailyAmt = orderedMeal + orderedDrink + orderedFruit ;
 		
 		Bill b1 = new Bill (userId, dateOrdered, dailyAmt , orderedMeal , orderedDrink , orderedFruit);
