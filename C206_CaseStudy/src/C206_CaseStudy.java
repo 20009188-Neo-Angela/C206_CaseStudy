@@ -169,7 +169,6 @@ public class C206_CaseStudy {
 
 					// Angela Lunch Box Order
 					lunchBox();
-
 					int choice = Helper.readInt("Enter option > ");
 
 					if (choice == 1) {
@@ -275,7 +274,7 @@ public class C206_CaseStudy {
 		C206_CaseStudy.setHeader("LUNCH BOX SELECTION");
 		System.out.println("1. Add/Place Lunch Box Order");
 		System.out.println("2. View Lunch Box Order");
-		System.out.println("3. Delete/Cancel Lunch Box Order");
+		System.out.println("3. Delete/Cancel Lunch Box Order\n");
 	}
 
 	private static void menuBill() {
@@ -744,7 +743,7 @@ public class C206_CaseStudy {
 		if (isFound == false) {
 			System.out.println("Invalid Lunch Box Order!");
 		} else {
-			System.out.println("Lunch Box Order " + orderID + " is successfully cancelled!");
+			System.out.println("Lunch Box with Order ID " + orderID + " is successfully cancelled!");
 		}
 	}
 
