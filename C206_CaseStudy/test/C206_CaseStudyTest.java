@@ -10,7 +10,6 @@ public class C206_CaseStudyTest {
 <<<<<<< HEAD
 
 	
-	private ArrayList <Bill> orderBillArr;
 	private ArrayList<Account> accountArr;
 	
 	
@@ -45,6 +44,9 @@ public class C206_CaseStudyTest {
 	private Vegetarian v2;
 	private Vegetarian v3;
 	
+	private Bill b1;
+	private Bill b2;
+	
 
 	
 	private ArrayList<western> westernArr;
@@ -52,14 +54,14 @@ public class C206_CaseStudyTest {
 	private ArrayList<Vegetarian>  vegetarianArr;
 	private ArrayList<drinks>  drinksArr;
 	private ArrayList<Fruits>  fruitsArr;
+	private ArrayList <Bill> orderBillArr;
 	public static String monthlyMenu ="";
 	
 	public C206_CaseStudyTest() {
 		super();
 	}
 	
-	@Before
->>>>>>> branch 'master' of https://github.com/20009188-Neo-Angela/C206_CaseStudy.git
+
 	public void setUp() throws Exception {
 		
 		w1 = new western("Fries");
@@ -88,28 +90,18 @@ public class C206_CaseStudyTest {
 		v2 = new Vegetarian("BlueBerry");
 		v3 = new Vegetarian("BlueBerry");
 		
+		b1= new Bill("syaz123","drinks" ,100, "07/2021");
+		b2 = new Bill("syaz456", "western", 150, "08/2021");
+		
+		
 		
 	}
-<<<<<<< HEAD
 	
 	
 	
 		// TODO Auto-generated constructor stub
 	
-	@After
-	public void tearDown() throws Exception {
-
-		
-		
-		accountArr = null;
-		orderBillArr = null;
-
-	}
 	
-=======
-
-
->>>>>>> branch 'master' of https://github.com/20009188-Neo-Angela/C206_CaseStudy.git
 
 	@Test
 	public void c206_test() {
@@ -186,7 +178,28 @@ public class C206_CaseStudyTest {
 	
 	
 	//=============================================== OPTION 5 BILL =============================================================
-
+	public void createOrderBilTest() {
+		//Test that orderBillArr is not null, so that an order bill can be created 
+		assertNotNull("Check if the OrderBillArr arraylist is valid to be added to", orderBillArr);
+		
+		//Given an empty list, after adding 1 item, the size of the list is 1 - normal
+				//The item just added is as same as the first item of the list
+				C206_CaseStudy.createOrderBill( orderBillArr, b1);
+				assertEquals("Check that orderBillArr arraylist size is 1", 1, orderBillArr.size());
+				assertSame("Check that the Bill is added", b1, orderBillArr.get(0));
+				
+				//Add another item. test The size of the list is 2? -normal
+				//The item just added is as same as the second item of the list
+				C206_CaseStudy.createOrderBill(orderBillArr,b2);
+				assertEquals("Check that the orderBillArr arraylist size is 2", 2, orderBillArr.size());
+				assertSame("Check that the Bill is added", b2, orderBillArr.get(1));
+	}
+	public void viewOrderBill() {
+		//Test that 
+	}
+	public void deleteOrderBill() {
+		//Test that 
+	}
 	@After
 	public void tearDown() throws Exception {
 	
