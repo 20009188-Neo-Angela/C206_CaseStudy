@@ -6,6 +6,11 @@ import java.util.Iterator;
 public class C206_CaseStudy {
 
 	private static final int OPTION_QUIT = 6;
+	private static final int OPTION_MONTHLY_BILLS = 5;
+	private static final int OPTION_LUNCH_BOX_ORDERS = 4;
+	private static final int OPTION_MONTHLY_MENU = 3;
+	private static final int OPTION_MENU_ITEMS = 2;
+	private static final int OPTION_USER_ACCOUNTS = 1;
 	public static ArrayList<western> westernArr = new ArrayList<western>();
 	public static ArrayList<asian> asianArr = new ArrayList<asian>();
 	public static ArrayList<Vegetarian> vegetarianArr = new ArrayList<Vegetarian>();
@@ -58,13 +63,24 @@ public class C206_CaseStudy {
 			menu();
 			option = Helper.readInt("Enter option: ");
 
+
 			if (option == 1) {
 				// Hannah User Account
+
+			
+			if(option == OPTION_USER_ACCOUNTS) {
+				// Hannah User Account 
+
 				accountMenu();
 
 				int accountOption = Helper.readInt("Enter option: ");
 
+
 				if (accountOption == 1) {
+
+				
+				if(accountOption == 1) {
+
 					C206_CaseStudy.setHeader("Create Account");
 					Account acc = inputAccount();
 					C206_CaseStudy.addAccount(accountArr, acc);
@@ -81,9 +97,12 @@ public class C206_CaseStudy {
 					System.out.println("Invalid option!");
 				}
 
+
 			}
 
-			else if (option == 2) {
+				
+		else if (option == OPTION_MENU_ITEMS) {
+
 				// Kidson Menu Items
 
 				itemMenu();
@@ -135,6 +154,11 @@ public class C206_CaseStudy {
 
 			} else if (option == 3) {
 				// Ying Teng Monthly Menu
+
+				
+			}else if (option == OPTION_MONTHLY_MENU) {
+				//Ying Teng Monthly Menu
+
 				monthlyMenu();
 
 				int monthlyOption = Helper.readInt("Enter option to select Monthly Menu > ");
@@ -156,7 +180,13 @@ public class C206_CaseStudy {
 					System.out.println("Invalid option");
 				}
 
+
 			} else if (option == 4) {
+
+						
+				
+			}else if (option == OPTION_LUNCH_BOX_ORDERS) {
+
 				// Angela Lunch Box Order
 				lunchBox();
 
@@ -194,8 +224,16 @@ public class C206_CaseStudy {
 
 				}
 
+
 			} else if (option == 5) {
 				// Syazwan Bills
+	
+				
+				
+				
+			}else if (option == OPTION_MONTHLY_BILLS) {
+				// Syazwan Bills 
+
 				menuBill();
 				int billOptions = Helper.readInt("Enter option > ");
 
@@ -218,7 +256,10 @@ public class C206_CaseStudy {
 			} else {
 				System.out.println("Invalid option");
 			}
+			}
+			}
 		}
+			
 
 	}
 
@@ -397,7 +438,7 @@ public class C206_CaseStudy {
 			westernArr.remove(item);
 			System.out.println("Western Removed!");
 		}
-		
+
 	}
 
 	public static void removeAsian(ArrayList<asian> asianArr, String category) {
@@ -406,7 +447,7 @@ public class C206_CaseStudy {
 			asianArr.remove(item);
 			System.out.println("Asian Removed!");
 		}
-		
+
 	}
 
 	public static void removeVegetarian(ArrayList<Vegetarian> vegetarianArr, String category) {
@@ -415,16 +456,16 @@ public class C206_CaseStudy {
 			vegetarianArr.remove(item);
 			System.out.println("vegetarian Removed!");
 		}
-		
+
 	}
-	
+
 	public static void removeDrinks(ArrayList<drinks> drinksArr, String category) {
 		if (category.equalsIgnoreCase("drinks")) {
 			String item = Helper.readString("Choose a item to delete: ");
 			drinksArr.remove(item);
 			System.out.println("Drinks Removed!");
 		}
-		
+
 	}
 
 	public static void removeFruits(ArrayList<Fruits> fruitsArr, String category) {
@@ -433,7 +474,7 @@ public class C206_CaseStudy {
 			fruitsArr.remove(item);
 			System.out.println("Fruits Removed!");
 		}
-		
+
 	}
 
 	// Add items into menu bank
@@ -446,7 +487,6 @@ public class C206_CaseStudy {
 			System.out.println("Western added");
 		}
 
-		
 	}
 
 	public static void addAsian(ArrayList<asian> asianArr, String category) {
@@ -458,7 +498,6 @@ public class C206_CaseStudy {
 			System.out.println("Asian added");
 		}
 
-		
 	}
 
 	public static void addVegetarian(ArrayList<Vegetarian> vegetarianArr, String category) {
@@ -470,7 +509,6 @@ public class C206_CaseStudy {
 			System.out.println("Vegetarian added");
 		}
 
-		
 	}
 
 	public static void addDrinks(ArrayList<drinks> drinksArr, String category) {
@@ -482,7 +520,6 @@ public class C206_CaseStudy {
 			System.out.println("Drink added");
 		}
 
-		
 	}
 
 	public static void addFruits(ArrayList<Fruits> fruitsArr, String category) {
@@ -494,7 +531,6 @@ public class C206_CaseStudy {
 			System.out.println("Fruits added");
 		}
 
-		
 	}
 
 	// =============================================== OPTION 3 MONTHLY MENU
