@@ -245,7 +245,31 @@ public class C206_CaseStudyTest {
 	
 	//=============================================== OPTION 4 LUNCH BOX ORDER ==================================================
 	
-	
+	@Test
+	public void addLunchBoxOrder() {
+		
+		// Lunch Box list is not null, so that can add a new item - boundary
+		assertNotNull("Check if there is valid LunchBox arraylist to add to", lunchBoxList);
+		
+		//Given an empty list, after adding 1 item, the size of the list is 1 - normal
+		//The item just added is as same as the first item of the list
+		C206_CaseStudy.addLunchBoxOrder(lunchBoxList, lb1);
+		assertEquals("Check that LunchBox arraylist size is 1", 1, lunchBoxList.size());
+		assertSame("Check that Lunch Box Order is added", lb1, lunchBoxList.get(0));
+		
+		//Add another item. test the size of the list is 2? - normal
+		//The item just added is as same as the second item of the list
+		C206_CaseStudy.addLunchBoxOrder(lunchBoxList, lb2);
+		assertEquals("Check that LunchBox arraylist size is 2", 2, lunchBoxList.size());
+		assertSame("Check that Lunch Box Order is added", lb2, lunchBoxList.get(1));
+		
+		//Add third item. test the size of the list is 3? - normal
+		//The item just added is as same as the third item of the list
+		C206_CaseStudy.addLunchBoxOrder(lunchBoxList, lb3);
+		assertEquals("Check that LunchBox arraylist size is 3", 3, lunchBoxList.size());
+		assertSame("Check that Lunch Box Order is added", lb3, lunchBoxList.get(2));
+		
+	}
 	
 	
 	
@@ -260,6 +284,10 @@ public class C206_CaseStudyTest {
 
 	@After
 	public void tearDown() throws Exception {
+		lb1 = null;
+		lb2 = null;
+		lb3 = null;
+		lunchBoxList = null;
 	
 	}
 }
