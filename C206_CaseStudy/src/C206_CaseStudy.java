@@ -132,8 +132,18 @@ public class C206_CaseStudy {
 					}
 
 				}
+
 			} else if (option == 3) {
 				// Ying Teng Monthly Menu
+
+				
+				
+				
+				
+				
+			}else if (option == 3) {
+				//Ying Teng Monthly Menu
+
 				monthlyMenu();
 
 				int monthlyOption = Helper.readInt("Enter option to select Monthly Menu > ");
@@ -141,6 +151,7 @@ public class C206_CaseStudy {
 				if (monthlyOption == 1) {
 					createMonthlyMenu();
 					System.out.println("Menu Successfully Created!");
+
 					for (int i = 0; i < menuList.size(); i++) {
 						System.out.println(menuList.get(i).getOption());
 
@@ -148,24 +159,53 @@ public class C206_CaseStudy {
 
 				} else if (monthlyOption == 2) {
 
+
+							
+				}else if (monthlyOption == 2) {
+					
+
 					String menu = viewMonthlyMenu();
 					System.out.println(menu);
 
-				} else if (monthlyOption == 3) {
+
+
+		          					
+	
+				}else if (monthlyOption == 3) {
+
 					String output = deleteMonthlyMenu();
 					System.out.println(output);
 
+
 				} else {
+
+							
+				}else {
+
 					System.out.println("Invalid option");
 				}
 
+
 			} else if (option == 4) {
+				
+				 
+				 
+				
+				
+			}else if (option == 4) {
+
 				// Angela Lunch Box Order
 				lunchBox();
 
 				int choice = Helper.readInt("Enter option > ");
 
 				if (choice == 1) {
+
+
+
+					
+					String menu = viewMonthlyMenu();
+					System.out.println(menu);
 
 					LunchBox lb = inputLunchBox();
 					addLunchBoxOrder(lunchBoxList, lb);
@@ -521,12 +561,42 @@ public class C206_CaseStudy {
 
 		String[] dayname = { "", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
 
+
 		// print calendar header
 		// Display the month and year
 		monthlyMenu = ("\n        " + months[month - 1] + " " + year + "\n");
 
 		// Display the lines
 		monthlyMenu += (" __________________________________\n\n");
+
+            	if (j <= maxday) {
+            	String Western ="";
+            	String Asian ="";
+            	String Vegetarian ="";
+            	String Drink1 ="";
+            	String Drink2 ="";
+            	String Fruit1 ="";
+            	String Fruit2 ="";
+            	
+                monthlyMenu += String.format("%5d ", i);
+                monthlyMenu += months[month-1];
+                monthlyMenu += "  (" + dayname[j] + ")\n"; 
+                monthlyMenu += "  --------------------------\n";
+                Western = String.format("     %5s: %s \n", "Western",  randomWestern());
+                Asian = String.format("     %5s: %s \n", "Asian",  randomAsian());
+                Vegetarian += String.format("     %5s: %s \n", "Vegetarian",  randomVegetarian());
+                Drink1 = String.format("     %5s: %s \n", "Drinks",  randomDrink());
+                Drink2 = String.format("     %5s: %s \n", "Drinks",  randomDrink());
+                Fruit1 = String.format("     %5s: %s \n", "Fruit",  randomFruit());
+                Fruit2 = String.format("     %5s: %s \n\n", "Fruit",  randomFruit());
+                
+                //menuList.add(new Menu(dayMenu));
+                monthlyMenu += Western + Asian + Vegetarian + Drink1 + Drink2 + Fruit1 + Fruit2;
+                menuList.add(new Menu(i, Western, Asian, Vegetarian, Drink1, Drink2, Fruit1, Fruit2));
+                
+                
+                
+
 
 		int maxday = 5;
 		int fullweek = 7;
@@ -570,6 +640,12 @@ public class C206_CaseStudy {
 		return monthlyMenu;
 	}
 
+
+
+	
+ 
+	
+
 	public static String viewMonthlyMenu() {
 		String output = "";
 		if (monthlyMenu.isEmpty()) {
@@ -587,9 +663,15 @@ public class C206_CaseStudy {
 		if (monthlyMenu.isEmpty()) {
 			output = "There is no menu to delete!";
 
+
 		} else {
+	
+			
+		}else {
+
 			monthlyMenu = "";
 			output = "Menu deleted!";
+			menuList.clear();
 		}
 		return output;
 	}
@@ -598,13 +680,18 @@ public class C206_CaseStudy {
 	// ==================================================
 	public static LunchBox inputLunchBox() {
 
+
 		String choices = "";
 
 		viewMonthlyMenu();
 
+
+		
+
 		String meal = Helper.readString("Enter meal > ");
 		String drink = Helper.readString("Enter drink > ");
 		String fruit = Helper.readString("Enter fruit > ");
+
 		int[] days = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 
 		for (int i = 1, j = firstDay; i <= days[month]; i++, j++) {
@@ -628,6 +715,12 @@ public class C206_CaseStudy {
 
 //		LunchBox lb = new LunchBox(meal, drink, fruit);
 //		return lb;
+
+
+		
+		LunchBox lb = new LunchBox(meal, drink, fruit);
+		return lb;
+		
 
 	}
 
