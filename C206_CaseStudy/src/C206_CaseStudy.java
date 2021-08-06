@@ -92,25 +92,11 @@ public class C206_CaseStudy {
 				
 				if (itemOption == 1) {
 					C206_CaseStudy.setHeader("VIEW");
-					for (western i : westernArr) {
-						System.out.println("Western Food: " + i.getName());
-					}
-					System.out.println("");
-
-					for (asian i : asianArr) {
-						System.out.println("Asian Food: " + i.getName());
-					}
-					System.out.println("");
-
-					for (drinks i : drinksArr) {
-						System.out.println("Drinks: " + i.getName());
-					}
-					System.out.println("");
-
-					for (Fruits i : fruitsArr) {
-						System.out.println("Fruits: " + i.getName());
-					}
-					System.out.println("");
+					viewWestern(westernArr);
+					viewAsian(asianArr);
+					viewDrinks(drinksArr);
+					viewFruits(fruitsArr);
+					viewVege(vegetarianArr);
 
 				} else if (itemOption == 2) {
 					C206_CaseStudy.setHeader("DELETE");
@@ -159,44 +145,37 @@ public class C206_CaseStudy {
 
 					if (category.equalsIgnoreCase("western")) {
 						String item = Helper.readString("Choose a item to add: ");
-						for (western i : westernArr) {
-							if (i == null) {
-								i = new western(item);
-								westernArr.add(i);
-
-							}
-						}
+						western itemw = new western(item);
+						addWestern(westernArr, itemw);
 
 					} else if (category.equalsIgnoreCase("asian")) {
 						for (asian i : asianArr) {
 							String item = Helper.readString("Choose a item to add: ");
-							if (i == null) {
-								i = new asian(item);
-								asianArr.add(i);
-
-							}
+							asian items = new asian(item);
+							addAsian(asianArr, items);
 						}
 					} else if (category.equalsIgnoreCase("drinks")) {
 
 						for (drinks i : drinksArr) {
 							String item = Helper.readString("Choose a item to add: ");
-							if (i == null) {
-								i = new drinks(item);
-								drinksArr.add(i);
-
-							}
+							drinks itemw = new drinks(item);
+							addDrinks(drinksArr,itemw);
+							
 						}
 					} else if (category.equalsIgnoreCase("fruits")) {
 						for (Fruits i : fruitsArr) {
 							String item = Helper.readString("Choose a item to add: ");
-							if (i == null) {
-								i = new Fruits(item);
-								fruitsArr.add(i);
-							}
+							Fruits itemw = new Fruits(item);
+							addFruits(fruitsArr, itemw);
 						}
 
-					}else {
-						System.out.println("Invalid option");
+					}else if (category.equalsIgnoreCase("vegetarian")) {
+						for (Vegetarian i : vegetarianArr) {
+							String item = Helper.readString("Choose a item to add: ");
+							Vegetarian itemw = new Vegetarian(item);
+							addVegetarian(vegetarianArr, itemw);
+									
+						}
 					}
 				
 				}
@@ -401,8 +380,67 @@ public class C206_CaseStudy {
 	
 	
 	//=============================================== OPTION 2 MENU ITEMS ==================================================
+	//View items From menu bank
+	public static String viewWestern(ArrayList<western> westernArr) {
+		String output = "";
+		
+		for (western i : westernArr) {
+			output += String.format("%10s", i.getName());
+		}
+		
+		
+		return output;
+	}
+	
+	public static String viewAsian(ArrayList<asian> asianArr) {
+		String output = "";
+		
+		for (asian i : asianArr) {
+			output += String.format("%10s", i.getName());
+		}
+		
+		
+		return output;
+	}
+	
+	public static String viewDrinks(ArrayList<drinks> drinksArr) {
+		String output = "";
+		
+		for (drinks i : drinksArr) {
+			output += String.format("%10s", i.getName());
+		}
+		
+		
+		return output;
+	}
+	
+	public static String viewFruits(ArrayList<Fruits> fruitsArr) {
+		String output = "";
+		
+		for (Fruits i : fruitsArr) {
+			output += String.format("%10s", i.getName());
+		}
+		
+		
+		return output;
+	}
+	
+	public static String viewVege(ArrayList<Vegetarian> vegetarianArr) {
+		String output = "";
+		
+		for (Vegetarian i : vegetarianArr) {
+			output += String.format("%10s", i.getName());
+		}
+		
+		
+		return output;
+	}
+	
+	//Delete Items from menu bank
 	
 	
+	
+	//Add items into menu bank
 	public static void addWestern(ArrayList<western> westernArr, western cc) {
 		
 		westernArr.add(cc);
