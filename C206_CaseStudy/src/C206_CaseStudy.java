@@ -152,7 +152,7 @@ public class C206_CaseStudy {
 
 						String menu = viewMonthlyMenu();
 						System.out.println(menu);
-						
+//						
 //						for(int i=0; i<menuList.size(); i++) {
 //							System.out.println(menuList.get(i).getAsian());
 //						}
@@ -625,9 +625,7 @@ public class C206_CaseStudy {
 
 			Menu mm = new Menu(Western, Asian, Vegetarian, Drink1, Drink2, Fruit1, Fruit2);
 			addDailyMenu(menuList, mm);
-
-//			monthlyMenu += Western + Asian + Vegetarian + Drink1 + Drink2 + Fruit1 + Fruit2;
-			
+					
 		}
 
 				if (j > maxday && j <= fullweek) {
@@ -649,8 +647,10 @@ public class C206_CaseStudy {
 }
 	
 	public static void addDailyMenu(ArrayList<Menu> MenuList, Menu mm) {
-
+		
        menuList.add(mm);
+       System.out.println("add!");
+       System.out.println(menuList.size());
 
 	}
  

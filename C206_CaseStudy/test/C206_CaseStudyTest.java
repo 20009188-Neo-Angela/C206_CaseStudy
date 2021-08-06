@@ -53,12 +53,9 @@ public class C206_CaseStudyTest {
 	private ArrayList<Fruits>  fruitsArr;
 	private ArrayList<Menu> menuList;
 	
+
 	
-<<<<<<< HEAD
-	private ArrayList<Menu> menuList;
-	
-=======
->>>>>>> branch 'master' of https://github.com/20009188-Neo-Angela/C206_CaseStudy.git
+
 	public C206_CaseStudyTest() {
 		super();
 	}
@@ -71,17 +68,16 @@ public class C206_CaseStudyTest {
 		
 		mm1 = new Menu("Fries", "Chilli Crab", "Vegi Burger", "Coke", "Fanta", "Apple", "Orange");
 		mm2 = new Menu("Pizza", "Chicken Rice", "Cauliflower Rice", "Sprite", "Ayataka", "WaterMelon", "BlueBerry");
-		
-<<<<<<< HEAD
+
 		menuList= new ArrayList<Menu>();
-		menuList= new ArrayList<Menu>();
-=======
+
+
 		lb1 = new LunchBox(123, "6 August 2021", "Chilli Crab", "Qoo10", "Grape");
 		lb2 = new LunchBox(456, "7 August 2021", "Mee Soto", "Coke", "Mangosteen");
 		lb3 = new LunchBox(789, "8 August 2021", "Chicken Briyani", "Fanta", "Durian");
 		
 		lunchBoxList = new ArrayList<LunchBox>();
->>>>>>> branch 'master' of https://github.com/20009188-Neo-Angela/C206_CaseStudy.git
+
 		
 //		w1 = new western("Fries");
 //		w2 = new western("Pizza");
@@ -184,7 +180,7 @@ public class C206_CaseStudyTest {
 	
 	//=============================================== OPTION 3 MONTHLY MENU ==================================================
 	@Test
-	public void createMonAthlyMenuTest() {
+	public void createMonthlyMenuTest() {
 		
 		// Menu list is not null, so that can add a new item - boundary
 		assertNotNull("Check if there is valid Menu arraylist to add to", menuList);
