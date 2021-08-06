@@ -40,19 +40,31 @@ public class C206_CaseStudyTest {
 	private Menu mm1;
 	private Menu mm2;
 	
+<<<<<<< HEAD
 	private Bill b1;
 	private Bill b2;
+=======
+	private LunchBox  lb1;
+	private LunchBox lb2;
+	private LunchBox lb3;
+>>>>>>> branch 'master' of https://github.com/20009188-Neo-Angela/C206_CaseStudy.git
 
+	private ArrayList<LunchBox> lunchBoxList;
 	private ArrayList<Account> accountArr;
 	private ArrayList<western> westernArr;
 	private ArrayList<asian>  asianArr;
 	private ArrayList<Vegetarian>  vegetarianArr;
 	private ArrayList<drinks>  drinksArr;
 	private ArrayList<Fruits>  fruitsArr;
+<<<<<<< HEAD
 	private ArrayList<Bill> orderBillArr;
+=======
+	private ArrayList<Menu> menuList;
 	
-	private ArrayList<Menu> menuList = new ArrayList<Menu>();
+
+>>>>>>> branch 'master' of https://github.com/20009188-Neo-Angela/C206_CaseStudy.git
 	
+
 	public C206_CaseStudyTest() {
 		super();
 	}
@@ -63,8 +75,18 @@ public class C206_CaseStudyTest {
 		acc1 = new Account("Roy Tan", "schoolR0ck$", "4E4","Credit Card");
 		acc2 = new Account("Hannah", "12345abc", "3E2","Credit Card");
 		
-		mm1 = new Menu(1,"Fries", "Chilli Crab", "Vegi Burger", "Coke", "Fanta", "Apple", "Orange");
-		mm2 = new Menu(2,"Pizza", "Chicken Rice", "Cauliflower Rice", "Sprite", "Ayataka", "WaterMelon", "BlueBerry");
+		mm1 = new Menu("Fries", "Chilli Crab", "Vegi Burger", "Coke", "Fanta", "Apple", "Orange");
+		mm2 = new Menu("Pizza", "Chicken Rice", "Cauliflower Rice", "Sprite", "Ayataka", "WaterMelon", "BlueBerry");
+
+		menuList= new ArrayList<Menu>();
+
+
+		lb1 = new LunchBox(123, "6 August 2021", "Chilli Crab", "Qoo10", "Grape");
+		lb2 = new LunchBox(456, "7 August 2021", "Mee Soto", "Coke", "Mangosteen");
+		lb3 = new LunchBox(789, "8 August 2021", "Chicken Briyani", "Fanta", "Durian");
+		
+		lunchBoxList = new ArrayList<LunchBox>();
+
 		
 //		w1 = new western("Fries");
 //		w2 = new western("Pizza");
@@ -180,17 +202,12 @@ public class C206_CaseStudyTest {
 		assertEquals("Check that Menu arraylist size is 1", 1, menuList.size());
 		
 		//The item just added is as same as the first item of the list
-		assertSame("Check that Menu is added", mm1, menuList.get(menuList.size()-1));
+		assertSame("Check that Menu is added", mm1, menuList.get(0));
 		
 		//Add another item. test The size of the list is 2? -normal
 		C206_CaseStudy.addDailyMenu(menuList, mm2);
 		assertEquals("Check that Menu arraylist size is 2", 2, menuList.size());
-
-
-		
-		// Test is after creating MonthlyMenu is not empty
-		String testOutput = C206_CaseStudy.createMonthlyMenu();
-		assertFalse(testOutput.isEmpty());
+		assertSame("Check that Menu is added", mm2, menuList.get(1));
 				
 	}
 	
@@ -229,8 +246,9 @@ public class C206_CaseStudyTest {
 	@Test
 	public void deleteMonthlyMenuTest() {
 		
-		// Test that MonthlyMenu is not empty
-		C206_CaseStudy.createMonthlyMenu();
+		// Test that Menu list is not empty
+		C206_CaseStudy.addDailyMenu(menuList, mm1);
+		C206_CaseStudy.addDailyMenu(menuList, mm2);
 		assertFalse(C206_CaseStudy.monthlyMenu.isEmpty());
 		
 		// Test that after delete, monthly menu is empty
@@ -240,6 +258,39 @@ public class C206_CaseStudyTest {
 	}
 	
 	//=============================================== OPTION 4 LUNCH BOX ORDER ==================================================
+	
+	@Test
+	public void addLunchBoxOrder() {
+		
+		// Lunch Box list is not null, so that can add a new item - boundary
+		assertNotNull("Check if there is valid LunchBox arraylist to add to", lunchBoxList);
+		
+		//Given an empty list, after adding 1 item, the size of the list is 1 - normal
+		//The item just added is as same as the first item of the list
+		C206_CaseStudy.addLunchBoxOrder(lunchBoxList, lb1);
+		assertEquals("Check that LunchBox arraylist size is 1", 1, lunchBoxList.size());
+		assertSame("Check that Lunch Box Order is added", lb1, lunchBoxList.get(0));
+		
+		//Add another item. test the size of the list is 2? - normal
+		//The item just added is as same as the second item of the list
+		C206_CaseStudy.addLunchBoxOrder(lunchBoxList, lb2);
+		assertEquals("Check that LunchBox arraylist size is 2", 2, lunchBoxList.size());
+		assertSame("Check that Lunch Box Order is added", lb2, lunchBoxList.get(1));
+		
+		//Add third item. test the size of the list is 3? - normal
+		//The item just added is as same as the third item of the list
+		C206_CaseStudy.addLunchBoxOrder(lunchBoxList, lb3);
+		assertEquals("Check that LunchBox arraylist size is 3", 3, lunchBoxList.size());
+		assertSame("Check that Lunch Box Order is added", lb3, lunchBoxList.get(2));
+		
+	}
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
@@ -291,6 +342,13 @@ public class C206_CaseStudyTest {
 	}
 	@After
 	public void tearDown() throws Exception {
+		lb1 = null;
+		lb2 = null;
+		lb3 = null;
+		lunchBoxList = null;
 	
+	mm1 = null;
+	mm2 = null;
+	menuList = null;
 	}
 }
