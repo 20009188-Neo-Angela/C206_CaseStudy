@@ -637,7 +637,7 @@ public class C206_CaseStudy {
 			return monthlyMenu;
 	}
 	
-
+ 
 	
 	public static String viewMonthlyMenu() {
 		String output = "";

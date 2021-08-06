@@ -20,7 +20,7 @@ public class Menu {
 		this.Drink2 = Drink2;
 		this.Fruit1 = Fruit1;
 		this.Fruit2 = Fruit2;
-		
+		 
 	} 
 	
 	public int getDay() {
