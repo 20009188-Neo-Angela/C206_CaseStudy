@@ -2,6 +2,7 @@
 public class asian {
 	
 	private String name;
+	private int price;
 	
 	
 	public asian(String name) {
