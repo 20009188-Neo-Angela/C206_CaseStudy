@@ -646,11 +646,12 @@ public class C206_CaseStudy {
 		return monthlyMenu;
 }
 	
-	public static void addDailyMenu(ArrayList<Menu> MenuList, Menu mm) {
+	public static void addDailyMenu(ArrayList<Menu> menuList, Menu mm) {
 		
        menuList.add(mm);
        System.out.println("add!");
        System.out.println(menuList.size());
+       System.out.println(menuList.get(0).toString());
 
 	}
  
