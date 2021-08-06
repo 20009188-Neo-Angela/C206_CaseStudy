@@ -236,15 +236,28 @@ public class C206_CaseStudy {
 					
 					String menu = viewMonthlyMenu();
 					System.out.println(menu);
-					LunchBox lb = inputLunchBox();
-					addLunchBoxOrder(lunchBoxList, lb);
+					
+					C206_CaseStudy.setHeader("PLACE LUNCH BOX ORDERS");
+					
+					for (int i = 0; i < 5; i++) {
+						
+						LunchBox lb = inputLunchBox();
+						System.out.println();
+						addLunchBoxOrder(lunchBoxList, lb);
+						System.out.println();
+						
+					}
 					
 					
 				} else if (choice == 2) {
 					
-					
+					C206_CaseStudy.setHeader("VIEW LUNCH BOX ORDERS");
+					viewAllLunchBoxOrders(lunchBoxList);
 					
 				} else if (choice == 3) {
+					
+					C206_CaseStudy.setHeader("DELETE LUNCH BOX ORDERS");
+					deleteLunchBoxOrders(lunchBoxList);
 					
 					
 					
@@ -324,6 +337,7 @@ public class C206_CaseStudy {
 	}
 	
 	private static void lunchBox() {
+		C206_CaseStudy.setHeader("LUNCH BOX SELECTION");
 		System.out.println("1. Add/Place Lunch Box Order");
 		System.out.println("2. View Lunch Box Order");
 		System.out.println("3. Delete/Cancel Lunch Box Order");
@@ -673,11 +687,13 @@ public class C206_CaseStudy {
 	//=============================================== OPTION 4 LUNCH BOX ORDER ==================================================
 	public static LunchBox inputLunchBox() {
 		
+		int orderID = Helper.readInt("Enter order ID > ");
+		String date = Helper.readString("Enter date > ");
 		String meal = Helper.readString("Enter meal > ");
 		String drink = Helper.readString("Enter drink > ");
 		String fruit = Helper.readString("Enter fruit > ");
 		
-		LunchBox lb = new LunchBox(meal, drink, fruit);
+		LunchBox lb = new LunchBox(orderID, date, meal, drink, fruit);
 		return lb;
 		
 	}
@@ -689,7 +705,53 @@ public class C206_CaseStudy {
 		
 	}
 	
+	public static String retrieveAllLunchBoxOrders(ArrayList<LunchBox> lunchBoxList) {
+		String output = "";
+
+		for (int i = 0; i < lunchBoxList.size(); i++) {
+
+			output += String.format("%-85s \n", lunchBoxList.get(i));
+		}
+		return output;
+	}
 	
+	public static void viewAllLunchBoxOrders(ArrayList<LunchBox> lunchBoxList) {
+		String output = String.format("%-10s %-16s %-25s %-15s %-15s\n", "ORDER ID", "DATE", "MEAL",
+				"DRINK", "FRUIT");
+		 output += retrieveAllLunchBoxOrders(lunchBoxList);	
+		System.out.println(output);
+	}
+	
+	public static boolean doFoundLunchBoxOrder(ArrayList<LunchBox> lunchBoxList, int orderID) {
+		boolean isFound = false;
+
+		for (int i = 0; i < lunchBoxList.size(); i++) {
+			if (orderID == lunchBoxList.get(i).getOrderID()) {
+				char confirm = Helper.readChar("Do you really want to cancel the lunch box order? (Y/N) > ");
+				if (confirm == 'y' || confirm == 'Y') {
+					lunchBoxList.remove(orderID - 1);
+				}
+				isFound = true;
+			}
+		}
+		return isFound;
+		
+	}
+	
+	public static void deleteLunchBoxOrders(ArrayList<LunchBox> lunchBoxList) {
+		
+		viewAllLunchBoxOrders(lunchBoxList);
+		
+		int orderID = Helper.readInt("Enter order ID to cancel the lunch box order > ");
+		
+		Boolean isFound = doFoundLunchBoxOrder(lunchBoxList, orderID);
+		
+		if (isFound == false) {
+			System.out.println("Invalid Lunch Box Order!");
+		} else {
+			System.out.println("Lunch Box Order " + orderID + " is successfully cancelled!");
+		}
+	}
 	
 	
 	
@@ -706,7 +768,6 @@ public class C206_CaseStudy {
 	}
 	
 		
-	
 	public static String viewOrderBill(ArrayList<Bill>orderBillArr) {
 			C206_CaseStudy.setHeader("VIEW ORDER BILL");
 			String output = " ";
