@@ -1,18 +1,18 @@
 
 public class Menu {
 	
-	private int day;
+
 	private String Western;
 	private String Asian;
-	private String Vegetarian;
+	private String Vegetarian; 
 	private String Drink1;
 	private String Drink2;
 	private String Fruit1;
 	private String Fruit2;
+	 
 	
+	public Menu(String Western, String Asian, String Vegetarian, String Drink1, String Drink2, String Fruit1, String Fruit2) {
 	
-	public Menu(int day, String Western, String Asian, String Vegetarian, String Drink1, String Drink2, String Fruit1, String Fruit2) {
-		this.day = day;
 		this.Western = Western;
 		this.Asian = Asian;
 		this.Vegetarian = Vegetarian;
@@ -23,13 +23,10 @@ public class Menu {
 		 
 	} 
 	
-	public int getDay() {
-		return day;
-	}
 	
 	public String getWestern() {
 		return Western;
-	}
+	} 
 	
 	public String getAsian() {
 		return Asian;
@@ -46,5 +43,25 @@ public class Menu {
 	public String getDrink2() {
 		return Drink2;
 	}
+	
+	public String getFruit1() {
+		return Fruit1;
+	}
+	
+	public String getFruit2() {
+		return Fruit2;
+	}
+	
+	
+	public String toString() {
+		String dailyInfo = String.format("     %5s: %s \n", "Western",  Western);
+		dailyInfo += String.format("     %5s: %s \n", "Asian",  Asian);
+		dailyInfo += String.format("     %5s: %s \n", "Vegetarian",  Vegetarian);
+		dailyInfo += String.format("     %5s: %s \n", "Drinks",  Drink1);
+		dailyInfo += String.format("     %5s: %s \n", "Drinks",  Drink2);
+		dailyInfo += String.format("     %5s: %s \n", "Fruit",  Fruit1);
+		dailyInfo += String.format("     %5s: %s \n\n", "Fruit",  Fruit2);
 
+		return dailyInfo;
+	}
 }

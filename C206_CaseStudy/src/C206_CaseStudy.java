@@ -49,7 +49,7 @@ public class C206_CaseStudy {
 		vegetarianArr.add(new Vegetarian("Vegi Burger", 2));
 		vegetarianArr.add(new Vegetarian("Pumpkin Soup", 2));
 		vegetarianArr.add(new Vegetarian("Vegetarian Meatball", 2));
-		vegetarianArr.add(new Vegetarian("Cauliflower RiceA", 2));
+		vegetarianArr.add(new Vegetarian("Cauliflower Rice", 2));
 
 		orderBillArr.add(new Bill("t0326720i","drinks", 1000 , "01/2012"));
 		orderBillArr.add(new Bill("lol", "western", 1500, "02/2021"));
@@ -191,6 +191,7 @@ public class C206_CaseStudy {
 				
 				}
 				
+				
 			}else if (option == 3) {
 				//Ying Teng Monthly Menu
 				monthlyMenu();
@@ -200,31 +201,21 @@ public class C206_CaseStudy {
 				if(monthlyOption == 1 ) {
 					createMonthlyMenu();
 					System.out.println("Menu Successfully Created!");
-
-								
+							
 				}else if (monthlyOption == 2) {
 					
 					String menu = viewMonthlyMenu();
 					System.out.println(menu);
-					for (int i = 0; i < menuList.size(); i++) {
-			            System.out.println(menuList.get(i).getDay());
-			            System.out.println(menuList.get(i).getWestern());
-			            
-			          }
-					
+					        					
 	
 				}else if (monthlyOption == 3) {
 					String output = deleteMonthlyMenu();
 					System.out.println(output);
-					
-					
-					
+							
 				}else {
 					System.out.println("Invalid option");
 				}
 						
-				
-				
 				
 			}else if (option == 4) {
 				// Angela Lunch Box Order
@@ -299,8 +290,6 @@ public class C206_CaseStudy {
 	}
 
 
-	
-	
 	private static void menu() {
 		C206_CaseStudy.setHeader("LUNCH BOX ORDERING APP");
 		System.out.println("1. User Account");
@@ -547,7 +536,7 @@ public class C206_CaseStudy {
 	public static String randomAsian() {
 		Random rand = new Random();
 		int randomInt = rand.nextInt(asianArr.size());
-		return westernArr.get(randomInt).getName();
+		return asianArr.get(randomInt).getName();
 	
 	}
 	
@@ -572,6 +561,22 @@ public class C206_CaseStudy {
 		int randomInt = rand.nextInt(fruitsArr.size());
 		return fruitsArr.get(randomInt).getName();
 	
+	}
+	
+	
+	
+	public static ArrayList<Menu> addDailyMenu() {
+		String Western = randomWestern();
+    	String Asian = randomAsian();
+    	String Vegetarian = randomVegetarian();
+    	String Drink1 = randomDrink();
+    	String Drink2 = randomDrink();
+    	String Fruit1 = randomFruit();
+    	String Fruit2 = randomFruit();
+
+        menuList.add(new Menu(Western, Asian, Vegetarian, Drink1, Drink2, Fruit1, Fruit2));
+		return menuList;
+
 	}
 		
 	
@@ -609,32 +614,14 @@ public class C206_CaseStudy {
             for (int i = 1 , j = firstDay; i <= days[month]; i++, j++) {
 
             	if (j <= maxday) {
-            	String Western ="";
-            	String Asian ="";
-            	String Vegetarian ="";
-            	String Drink1 ="";
-            	String Drink2 ="";
-            	String Fruit1 ="";
-            	String Fruit2 ="";
-            	
+             	
                 monthlyMenu += String.format("%5d ", i);
                 monthlyMenu += months[month-1];
                 monthlyMenu += "  (" + dayname[j] + ")\n"; 
                 monthlyMenu += "  --------------------------\n";
-                Western = String.format("     %5s: %s \n", "Western",  randomWestern());
-                Asian = String.format("     %5s: %s \n", "Asian",  randomAsian());
-                Vegetarian += String.format("     %5s: %s \n", "Vegetarian",  randomVegetarian());
-                Drink1 = String.format("     %5s: %s \n", "Drinks",  randomDrink());
-                Drink2 = String.format("     %5s: %s \n", "Drinks",  randomDrink());
-                Fruit1 = String.format("     %5s: %s \n", "Fruit",  randomFruit());
-                Fruit2 = String.format("     %5s: %s \n\n", "Fruit",  randomFruit());
+                addDailyMenu(); 
                 
-                //menuList.add(new Menu(dayMenu));
-                monthlyMenu += Western + Asian + Vegetarian + Drink1 + Drink2 + Fruit1 + Fruit2;
-                menuList.add(new Menu(i, Western, Asian, Vegetarian, Drink1, Drink2, Fruit1, Fruit2));
-                
-                
-                
+                monthlyMenu += menuList.get(menuList.size()-1).toString();      
 
             }
             	if (j > maxday && j <= fullweek) {
@@ -650,6 +637,7 @@ public class C206_CaseStudy {
             		j = 0;
             	}
            }
+      
 			return monthlyMenu;
 	}
 	
