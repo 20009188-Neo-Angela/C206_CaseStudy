@@ -48,7 +48,7 @@ public class C206_CaseStudyTest {
 	private ArrayList<Fruits>  fruitsArr;
 	
 	
-	private ArrayList<Menu> menuList = new ArrayList<Menu>();
+	private ArrayList<Menu> menuList;
 	
 	public C206_CaseStudyTest() {
 		super();
@@ -62,6 +62,9 @@ public class C206_CaseStudyTest {
 		
 		mm1 = new Menu("Fries", "Chilli Crab", "Vegi Burger", "Coke", "Fanta", "Apple", "Orange");
 		mm2 = new Menu("Pizza", "Chicken Rice", "Cauliflower Rice", "Sprite", "Ayataka", "WaterMelon", "BlueBerry");
+		
+		menuList= new ArrayList<Menu>();
+		menuList= new ArrayList<Menu>();
 		
 //		w1 = new western("Fries");
 //		w2 = new western("Pizza");
@@ -164,7 +167,7 @@ public class C206_CaseStudyTest {
 	
 	//=============================================== OPTION 3 MONTHLY MENU ==================================================
 	@Test
-	public void createMonthlyMenuTest() {
+	public void createMonAthlyMenuTest() {
 		
 		// Menu list is not null, so that can add a new item - boundary
 		assertNotNull("Check if there is valid Menu arraylist to add to", menuList);
@@ -174,17 +177,12 @@ public class C206_CaseStudyTest {
 		assertEquals("Check that Menu arraylist size is 1", 1, menuList.size());
 		
 		//The item just added is as same as the first item of the list
-		assertSame("Check that Menu is added", mm1, menuList.get(menuList.size()-1));
+		assertSame("Check that Menu is added", mm1, menuList.get(0));
 		
 		//Add another item. test The size of the list is 2? -normal
 		C206_CaseStudy.addDailyMenu(menuList, mm2);
 		assertEquals("Check that Menu arraylist size is 2", 2, menuList.size());
-
-
-		
-		// Test is after creating MonthlyMenu is not empty
-		String testOutput = C206_CaseStudy.createMonthlyMenu();
-		assertFalse(testOutput.isEmpty());
+		assertSame("Check that Menu is added", mm2, menuList.get(1));
 				
 	}
 	
@@ -223,8 +221,9 @@ public class C206_CaseStudyTest {
 	@Test
 	public void deleteMonthlyMenuTest() {
 		
-		// Test that MonthlyMenu is not empty
-		C206_CaseStudy.createMonthlyMenu();
+		// Test that Menu list is not empty
+		C206_CaseStudy.addDailyMenu(menuList, mm1);
+		C206_CaseStudy.addDailyMenu(menuList, mm2);
 		assertFalse(C206_CaseStudy.monthlyMenu.isEmpty());
 		
 		// Test that after delete, monthly menu is empty
@@ -242,5 +241,8 @@ public class C206_CaseStudyTest {
 	@After
 	public void tearDown() throws Exception {
 	
+	mm1 = null;
+	mm2 = null;
+	menuList = null;
 	}
 }

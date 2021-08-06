@@ -152,6 +152,10 @@ public class C206_CaseStudy {
 
 						String menu = viewMonthlyMenu();
 						System.out.println(menu);
+						
+//						for(int i=0; i<menuList.size(); i++) {
+//							System.out.println(menuList.get(i).getAsian());
+//						}
 
 					} else if (monthlyOption == 3) {
 						String output = deleteMonthlyMenu();
@@ -585,13 +589,7 @@ public class C206_CaseStudy {
 				"Sunday"
 		};
 
-		String Western = "";
-		String Asian = "";
-		String Vegetarian = "";
-		String Drink1 = "";
-		String Drink2 = "";
-		String Fruit1 = "";
-		String Fruit2 = "";
+
 
 		// print calendar header
 		// Display the month and year
@@ -605,24 +603,31 @@ public class C206_CaseStudy {
 
 		for (int i = 1, j = firstDay; i <= days[month]; i++, j++) {
 		if (j <= maxday) {
-
+			String Western = randomWestern();
+			String Asian = randomAsian();
+			String Vegetarian = randomVegetarian();
+			String Drink1 = randomDrink();
+			String Drink2 = randomDrink();
+			String Fruit1 = randomFruit();
+			String Fruit2 = randomFruit();
+			
 			monthlyMenu += String.format("%5d ", i);
 			monthlyMenu += months[month-1];
 			monthlyMenu += "  (" + dayname[j] + ")\n"; 
 			monthlyMenu += "  --------------------------\n";
 
-			Western = String.format("     %5s: %s \n", "Western",  randomWestern());
-			Asian = String.format("     %5s: %s \n", "Asian",  randomAsian());
-			Vegetarian = String.format("     %5s: %s \n", "Vegetarian",  randomVegetarian());
-			Drink1 = String.format("     %5s: %s \n", "Drinks",  randomDrink());
-			Drink2 = String.format("     %5s: %s \n", "Drinks",  randomDrink());
-			Fruit1 = String.format("     %5s: %s \n", "Fruit",  randomFruit());
-			Fruit2 = String.format("     %5s: %s \n\n", "Fruit",  randomFruit());
+			monthlyMenu += String.format("     %5s: %s \n", "Western",  Western);
+			monthlyMenu += String.format("     %5s: %s \n", "Asian",  Asian);
+			monthlyMenu += String.format("     %5s: %s \n", "Vegetarian",  Vegetarian);
+			monthlyMenu += String.format("     %5s: %s \n", "Drinks",  Drink1);
+			monthlyMenu += String.format("     %5s: %s \n", "Drinks",  Drink2);
+			monthlyMenu += String.format("     %5s: %s \n", "Fruit",  Fruit1);
+			monthlyMenu += String.format("     %5s: %s \n\n", "Fruit",  Fruit2);
 
 			Menu mm = new Menu(Western, Asian, Vegetarian, Drink1, Drink2, Fruit1, Fruit2);
 			addDailyMenu(menuList, mm);
 
-			monthlyMenu += Western + Asian + Vegetarian + Drink1 + Drink2 + Fruit1 + Fruit2;
+//			monthlyMenu += Western + Asian + Vegetarian + Drink1 + Drink2 + Fruit1 + Fruit2;
 			
 		}
 
@@ -644,7 +649,7 @@ public class C206_CaseStudy {
 		return monthlyMenu;
 }
 	
-	public static void  addDailyMenu(ArrayList<Menu> MenuList, Menu mm) {
+	public static void addDailyMenu(ArrayList<Menu> MenuList, Menu mm) {
 
        menuList.add(mm);
 
