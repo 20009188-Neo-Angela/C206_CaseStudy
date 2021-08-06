@@ -91,11 +91,11 @@ public class C206_CaseStudy {
 				
 				if (itemOption == 1) {
 					C206_CaseStudy.setHeader("VIEW");
-					viewWestern(westernArr);
-					viewAsian(asianArr);
-					viewDrinks(drinksArr);
-					viewFruits(fruitsArr);
-					viewVege(vegetarianArr);
+					System.out.println(viewWestern(westernArr));
+					System.out.println(viewAsian(asianArr));
+					System.out.println(viewDrinks(drinksArr));
+					System.out.println(viewFruits(fruitsArr));
+					System.out.println(viewVege(vegetarianArr));
 
 				} else if (itemOption == 2) {
 					C206_CaseStudy.setHeader("DELETE");
@@ -384,7 +384,7 @@ public class C206_CaseStudy {
 		String output = "";
 		
 		for (western i : westernArr) {
-			output += String.format("%10s", i.getName());
+			output += String.format("Western: %10s \n", i.getName());
 		}
 		
 		
@@ -395,7 +395,7 @@ public class C206_CaseStudy {
 		String output = "";
 		
 		for (asian i : asianArr) {
-			output += String.format("%10s", i.getName());
+			output += String.format("Asian: %10s \n", i.getName());
 		}
 		
 		
@@ -406,7 +406,7 @@ public class C206_CaseStudy {
 		String output = "";
 		
 		for (drinks i : drinksArr) {
-			output += String.format("%10s", i.getName());
+			output += String.format("Drinks: %10s \n", i.getName());
 		}
 		
 		
@@ -417,7 +417,7 @@ public class C206_CaseStudy {
 		String output = "";
 		
 		for (Fruits i : fruitsArr) {
-			output += String.format("%10s", i.getName());
+			output += String.format("Fruits: %10s \n", i.getName());
 		}
 		
 		
