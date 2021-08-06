@@ -21,6 +21,8 @@ public class C206_CaseStudy {
 		ArrayList<Account> accountArr = new ArrayList <Account> ();
 		
 		accountArr.add(new Account("Roy Tan", "schoolR0ck$", "4E4","Credit Card, Account Credit"));
+		accountArr.add(new Account("Hannah", "12345abc", "3E2","Credit Card"));
+
 
 		westernArr.add(new western("Fries"));
 		westernArr.add(new western("Pizza"));
@@ -608,7 +610,21 @@ public class C206_CaseStudy {
 	
 	
 	//=============================================== OPTION 4 LUNCH BOX ORDER ==================================================
+	public static LunchBox inputLunchBox() {
+		String meal = Helper.readString("Enter meal > ");
+		String drink = Helper.readString("Enter drink > ");
+		String fruit = Helper.readString("Enter fruit > ");
+
+		LunchBox lb = new LunchBox(meal, drink, fruit);
+		return lb;
+		
+	}
 	
+	public static void addLunchBoxOrder(ArrayList<LunchBox> lunchBoxList, LunchBox lb) {
+		
+		lunchBoxList.add(lb);
+		System.out.println("Successfully placed a lunch box order!");
+	}
 	
 	
 	
