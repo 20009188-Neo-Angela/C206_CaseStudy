@@ -60,8 +60,8 @@ public class C206_CaseStudyTest {
 		acc1 = new Account("Roy Tan", "schoolR0ck$", "4E4","Credit Card");
 		acc2 = new Account("Hannah", "12345abc", "3E2","Credit Card");
 		
-		mm1 = new Menu(1,"Fries", "Chilli Crab", "Vegi Burger", "Coke", "Fanta", "Apple", "Orange");
-		mm2 = new Menu(2,"Pizza", "Chicken Rice", "Cauliflower Rice", "Sprite", "Ayataka", "WaterMelon", "BlueBerry");
+		mm1 = new Menu("Fries", "Chilli Crab", "Vegi Burger", "Coke", "Fanta", "Apple", "Orange");
+		mm2 = new Menu("Pizza", "Chicken Rice", "Cauliflower Rice", "Sprite", "Ayataka", "WaterMelon", "BlueBerry");
 		
 //		w1 = new western("Fries");
 //		w2 = new western("Pizza");
