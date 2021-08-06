@@ -261,7 +261,7 @@ public class C206_CaseStudyTest {
 				assertSame("Test that orderBillArr is added", b2, orderBillArr.get(1));
 	}
 	public void viewMonthlyBillTest() {
-		// Test if Account list is not null but empty -boundary
+		// Test if orderBillArr list is not null but empty -boundary
 					assertNotNull("Test if there is valid orderBillArr arraylist to retrieve item", orderBillArr);
 					
 					//test if the list of accounts retrieved from the CaseStudy is empty - boundary
