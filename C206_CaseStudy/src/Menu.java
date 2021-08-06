@@ -46,5 +46,12 @@ public class Menu {
 	public String getDrink2() {
 		return Drink2;
 	}
-
+	
+	public String getFruit1() {
+		return Fruit1;
+	}
+	
+	public String getFruit2() {
+		return Fruit2;
+	}
 }

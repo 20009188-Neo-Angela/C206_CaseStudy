@@ -191,6 +191,10 @@ public class C206_CaseStudy {
 				
 				}
 				
+				
+				
+				
+				
 			}else if (option == 3) {
 				//Ying Teng Monthly Menu
 				monthlyMenu();
@@ -200,30 +204,23 @@ public class C206_CaseStudy {
 				if(monthlyOption == 1 ) {
 					createMonthlyMenu();
 					System.out.println("Menu Successfully Created!");
-
-								
+							
 				}else if (monthlyOption == 2) {
 					
 					String menu = viewMonthlyMenu();
 					System.out.println(menu);
-					for (int i = 0; i < menuList.size(); i++) {
-			            System.out.println(menuList.get(i).getDay());
-			            System.out.println(menuList.get(i).getWestern());
-			            
-			          }
-					
+		          					
 	
 				}else if (monthlyOption == 3) {
 					String output = deleteMonthlyMenu();
 					System.out.println(output);
-					
-					
-					
+							
 				}else {
 					System.out.println("Invalid option");
 				}
 						
 				
+				 
 				
 				
 			}else if (option == 4) {
