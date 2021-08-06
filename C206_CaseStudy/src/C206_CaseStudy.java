@@ -623,8 +623,8 @@ public class C206_CaseStudy {
 			monthlyMenu += String.format("     %5s: %s \n", "Drinks",  Drink2);
 			monthlyMenu += String.format("     %5s: %s \n", "Fruit",  Fruit1);
 			monthlyMenu += String.format("     %5s: %s \n\n", "Fruit",  Fruit2);
-
-			Menu mm = new Menu(Western, Asian, Vegetarian, Drink1, Drink2, Fruit1, Fruit2);
+			
+			Menu mm = new Menu(i, Western, Asian, Vegetarian, Drink1, Drink2, Fruit1, Fruit2);
 			addDailyMenu(menuList, mm);
 					
 		}
@@ -647,11 +647,14 @@ public class C206_CaseStudy {
 		return monthlyMenu;
 }
 	
-	public static void addDailyMenu(ArrayList<Menu> MenuList, Menu mm) {
+	public static void addDailyMenu(ArrayList<Menu> menuList, Menu mm) {
 		
        menuList.add(mm);
        System.out.println("add!");
        System.out.println(menuList.size());
+       for(int i =0; i< menuList.size(); i++) {
+       System.out.println(i);
+       }
 
 	}
  
@@ -667,19 +670,18 @@ public class C206_CaseStudy {
 		return output;
 	}
 
-	public static String deleteMonthlyMenu() {
-		String output = "";
-		if (monthlyMenu.isEmpty()) {
-			output = "There is no menu to delete!";
+	  public static String deleteMonthlyMenu() {
+		    String output = "";
+		    if (monthlyMenu.isEmpty()) {
+		      output = "There is no menu to delete!";
 
-		} else {
-			monthlyMenu = "";
-			output = "Menu deleted!";
-			menuList.clear();
-		}
-		return output;
-	}
-
+		    } else {
+		      monthlyMenu = "";
+		      output = "Menu deleted!";
+		      menuList.clear();
+		    }
+		    return output;
+		  }
 	//================================================ OPTION 4 LUNCH BOX ORDER ==========================================//
 	public static LunchBox inputLunchBox() {
 
