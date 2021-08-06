@@ -217,6 +217,8 @@ public class C206_CaseStudy {
 				
 				if (choice == 1) {
 					
+					LunchBox lb = inputLunchBox();
+					addLunchBoxOrder(lunchBoxList, lb);
 					
 					
 				} else if (choice == 2) {
@@ -609,11 +611,17 @@ public class C206_CaseStudy {
 	
 	//=============================================== OPTION 4 LUNCH BOX ORDER ==================================================
 	public static LunchBox inputLunchBox() {
+		
+		viewMonthlyMenu();
+		
+		int orderID = Helper.readInt("Enter order id > ");
 		String meal = Helper.readString("Enter meal > ");
 		String drink = Helper.readString("Enter drink > ");
 		String fruit = Helper.readString("Enter fruit > ");
+		String day = Helper.readString("Enter day > ");
+		String date = Helper.readString("Enter date > ");
 
-		LunchBox lb = new LunchBox(meal, drink, fruit);
+		LunchBox lb = new LunchBox(orderID, meal, drink, fruit, day, date);
 		return lb;
 		
 	}
@@ -622,6 +630,7 @@ public class C206_CaseStudy {
 		
 		lunchBoxList.add(lb);
 		System.out.println("Successfully placed a lunch box order!");
+		
 	}
 	
 	
