@@ -357,7 +357,7 @@ public class C206_CaseStudy {
 	}
 	public static void viewAccount(ArrayList<Account> accountArr) {
 		String output = String.format("%-10s %-15s %-12s %-10s \n", "USERNAME", "PASSWORD",
-				"FORM CLASS", "PAYMENT METHOD"); 
+				"FORM CLASS", "PAYMENT METHOD");
 		 output += retrieveAccount(accountArr);	
 		System.out.println(output);
 	}
@@ -605,7 +605,7 @@ public class C206_CaseStudy {
                 monthlyMenu += months[month-1];
                 monthlyMenu += "  (" + dayname[j] + ")\n"; 
                 monthlyMenu += "  --------------------------\n";
-                addDailyMenu();
+                addDailyMenu(); 
                 
                 monthlyMenu += menuList.get(menuList.size()-1).toString();      
 

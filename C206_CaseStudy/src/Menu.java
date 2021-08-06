@@ -4,7 +4,7 @@ public class Menu {
 
 	private String Western;
 	private String Asian;
-	private String Vegetarian;
+	private String Vegetarian; 
 	private String Drink1;
 	private String Drink2;
 	private String Fruit1;
