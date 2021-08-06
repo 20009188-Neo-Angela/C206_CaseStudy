@@ -54,8 +54,8 @@ public class C206_CaseStudy {
 		vegetarianArr.add(new Vegetarian("Vegetarian Meatball", 2));
 		vegetarianArr.add(new Vegetarian("Cauliflower Rice", 2));
 
-		orderBillArr.add(new Bill("t0326720i", "drinks", 1000, "01/2012"));
-		orderBillArr.add(new Bill("lol", "western", 1500, "02/2021"));
+		orderBillArr.add(new Bill("t0326720i", "03/09", 9,3,3,3));
+		orderBillArr.add(new Bill("lol", "03/09," , 12, 4,4,4));
 		int option = 0;
 
 		while (option != OPTION_QUIT) {
@@ -201,28 +201,7 @@ public class C206_CaseStudy {
 					}
 
 
-			}else if (option == OPTION_MONTHLY_MENU) {
-				//Ying Teng Monthly Menu
-				monthlyMenu();
-				
-				int monthlyOption = Helper.readInt("Enter option to select Monthly Menu > ");
-				
-				if(monthlyOption == 1 ) {
-					createMonthlyMenu();
-					System.out.println("Menu Successfully Created!");
-							
-				}else if (monthlyOption == 2) {
-					
-					String menu = viewMonthlyMenu();
-					System.out.println(menu);
-									
-	
-				}else if (monthlyOption == 3) {
-					String output = deleteMonthlyMenu();
-					System.out.println(output);
-							
-
-				} else if (option == OPTION_MONTHLY_BILLS) {
+			} else if (option == OPTION_MONTHLY_BILLS) {
 					// Syazwan Bills
 
 					menuBill();
@@ -233,7 +212,7 @@ public class C206_CaseStudy {
 						createOrderBill(orderBillArr);
 					} else if (billOptions == 2) {
 						C206_CaseStudy.setHeader("VIEW ORDER BILL");
-						String orderBill = viewOrderBill(orderBillArr);
+						String orderBill = viewMonthlyBill(orderBillArr);
 						System.out.println(orderBill);
 					} else if (billOptions == 3) {
 						C206_CaseStudy.setHeader("DELETE ORDER BILL");
@@ -250,7 +229,6 @@ public class C206_CaseStudy {
 				}
 			}
 		}
-	}
 
 	
 
@@ -741,46 +719,53 @@ public class C206_CaseStudy {
 	}
 
 	//================================================ OPTION 5 BILL =====================================================//
-	public static void createOrderBill(ArrayList<Bill> orderBillArr) {
-		String username = Helper.readString("Enter username > ");
-		String menu = Helper.readString("Enter menu category > ");
-		int bill = Helper.readInt("Enter amount to bill > ");
-		String date = Helper.readString("Enter month in this format : MM/YYYY > ");
-
-		Bill ob1 = new Bill(username, menu, bill, date);
+	public static void createOrderBill(ArrayList<Bill>orderBillArr) {
+		String userId = Helper.readString("Enter userId > ");
+		String dateOrdered  = Helper.readString("Enter month in this format : dd/MM > ");
+		int orderedMeal = Helper.readInt("Enter the price of the meal > ");
+		int orderedDrink = Helper.readInt("Enter the price of the drinks > ");
+		int orderedFruit = Helper.readInt("Enter the price of fruits > ");
+		
+		int dailyAmt = orderedMeal + orderedDrink + orderedFruit ;
+		
+		Bill b1 = new Bill (userId, dateOrdered, dailyAmt , orderedMeal , orderedDrink , orderedFruit);
+		
+		orderBillArr.add(b1);
 
 		System.out.println("Order Bill Added!");
 	}
-
-	public static String viewOrderBill(ArrayList<Bill> orderBillArr) {
-		C206_CaseStudy.setHeader("VIEW ORDER BILL");
-		String output = " ";
-		output = String.format("%-10s %-10s %-10s %-10s \n", "USERNAME", "MENU", "AMOUNT", "DATE ");
-		for (Bill b : orderBillArr) {
-			output += String.format("%-10s %-10s %-10d %-10s \n", b.getUsername(), b.getMenu(), b.getAmount(),
-					b.getDate()); 
-
+	
+		
+	
+	public static String viewMonthlyBill(ArrayList<Bill>orderBillArr) {
+			
+			String output = " ";
+			int sumDailyAmt = 0;
+			output = String.format("%-10s %-10s %-10s \n", "USERID", "DATE" , "SUM OF DAILY AMOUNT");
+			for (Bill b :  orderBillArr) {
+				//monthlybill = orderBillArr + sum(DailyAmt)
+				sumDailyAmt += b.getDailyAmt();
+				output += String.format("%-10s %-10s %-15d \n", b.getID(),b.getDate(),sumDailyAmt);
+				
 		}
-		return output;
-		//Kidsd
+			return output;
 	}
-
-	public static void deleteOrderBill(ArrayList<Bill> orderBillArr) {
-		// boolean isFound to check whether the conditions are met
-		boolean isFound = false;
-		String userDelete = Helper.readString("Enter username to delete > ");
-
-		for (int i = 0; i < orderBillArr.size(); i++) {
-			if (orderBillArr.get(i) != null && orderBillArr.get(i).getUsername().equals(userDelete)) {
-				orderBillArr.remove(i);
-				isFound = true;
-				System.out.println("Username: " + userDelete + " is deleted");
-				break;
+	
+	public static void deleteOrderBill(ArrayList<Bill>orderBillArr) {
+			//boolean isFound to check whether the conditions are met 
+		   boolean isFound = false;
+		   String userId = Helper.readString("Enter userId to delete > ");
+		   
+		   for (int i=0; i<orderBillArr.size(); i++){
+			if (orderBillArr.get(i) != null && orderBillArr.get(i).getID().equals(userId)) {
+			   orderBillArr.remove(i);
+			   isFound = true;
+			   System.out.println("Username: "+ userId  +" is deleted");
+			   break;
 			}
-		}
-		if (isFound == false) {
+		   }
+		   if (isFound == false){
 			System.out.println("Username not found");
-		}
+		   }	
 
-	}
-}
+	}}
