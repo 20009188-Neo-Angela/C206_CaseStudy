@@ -146,6 +146,19 @@ public class C206_CaseStudyTest {
 
 	
 	//=============================================== OPTION 2 MENU ITEMS ==================================================
+		
+		public void menuBank() {
+			
+			
+		}
+		
+		public void addMenuItem() {
+			
+		}
+		
+		public void removeMenuItem() {
+			
+		}
 	
 	
 	//=============================================== OPTION 3 MONTHLY MENU ==================================================

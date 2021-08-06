@@ -63,23 +63,14 @@ public class C206_CaseStudy {
 			menu();
 			option = Helper.readInt("Enter option: ");
 
-
-			if (option == 1) {
+			if (option == OPTION_USER_ACCOUNTS) {
 				// Hannah User Account
-
-			
-			if(option == OPTION_USER_ACCOUNTS) {
-				// Hannah User Account 
 
 				accountMenu();
 
 				int accountOption = Helper.readInt("Enter option: ");
 
-
 				if (accountOption == 1) {
-
-				
-				if(accountOption == 1) {
 
 					C206_CaseStudy.setHeader("Create Account");
 					Account acc = inputAccount();
@@ -97,11 +88,7 @@ public class C206_CaseStudy {
 					System.out.println("Invalid option!");
 				}
 
-
-			}
-
-				
-		else if (option == OPTION_MENU_ITEMS) {
+			} else if (option == 2)  {
 
 				// Kidson Menu Items
 
@@ -133,7 +120,6 @@ public class C206_CaseStudy {
 						removeFruits(fruitsArr, category);
 					}
 
-					
 				} else if (itemOption == 3) {
 					C206_CaseStudy.setHeader("ADD");
 					String category = Helper.readString("Choose a category to add to: ");
@@ -150,118 +136,99 @@ public class C206_CaseStudy {
 						addFruits(fruitsArr, category);
 					}
 				}
-				
 
-			} else if (option == 3) {
-				// Ying Teng Monthly Menu
+			} else if (option == OPTION_MONTHLY_MENU) {
+					// Ying Teng Monthly Menu
 
-				
-			}else if (option == OPTION_MONTHLY_MENU) {
-				//Ying Teng Monthly Menu
+					monthlyMenu();
 
-				monthlyMenu();
+					int monthlyOption = Helper.readInt("Enter option to select Monthly Menu > ");
 
-				int monthlyOption = Helper.readInt("Enter option to select Monthly Menu > ");
+					if (monthlyOption == 1) {
+						createMonthlyMenu();
+						System.out.println("Menu Successfully Created!");
 
-				if (monthlyOption == 1) {
-					createMonthlyMenu();
-					System.out.println("Menu Successfully Created!");
+					} else if (monthlyOption == 2) {
 
-				} else if (monthlyOption == 2) {
+						String menu = viewMonthlyMenu();
+						System.out.println(menu);
 
-					String menu = viewMonthlyMenu();
-					System.out.println(menu);
+					} else if (monthlyOption == 3) {
+						String output = deleteMonthlyMenu();
+						System.out.println(output);
 
-				} else if (monthlyOption == 3) {
-					String output = deleteMonthlyMenu();
-					System.out.println(output);
+					} else {
+						System.out.println("Invalid option");
+					}
 
-				} else {
-					System.out.println("Invalid option");
-				}
+				} else if (option == OPTION_LUNCH_BOX_ORDERS) {
 
+					// Angela Lunch Box Order
+					lunchBox();
 
-			} else if (option == 4) {
+					int choice = Helper.readInt("Enter option > ");
 
-						
-				
-			}else if (option == OPTION_LUNCH_BOX_ORDERS) {
+					if (choice == 1) {
 
-				// Angela Lunch Box Order
-				lunchBox();
+						String menu = viewMonthlyMenu();
+						System.out.println(menu);
 
-				int choice = Helper.readInt("Enter option > ");
+						C206_CaseStudy.setHeader("PLACE LUNCH BOX ORDERS");
 
-				if (choice == 1) {
+						for (int i = 0; i < 5; i++) {
 
-					String menu = viewMonthlyMenu();
-					System.out.println(menu);
+							LunchBox lb = inputLunchBox();
+							System.out.println();
+							addLunchBoxOrder(lunchBoxList, lb);
+							System.out.println();
 
-					C206_CaseStudy.setHeader("PLACE LUNCH BOX ORDERS");
+						}
 
-					for (int i = 0; i < 5; i++) {
+					} else if (choice == 2) {
 
-						LunchBox lb = inputLunchBox();
-						System.out.println();
-						addLunchBoxOrder(lunchBoxList, lb);
-						System.out.println();
+						C206_CaseStudy.setHeader("VIEW LUNCH BOX ORDERS");
+						viewAllLunchBoxOrders(lunchBoxList);
+
+					} else if (choice == 3) {
+
+						C206_CaseStudy.setHeader("DELETE LUNCH BOX ORDERS");
+						deleteLunchBoxOrders(lunchBoxList);
+
+					} else {
+
+						System.out.println("Invalid Option!");
 
 					}
 
-				} else if (choice == 2) {
+				} else if (option == OPTION_MONTHLY_BILLS) {
+					// Syazwan Bills
 
-					C206_CaseStudy.setHeader("VIEW LUNCH BOX ORDERS");
-					viewAllLunchBoxOrders(lunchBoxList);
+					menuBill();
+					int billOptions = Helper.readInt("Enter option > ");
 
-				} else if (choice == 3) {
+					if (billOptions == 1) {
+						C206_CaseStudy.setHeader("CREATE ORDER BILL ");
+						createOrderBill(orderBillArr);
+					} else if (billOptions == 2) {
+						C206_CaseStudy.setHeader("VIEW ORDER BILL");
+						String orderBill = viewOrderBill(orderBillArr);
+						System.out.println(orderBill);
+					} else if (billOptions == 3) {
+						C206_CaseStudy.setHeader("DELETE ORDER BILL");
+						deleteOrderBill(orderBillArr);
+					} else {
+						System.out.println("Invalid option!");
+					}
 
-					C206_CaseStudy.setHeader("DELETE LUNCH BOX ORDERS");
-					deleteLunchBoxOrders(lunchBoxList);
-
+				} else if (option == OPTION_QUIT) {
+					System.out.println("Bye!");
 				} else {
-
-					System.out.println("Invalid Option!");
-
+					System.out.println("Invalid option");
 				}
-
-
-			} else if (option == 5) {
-				// Syazwan Bills
-	
-				
-				
-				
-			}else if (option == OPTION_MONTHLY_BILLS) {
-				// Syazwan Bills 
-
-				menuBill();
-				int billOptions = Helper.readInt("Enter option > ");
-
-				if (billOptions == 1) {
-					C206_CaseStudy.setHeader("CREATE ORDER BILL ");
-					createOrderBill(orderBillArr);
-				} else if (billOptions == 2) {
-					C206_CaseStudy.setHeader("VIEW ORDER BILL");
-					String orderBill = viewOrderBill(orderBillArr);
-					System.out.println(orderBill);
-				} else if (billOptions == 3) {
-					C206_CaseStudy.setHeader("DELETE ORDER BILL");
-					deleteOrderBill(orderBillArr);
-				} else {
-					System.out.println("Invalid option!");
-				}
-
-			} else if (option == OPTION_QUIT) {
-				System.out.println("Bye!");
-			} else {
-				System.out.println("Invalid option");
-			}
-			}
 			}
 		}
-			
 
-	}
+	
 
 	private static void menu() {
 		C206_CaseStudy.setHeader("LUNCH BOX ORDERING APP");
