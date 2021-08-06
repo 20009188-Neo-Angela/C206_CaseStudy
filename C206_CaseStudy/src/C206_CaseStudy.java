@@ -152,10 +152,10 @@ public class C206_CaseStudy {
 					createMonthlyMenu();
 					System.out.println("Menu Successfully Created!");
 
-					for (int i = 0; i < menuList.size(); i++) {
-						System.out.println(menuList.get(i).getOption());
-
-					}
+//					for (int i = 0; i < menuList.size(); i++) {
+//						System.out.println(menuList.get(i).getOption());
+//
+//					}
 
 				} else if (monthlyOption == 2) {
 
@@ -180,7 +180,7 @@ public class C206_CaseStudy {
 				} else {
 
 							
-				}else {
+//				}else {
 
 					System.out.println("Invalid option");
 				}

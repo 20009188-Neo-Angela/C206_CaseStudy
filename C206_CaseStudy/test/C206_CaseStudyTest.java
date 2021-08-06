@@ -134,7 +134,7 @@ public class C206_CaseStudyTest {
 		}
 
 		public void deleteAccount( ) {
-			// Test that account can be deleted
+			// Test that account array is not null or empty - boundary 
 		}
 
 	
