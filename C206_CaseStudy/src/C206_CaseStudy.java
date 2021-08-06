@@ -46,8 +46,9 @@ public class C206_CaseStudy {
 		vegetarianArr.add(new Vegetarian("BlueBerry"));
 		vegetarianArr.add(new Vegetarian("BlueBerry"));
 
-		orderBillArr.add(new Bill("t0326720i","drinks", 1000 , "01/2012"));
-		orderBillArr.add(new Bill("lol", "western", 1500, "02/2021"));
+		orderBillArr.add(new Bill("t0326720i", "09/08" , 12, 4, 4, 4));
+		orderBillArr.add(new Bill("lol", "08/09 ", 9 , 3, 3, 3));
+		
 		int option = 0;
 		
 		while (option != OPTION_QUIT) {
@@ -630,12 +631,17 @@ public class C206_CaseStudy {
 	
 	//=============================================== OPTION 5 BILL ==================================================
 	public static void createOrderBill(ArrayList<Bill>orderBillArr) {
-		String username = Helper.readString("Enter username > ");
-		String menu = Helper.readString("Enter menu category > ");
-		int bill = Helper.readInt("Enter amount to bill > ");
-		String date = Helper.readString("Enter month in this format : MM/YYYY > ");
+		String userId = Helper.readString("Enter userId > ");
+		String dateOrdered  = Helper.readString("Enter month in this format : dd/MM > ");
+		int orderedMeal = Helper.readInt("Enter the price of the meal > ");
+		int orderedDrink = Helper.readInt("Enter the price of the drinks > ");
+		int orderedFruit = Helper.readInt("Enter the price of fruits > ");
 		
-		Bill ob1 = new Bill(username, menu, bill,date);
+		int dailyAmt = orderedMeal + orderedDrink + orderedFruit ;
+		
+		Bill b1 = new Bill (userId, dateOrdered, dailyAmt , orderedMeal , orderedDrink , orderedFruit);
+		
+		orderBillArr.add(b1);
 
 		System.out.println("Order Bill Added!");
 	}
@@ -645,9 +651,9 @@ public class C206_CaseStudy {
 	public static String viewOrderBill(ArrayList<Bill>orderBillArr) {
 			C206_CaseStudy.setHeader("VIEW ORDER BILL");
 			String output = " ";
-			output = String.format("%-10s %-10s %-10s %-10s \n", "USERNAME", "MENU" , "AMOUNT", "DATE ");
+			output = String.format("%-10s %-10s %-10s %-10s %-10s %-10s\n", "USERID", "DATE" , "TOTAL AMOUNT" , "|MEAL PRICE|", "|DRINK PRICE|", "|FRUIT PRICE|");
 			for (Bill b :  orderBillArr) {
-				output += String.format("%-10s %-10s %-10d %-10s \n", b.getUsername(),b.getMenu(),b.getAmount(), b.getDate());
+				output += String.format("%-10s %-10s %-15d %-15d %-15d %-15d\n", b.getID(),b.getDate(),b.getDailyAmt(),b.getMeal(), b.getDrink(), b.getFruit());
 				
 		}
 			return output;
@@ -656,13 +662,13 @@ public class C206_CaseStudy {
 	public static void deleteOrderBill(ArrayList<Bill>orderBillArr) {
 			//boolean isFound to check whether the conditions are met 
 		   boolean isFound = false;
-		   String userDelete = Helper.readString("Enter username to delete > ");
+		   String userId = Helper.readString("Enter userId to delete > ");
 		   
 		   for (int i=0; i<orderBillArr.size(); i++){
-			if (orderBillArr.get(i) != null && orderBillArr.get(i).getUsername().equals(userDelete)) {
+			if (orderBillArr.get(i) != null && orderBillArr.get(i).getID().equals(userId)) {
 			   orderBillArr.remove(i);
 			   isFound = true;
-			   System.out.println("Username: "+ userDelete  +" is deleted");
+			   System.out.println("Username: "+ userId  +" is deleted");
 			   break;
 			}
 		   }
