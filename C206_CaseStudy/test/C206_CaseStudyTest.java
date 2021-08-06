@@ -7,6 +7,11 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class C206_CaseStudyTest {
+	
+	private Account acc1;
+	private Account acc2;
+	
+	
 	private western w1;
 	private western w2;
 	private western w3;
@@ -33,7 +38,7 @@ public class C206_CaseStudyTest {
 	private Vegetarian v3;
 	
 
-	
+	private ArrayList<Account> accountArr;
 	private ArrayList<western> westernArr;
 	private ArrayList<asian>  asianArr;
 	private ArrayList<Vegetarian>  vegetarianArr;
@@ -47,6 +52,8 @@ public class C206_CaseStudyTest {
 	
 	@Before
 	public void setUp() throws Exception {
+		
+		acc1 = new Account()
 		
 		w1 = new western("Fries");
 		w2 = new western("Pizza");
