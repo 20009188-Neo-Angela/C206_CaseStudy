@@ -40,14 +40,12 @@ public class C206_CaseStudyTest {
 	private Menu mm1;
 	private Menu mm2;
 	
-<<<<<<< HEAD
 	private Bill b1;
 	private Bill b2;
-=======
+
 	private LunchBox  lb1;
 	private LunchBox lb2;
 	private LunchBox lb3;
->>>>>>> branch 'master' of https://github.com/20009188-Neo-Angela/C206_CaseStudy.git
 
 	private ArrayList<LunchBox> lunchBoxList;
 	private ArrayList<Account> accountArr;
@@ -56,13 +54,12 @@ public class C206_CaseStudyTest {
 	private ArrayList<Vegetarian>  vegetarianArr;
 	private ArrayList<drinks>  drinksArr;
 	private ArrayList<Fruits>  fruitsArr;
-<<<<<<< HEAD
+
 	private ArrayList<Bill> orderBillArr;
-=======
+
 	private ArrayList<Menu> menuList;
 	
 
->>>>>>> branch 'master' of https://github.com/20009188-Neo-Angela/C206_CaseStudy.git
 	
 
 	public C206_CaseStudyTest() {
