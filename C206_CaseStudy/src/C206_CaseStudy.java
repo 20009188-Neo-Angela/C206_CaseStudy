@@ -6,6 +6,11 @@ import java.util.Iterator;
 public class C206_CaseStudy { 
 	
 	private static final int OPTION_QUIT = 6;
+	private static final int OPTION_MONTHLY_BILLS = 5;
+	private static final int OPTION_LUNCH_BOX_ORDERS = 4;
+	private static final int OPTION_MONTHLY_MENU = 3;
+	private static final int OPTION_MENU_ITEMS = 2;
+	private static final int OPTION_USER_ACCOUNTS = 1;
 	public static ArrayList<western> westernArr = new ArrayList<western>();
 	public static ArrayList<asian> asianArr = new ArrayList<asian>();
 	public static ArrayList<Vegetarian> vegetarianArr = new ArrayList<Vegetarian>();
@@ -60,13 +65,13 @@ public class C206_CaseStudy {
 			menu();
 			option = Helper.readInt("Enter option: ");
 			
-			if(option == 1) {
+			if(option == OPTION_USER_ACCOUNTS) {
 				// Hannah User Account 
 				accountMenu();
 				
 				int accountOption = Helper.readInt("Enter option: ");
 				
-				if(accountOption ==1 ) {
+				if(accountOption == 1) {
 					C206_CaseStudy.setHeader("Create Account");
 					Account acc = inputAccount();
 					C206_CaseStudy.addAccount(accountArr, acc);
@@ -86,7 +91,7 @@ public class C206_CaseStudy {
 					
 				}
 				
-		else if (option == 2) {
+		else if (option == OPTION_MENU_ITEMS) {
 				// Kidson Menu Items
 				
 				itemMenu();
@@ -192,7 +197,7 @@ public class C206_CaseStudy {
 				}
 				
 				
-			}else if (option == 3) {
+			}else if (option == OPTION_MONTHLY_MENU) {
 				//Ying Teng Monthly Menu
 				monthlyMenu();
 				
@@ -217,7 +222,7 @@ public class C206_CaseStudy {
 				}
 						
 				
-			}else if (option == 4) {
+			}else if (option == OPTION_LUNCH_BOX_ORDERS) {
 				// Angela Lunch Box Order
 				lunchBox();
 				
@@ -261,7 +266,7 @@ public class C206_CaseStudy {
 				
 				
 				
-			}else if (option == 5) {
+			}else if (option == OPTION_MONTHLY_BILLS) {
 				// Syazwan Bills 
 				menuBill();
 				int billOptions = Helper.readInt("Enter option > ");
