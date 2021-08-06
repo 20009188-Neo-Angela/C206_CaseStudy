@@ -170,6 +170,7 @@ public class C206_CaseStudy {
 
 					// Angela Lunch Box Order
 					lunchBox();
+					
 					int choice = Helper.readInt("Enter option > ");
 
 					if (choice == 1) {
