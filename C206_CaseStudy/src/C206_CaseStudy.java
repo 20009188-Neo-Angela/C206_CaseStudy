@@ -742,7 +742,6 @@ public class C206_CaseStudy {
 	}
 	
 	
-	
 	//=============================================== OPTION 5 BILL ==================================================
 	public static void createOrderBill(ArrayList<Bill>orderBillArr) {
 		String username = Helper.readString("Enter username > ");
