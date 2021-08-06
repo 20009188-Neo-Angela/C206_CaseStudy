@@ -250,26 +250,51 @@ public class C206_CaseStudyTest {
 	@Test
 	public void addLunchBoxOrder() {
 		
-		// Lunch Box list is not null, so that can add a new item - boundary
+		// LunchBox list is not null, so that can add a new lunch box order - boundary
 		assertNotNull("Check if there is valid LunchBox arraylist to add to", lunchBoxList);
 		
-		//Given an empty list, after adding 1 item, the size of the list is 1 - normal
-		//The item just added is as same as the first item of the list
+		//Given an empty list, after adding 1 lunch box order, the size of the list is 1 - normal
+		//The lunch box order just added is as same as the first lunch box order of the list
 		C206_CaseStudy.addLunchBoxOrder(lunchBoxList, lb1);
 		assertEquals("Check that LunchBox arraylist size is 1", 1, lunchBoxList.size());
-		assertSame("Check that Lunch Box Order is added", lb1, lunchBoxList.get(0));
+		assertSame("Check that lunch box order is added", lb1, lunchBoxList.get(0));
 		
-		//Add another item. test the size of the list is 2? - normal
-		//The item just added is as same as the second item of the list
+		//Add another order. test the size of the list is 2? - normal
+		//The order just added is as same as the second order of the list
 		C206_CaseStudy.addLunchBoxOrder(lunchBoxList, lb2);
 		assertEquals("Check that LunchBox arraylist size is 2", 2, lunchBoxList.size());
-		assertSame("Check that Lunch Box Order is added", lb2, lunchBoxList.get(1));
+		assertSame("Check that lunch box order is added", lb2, lunchBoxList.get(1));
 		
-		//Add third item. test the size of the list is 3? - normal
-		//The item just added is as same as the third item of the list
+		//Add third order. test the size of the list is 3? - normal
+		//The order just added is as same as the third order of the list
 		C206_CaseStudy.addLunchBoxOrder(lunchBoxList, lb3);
 		assertEquals("Check that LunchBox arraylist size is 3", 3, lunchBoxList.size());
-		assertSame("Check that Lunch Box Order is added", lb3, lunchBoxList.get(2));
+		assertSame("Check that lunch box order is added", lb3, lunchBoxList.get(2));
+		
+	}
+	
+	@Test
+	public void retrieveAllLunchBoxOrders() {
+		
+		// Test if LunchBox list is not null but empty - boundary
+		assertNotNull("Test if there is valid LunchBox arraylist to retrieve lunch box orders", lunchBoxList);
+		
+		//test if the list of lunch box orders retrieved from the C206_CaseStudy is empty - boundary
+		String allLunchBoxOrders = C206_CaseStudy.retrieveAllLunchBoxOrders(lunchBoxList);
+		String testOutput = "";
+		assertEquals("Check that viewAllLunchBoxOrders", testOutput, allLunchBoxOrders);
+		
+		//Given an empty list, after adding 2 lunch box orders, test if the size of the list is 2 - normal
+		C206_CaseStudy.addLunchBoxOrder(lunchBoxList, lb1);
+		C206_CaseStudy.addLunchBoxOrder(lunchBoxList, lb2);
+		assertEquals("Test that LunchBox arraylist size is 2", 2, lunchBoxList.size());
+		
+		//test if the expected output string same as the list of lunch box orders retrieved from the C206_CaseStudy	
+		allLunchBoxOrders = C206_CaseStudy.retrieveAllLunchBoxOrders(lunchBoxList);
+		testOutput = String.format("%-85s \n", lunchBoxList.get(0));
+		testOutput += String.format("%-85s \n", lunchBoxList.get(1));
+	
+		assertEquals("Test that viewAllLunchBoxOrders", testOutput, allLunchBoxOrders);
 		
 	}
 	
