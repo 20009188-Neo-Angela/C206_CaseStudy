@@ -220,6 +220,8 @@ public class C206_CaseStudy {
 				
 				if (choice == 1) {
 					
+					String menu = viewMonthlyMenu();
+					System.out.println(menu);
 					LunchBox lb = inputLunchBox();
 					addLunchBoxOrder(lunchBoxList, lb);
 					
@@ -651,39 +653,12 @@ public class C206_CaseStudy {
 	//=============================================== OPTION 4 LUNCH BOX ORDER ==================================================
 	public static LunchBox inputLunchBox() {
 		
-		String choices = "";
-		
-		viewMonthlyMenu();
-		
 		String meal = Helper.readString("Enter meal > ");
 		String drink = Helper.readString("Enter drink > ");
 		String fruit = Helper.readString("Enter fruit > ");
-		int[] days = {
-	               0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31
-	            };
 		
-		 for (int i = 1 , j = firstDay; i <= days[month]; i++, j++) {
-
-         	if (j <= maxday) {
-         	String choices ="";
-             monthlyMenu += String.format("%5d ", i);
-             monthlyMenu += months[month-1];
-
-             monthlyMenu += "  (" + dayname[j] + ")\n"; 
-             monthlyMenu += "  --------------------------\n";
-             choices += String.format("     Meal: %s \n", meal);
-             choices += String.format("     Drink: %s \n", drink);
-             choices += String.format("     Fruit: %s \n", fruit);
-             
-             
-             LunchBox lb = new LunchBox(meal, drink, fruit);
-             monthlyMenu += choices;
-
-         }
-		
-
-//		LunchBox lb = new LunchBox(meal, drink, fruit);
-//		return lb;
+		LunchBox lb = new LunchBox(meal, drink, fruit);
+		return lb;
 		
 	}
 	
