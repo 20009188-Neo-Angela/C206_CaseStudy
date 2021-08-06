@@ -650,7 +650,7 @@ public class C206_CaseStudy {
 		
 	
 	public static String viewMonthlyBill(ArrayList<Bill>orderBillArr) {
-			C206_CaseStudy.setHeader("VIEW MONTHLY ORDER BILL");
+		
 			String output = " ";
 			int sumDailyAmt = 0;
 			output = String.format("%-10s %-10s %-10s \n", "USERID", "DATE" , "SUM OF DAILY AMOUNT");
