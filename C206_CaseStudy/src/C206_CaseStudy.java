@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Iterator;
 
-public class C206_CaseStudy {
+public class C206_CaseStudy { 
 	
 	private static final int OPTION_QUIT = 6;
 	public static ArrayList<western> westernArr = new ArrayList<western>();
