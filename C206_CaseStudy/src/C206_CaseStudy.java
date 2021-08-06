@@ -21,7 +21,7 @@ public class C206_CaseStudy {
 		ArrayList<Account> accountArr = new ArrayList <Account> ();
 		
 		accountArr.add(new Account("Roy Tan", "schoolR0ck$", "4E4","Credit Card, Account Credit"));
-		accountArr.add(new Account("Hannah", "12345abc", "3E3","Credit Card"));
+		accountArr.add(new Account("Hannah", "12345abc", "3E2","Credit Card"));
 
 
 		westernArr.add(new western("Fries"));
