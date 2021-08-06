@@ -44,7 +44,7 @@ public class C206_CaseStudyTest {
 	private LunchBox lb2;
 	private LunchBox lb3;
 
-	private ArrayList<LunchBox> lunchBoxlist;
+	private ArrayList<LunchBox> lunchBoxList;
 	private ArrayList<Account> accountArr;
 	private ArrayList<western> westernArr;
 	private ArrayList<asian>  asianArr;
@@ -70,6 +70,8 @@ public class C206_CaseStudyTest {
 		lb1 = new LunchBox(123, "6 August 2021", "Chilli Crab", "Qoo10", "Grape");
 		lb2 = new LunchBox(456, "7 August 2021", "Mee Soto", "Coke", "Mangosteen");
 		lb3 = new LunchBox(789, "8 August 2021", "Chicken Briyani", "Fanta", "Durian");
+		
+		lunchBoxList = new ArrayList<LunchBox>();
 		
 //		w1 = new western("Fries");
 //		w2 = new western("Pizza");
