@@ -104,38 +104,32 @@ public class C206_CaseStudy {
 					String category = Helper.readString("Choose a category to delete from: ");
 
 					if (category.equalsIgnoreCase("western")) {
-						String item = Helper.readString("Choose a item to delete: ");
 						for (western i : westernArr) {
-							if (item.equals(i.getName())) {
-								i = null;
-							
-							}
+							String item = Helper.readString("Choose a item to delete: ");
+							western itemw = new western(item);
+							removeWestern(westernArr, itemw);
 						}
 
 					} else if (category.equalsIgnoreCase("asian")) {
 						for (asian i : asianArr) {
 							String item = Helper.readString("Choose a item to delete: ");
-							if (item.equals(i.getName())) {
-								i = null;
-								
-							}
+							asian itemw = new asian(item);
+							removeAsian(asianArr, itemw);
 						}
 					} else if (category.equalsIgnoreCase("drinks")) {
 
 						for (drinks i : drinksArr) {
 							String item = Helper.readString("Choose a item to delete: ");
-							if (item.equals(i.getName())) {
-								i = null;
-							
-							}
+							drinks itemw = new drinks(item);
+							removeDrinks(drinksArr, itemw);
 						}
 					} else if (category.equalsIgnoreCase("fruits")) {
 						for (Fruits i : fruitsArr) {
 							String item = Helper.readString("Choose a item to delete: ");
-							if (item.equals(i.getName())) {
-								i = null;
+							Fruits itemw = new Fruits(item);
+							removeFruits(fruitsArr, itemw);
+
 							
-							}
 						}
 					}
 					
@@ -438,6 +432,30 @@ public class C206_CaseStudy {
 	}
 	
 	//Delete Items from menu bank
+	public static void removeWestern(ArrayList<western> westernArr, western cc) {
+		westernArr.remove(cc);
+		System.out.println("Western Removed!");
+	}
+
+	public static void removeAsian(ArrayList<asian> asianArr, asian cc) {
+		asianArr.remove(cc);
+		System.out.println("Asian removed!");
+	}
+
+	public static void removeVegetarian(ArrayList<Vegetarian> vegetarianArr, Vegetarian cc) {
+		vegetarianArr.remove(cc);
+		System.out.println("Vegetarian removed!");
+	}
+
+	public static void removeDrinks(ArrayList<drinks> drinksArr, drinks cc) {
+		drinksArr.remove(cc);
+		System.out.println("Drinks removed!");
+	}
+
+	public static void removeFruits(ArrayList<Fruits> fruitsArr, Fruits cc) {
+		fruitsArr.remove(cc);
+		System.out.println("Fruits removed");
+	}
 	
 	
 	
