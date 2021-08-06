@@ -246,8 +246,8 @@ public class C206_CaseStudy {
 					C206_CaseStudy.setHeader("CREATE ORDER BILL ");
 					createOrderBill(orderBillArr);
 				}else if (billOptions == 2 ) {
-					C206_CaseStudy.setHeader("VIEW ORDER BILL");
-					String orderBill = viewOrderBill(orderBillArr);
+					C206_CaseStudy.setHeader("VIEW MONTHLY BILL");
+					String orderBill = viewMonthlyBill(orderBillArr);
 					System.out.println(orderBill);
 				}else if (billOptions == 3) {
 					C206_CaseStudy.setHeader("DELETE ORDER BILL");
@@ -648,12 +648,14 @@ public class C206_CaseStudy {
 	
 		
 	
-	public static String viewOrderBill(ArrayList<Bill>orderBillArr) {
-			C206_CaseStudy.setHeader("VIEW ORDER BILL");
+	public static String viewMonthlyBill(ArrayList<Bill>orderBillArr) {
+			C206_CaseStudy.setHeader("VIEW MONTHLY ORDER BILL");
 			String output = " ";
-			output = String.format("%-10s %-10s %-10s %-10s %-10s %-10s\n", "USERID", "DATE" , "TOTAL AMOUNT" , "|MEAL PRICE|", "|DRINK PRICE|", "|FRUIT PRICE|");
+			int sumDailyAmt = 0;
+			output = String.format("%-10s %-10s %-10s \n", "USERID", "DATE" , "SUM OF DAILY AMOUNT");
 			for (Bill b :  orderBillArr) {
-				output += String.format("%-10s %-10s %-15d %-15d %-15d %-15d\n", b.getID(),b.getDate(),b.getDailyAmt(),b.getMeal(), b.getDrink(), b.getFruit());
+				sumDailyAmt += b.getDailyAmt();
+				output += String.format("%-10s %-10s %-15d \n", b.getID(),b.getDate(),sumDailyAmt);
 				
 		}
 			return output;
