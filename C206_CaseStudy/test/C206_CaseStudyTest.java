@@ -53,7 +53,8 @@ public class C206_CaseStudyTest {
 	@Before
 	public void setUp() throws Exception {
 		
-		acc1 = new Account()
+		acc1 = new Account("Roy Tan", "schoolR0ck$", "4E4","Credit Card");
+		acc2 = new Account("Hannah", "12345abc", "3E2","Credit Card");
 		
 		w1 = new western("Fries");
 		w2 = new western("Pizza");
@@ -93,7 +94,49 @@ public class C206_CaseStudyTest {
 	}
 	
 	//================================================ OPTION 1 USER ACCOUNT  ================================================
-	
+		public void addAccount() {
+			// Account list is not null, so that can add a new item - boundary
+			assertNotNull("Test if there is valid Account arraylist to add to", accountArr);
+			
+			//Given an empty list, after adding 1 item, the size of the list is 1 - normal
+			//The item just added is as same as the first item of the list
+			C206_CaseStudy.addAccount(accountArr, acc1);		
+			assertEquals("Test that Account arraylist size is 1", 1, accountArr.size());
+			assertSame("Test that Account is added", acc1, accountArr.get(0));
+			
+			//Add another account. test The size of the list is 2? - normal
+			//The account just added is as same as the second account of the list
+			C206_CaseStudy.addAccount(accountArr, acc2);
+			assertEquals("Test that Account arraylist size is 2", 2, accountArr.size());
+			assertSame("Test that Account is added", acc2, accountArr.get(1));
+		}
+		public void viewAccount() {
+			// Test if Account list is not null but empty -boundary
+			assertNotNull("Test if there is valid Account arraylist to retrieve item", accountArr);
+			
+			//test if the list of accounts retrieved from the CaseStudy is empty - boundary
+			String viewAccount= C206_CaseStudy.retrieveAccount(accountArr);
+			String testOutput = "";
+			assertEquals("Check that viewAccount", testOutput,viewAccount);
+			
+			//Given an empty list, after adding 2 items, test if the size of the list is 2 - normal
+			C206_CaseStudy.addAccount(accountArr, acc1);
+			C206_CaseStudy.addAccount(accountArr, acc2);
+			assertEquals("Test that Account arraylist size is 2", 2, accountArr.size());
+			
+			//test if the expected output string same as the list of Account retrieved from the CaseStudy	
+			viewAccount= C206_CaseStudy.retrieveAccount(accountArr);
+			testOutput = String.format("%-10s %-15s %-12s %-10s\n", accountArr.get(0).toString());
+			testOutput += String.format("%-10s %-15s %-12s %-10s\n", accountArr.get(1).toString() );
+		
+			assertEquals("Test that ViewAccount", testOutput, viewAccount);
+			
+		}
+
+		public void deleteAccount( ) {
+			// Trying 
+		}
+
 	
 	//=============================================== OPTION 2 MENU ITEMS ==================================================
 	
