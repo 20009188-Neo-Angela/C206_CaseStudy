@@ -39,16 +39,20 @@ public class C206_CaseStudyTest {
 	
 	private Menu mm1;
 	private Menu mm2;
+	
+	private LunchBox  lb1;
+	private LunchBox lb2;
+	private LunchBox lb3;
 
+	private ArrayList<LunchBox> lunchBoxlist;
 	private ArrayList<Account> accountArr;
 	private ArrayList<western> westernArr;
 	private ArrayList<asian>  asianArr;
 	private ArrayList<Vegetarian>  vegetarianArr;
 	private ArrayList<drinks>  drinksArr;
 	private ArrayList<Fruits>  fruitsArr;
+	private ArrayList<Menu> menuList;
 	
-	
-	private ArrayList<Menu> menuList = new ArrayList<Menu>();
 	
 	public C206_CaseStudyTest() {
 		super();
@@ -62,6 +66,10 @@ public class C206_CaseStudyTest {
 		
 		mm1 = new Menu("Fries", "Chilli Crab", "Vegi Burger", "Coke", "Fanta", "Apple", "Orange");
 		mm2 = new Menu("Pizza", "Chicken Rice", "Cauliflower Rice", "Sprite", "Ayataka", "WaterMelon", "BlueBerry");
+		
+		lb1 = new LunchBox(123, "6 August 2021", "Chilli Crab", "Qoo10", "Grape");
+		lb2 = new LunchBox(456, "7 August 2021", "Mee Soto", "Coke", "Mangosteen");
+		lb3 = new LunchBox(789, "8 August 2021", "Chicken Briyani", "Fanta", "Durian");
 		
 //		w1 = new western("Fries");
 //		w2 = new western("Pizza");
@@ -234,6 +242,15 @@ public class C206_CaseStudyTest {
 	}
 	
 	//=============================================== OPTION 4 LUNCH BOX ORDER ==================================================
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
