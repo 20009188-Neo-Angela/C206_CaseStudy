@@ -16,6 +16,7 @@ public class C206_CaseStudy {
 	public static ArrayList<Vegetarian> vegetarianArr = new ArrayList<Vegetarian>();
 	public static ArrayList<drinks> drinksArr = new ArrayList<drinks>();
 	public static ArrayList<Fruits> fruitsArr = new ArrayList<Fruits>();
+	public static ArrayList<Bill> orderBillArr = new ArrayList<Bill>();
 
 	public static ArrayList<Menu> menuList = new ArrayList<Menu>();
 	public static String monthlyMenu = "";
