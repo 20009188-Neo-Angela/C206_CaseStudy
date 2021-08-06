@@ -44,7 +44,9 @@ public class C206_CaseStudyTest {
 	private ArrayList<Vegetarian>  vegetarianArr;
 	private ArrayList<drinks>  drinksArr;
 	private ArrayList<Fruits>  fruitsArr;
-	public static String monthlyMenu ="";
+	
+	
+	public static ArrayList<Menu> menuList = new ArrayList<Menu>();
 	
 	public C206_CaseStudyTest() {
 		super();
@@ -81,6 +83,18 @@ public class C206_CaseStudyTest {
 		v1 = new Vegetarian("Vegi Burger");
 		v2 = new Vegetarian("BlueBerry");
 		v3 = new Vegetarian("BlueBerry");
+		
+		String day1 = "";
+				
+		day1 += String.format("     %5s: %s \n", "Western",  "Fries");
+		day1 += String.format("     %5s: %s \n", "Asian",  "Chilli Crab");
+		day1 += String.format("     %5s: %s \n", "Vegetarian", "Vegi Burger");
+        day1 += String.format("     %5s: %s \n", "Drinks",  "Coke");
+        day1 += String.format("     %5s: %s \n", "Drinks",  "Fanta");
+        day1 += String.format("     %5s: %s \n", "Drinks",  randomDrink());
+        day1 += String.format("     %5s: %s \n", "Fruit",  randomFruit());
+        day1 += String.format("     %5s: %s \n", "Fruit",  randomFruit());
+        day1 += String.format("     %5s: %s \n\n", "Fruit",  randomFruit());
 		
 		
 	}
@@ -145,8 +159,8 @@ public class C206_CaseStudyTest {
 	@Test
 	public void createMonthlyMenuTest() {
 		
-		//assertNotNull("Check if there is valid western items arraylist to random generate", westernArr);
-		
+		// Menu list is not null, so that can add a new item - boundary
+		assertNotNull("Check if there is valid Menu arraylist to add to", menuList);
 		//Test if MonthlyMenu is empty 
 		assertTrue(monthlyMenu.isEmpty());
 		
