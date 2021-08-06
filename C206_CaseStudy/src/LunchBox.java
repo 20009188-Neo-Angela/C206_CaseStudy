@@ -1,27 +1,27 @@
 public class LunchBox {
 	
-	private int id;
-	private String name;
-	private double amount;
+	private String meal;
+	private String drink;
+	private String fruit;
 	
-	public LunchBox(int id, String name, double amount) {
+	public LunchBox(String meal, String drink, String fruit) {
 		
-		this.id = id;
-		this.name = name;
-		this.amount = amount;
+		this.meal = meal;
+		this.drink = drink;
+		this.fruit = fruit;
 		
 	}
 
-	public int getId() {
-		return id;
+	public String getMeal() {
+		return meal;
 	}
 
-	public String getName() {
-		return name;
+	public String getDrink() {
+		return drink;
 	}
 
-	public double getAmount() {
-		return amount;
+	public String getFruit() {
+		return fruit;
 	}
 
 }
