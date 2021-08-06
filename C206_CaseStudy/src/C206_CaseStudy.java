@@ -43,8 +43,9 @@ public class C206_CaseStudy {
 		fruitsArr.add(new Fruits("BlueBerry"));
 		
 		vegetarianArr.add(new Vegetarian("Vegi Burger"));
-		vegetarianArr.add(new Vegetarian("BlueBerry"));
-		vegetarianArr.add(new Vegetarian("BlueBerry"));
+		vegetarianArr.add(new Vegetarian("Pumpkin Soup"));
+		vegetarianArr.add(new Vegetarian("Vegetarian Meatball"));
+		vegetarianArr.add(new Vegetarian("Cauliflower RiceA"));
 
 		orderBillArr.add(new Bill("t0326720i","drinks", 1000 , "01/2012"));
 		orderBillArr.add(new Bill("lol", "western", 1500, "02/2021"));
