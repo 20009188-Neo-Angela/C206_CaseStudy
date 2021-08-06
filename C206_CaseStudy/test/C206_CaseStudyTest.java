@@ -27,12 +27,12 @@ public class C206_CaseStudyTest {
 	private drinks d3;
 	private drinks d4;
 	
-	private Fruits f1;
+	private Fruits f1; 
 	private Fruits f2;
 	private Fruits f3;
 	private Fruits f4;
 	
-	
+	 
 	private Vegetarian v1;
 	private Vegetarian v2;
 	private Vegetarian v3;
@@ -170,10 +170,15 @@ public class C206_CaseStudyTest {
 		assertNotNull("Check if there is valid Menu arraylist to add to", menuList);
 	
 		//Given an empty list, after adding 1 item, the size of the list is 1 - normal
+		C206_CaseStudy.addDailyMenu(menuList, mm1);
+		assertEquals("Check that Menu arraylist size is 1", 1, menuList.size());
+		
 		//The item just added is as same as the first item of the list
+		assertSame("Check that Menu is added", mm1, menuList.get(menuList.size()-1));
 		
-		
-		
+		//Add another item. test The size of the list is 2? -normal
+		C206_CaseStudy.addDailyMenu(menuList, mm2);
+		assertEquals("Check that Menu arraylist size is 2", 2, menuList.size());
 
 
 		

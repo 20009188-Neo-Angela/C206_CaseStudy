@@ -18,7 +18,7 @@ public class C206_CaseStudy {
 	public static ArrayList<Fruits> fruitsArr = new ArrayList<Fruits>();
 
 	public static ArrayList<Menu> menuList = new ArrayList<Menu>();
-	public static String monthlyMenu = "";
+	public static String monthlyMenu = ""; 
 
 	public static void main(String[] args) {
 
@@ -559,22 +559,6 @@ public class C206_CaseStudy {
 
 	}
 
-
-	public static ArrayList<Menu> addDailyMenu() {
-		String Western = randomWestern();
-		String Asian = randomAsian();
-		String Vegetarian = randomVegetarian();
-		String Drink1 = randomDrink();
-		String Drink2 = randomDrink();
-		String Fruit1 = randomFruit();
-		String Fruit2 = randomFruit();
-
-		menuList.add(new Menu(Western, Asian, Vegetarian, Drink1, Drink2, Fruit1, Fruit2));
-		return menuList;
-
-	}
-
-
 	public static String createMonthlyMenu() {
 
 		int year = Helper.readInt("Enter year: ");
@@ -775,7 +759,7 @@ public class C206_CaseStudy {
 			output += String.format("%-10s %-10s %-10d %-10s \n", b.getUsername(), b.getMenu(), b.getAmount(),
 					b.getDate());
 
-		}
+		} 
 		return output;
 		//Kidsd
 	}
