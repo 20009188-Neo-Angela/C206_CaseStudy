@@ -44,6 +44,11 @@ public class C206_CaseStudy {
 		drinksArr.add(new drinks("Sprite", 1));
 		drinksArr.add(new drinks("Ayataka", 1));
 
+		
+		orderBillArr.add(new Bill("t0326720i", "09/08" , 12, 4, 4, 4));
+		orderBillArr.add(new Bill("lol", "08/09 ", 9 , 3, 3, 3));
+		
+
 		fruitsArr.add(new Fruits("Apple", 2));
 		fruitsArr.add(new Fruits("Orange", 2));
 		fruitsArr.add(new Fruits("WaterMelon", 2));
@@ -56,6 +61,7 @@ public class C206_CaseStudy {
 
 		orderBillArr.add(new Bill("t0326720i", "drinks", 1000, "01/2012"));
 		orderBillArr.add(new Bill("lol", "western", 1500, "02/2021"));
+
 		int option = 0;
 
 		while (option != OPTION_QUIT) {
@@ -200,6 +206,28 @@ public class C206_CaseStudy {
 
 					}
 
+
+			}else if (option == OPTION_MONTHLY_MENU) {
+				//Ying Teng Monthly Menu
+				monthlyMenu();
+				
+				int monthlyOption = Helper.readInt("Enter option to select Monthly Menu > ");
+				
+				if(monthlyOption == 1 ) {
+					createMonthlyMenu();
+					System.out.println("Menu Successfully Created!");
+							
+				}else if (monthlyOption == 2) {
+					
+					String menu = viewMonthlyMenu();
+					System.out.println(menu);
+									
+	
+				}else if (monthlyOption == 3) {
+					String output = deleteMonthlyMenu();
+					System.out.println(output);
+							
+
 				} else if (option == OPTION_MONTHLY_BILLS) {
 					// Syazwan Bills
 
@@ -223,10 +251,80 @@ public class C206_CaseStudy {
 				} else if (option == OPTION_QUIT) {
 					System.out.println("Bye!");
 				} else {
+
 					System.out.println("Invalid option");
 				}
+
+						
+				
+				
+				
+			} else if (option == OPTION_LUNCH_BOX_ORDERS) {
+
+		          // Angela Lunch Box Order
+		          lunchBox();
+
+		          int choice = Helper.readInt("Enter option > ");
+
+		          if (choice == 1) {
+
+		            String menu = viewMonthlyMenu();
+		            System.out.println(menu);
+
+		            C206_CaseStudy.setHeader("PLACE LUNCH BOX ORDERS");
+
+		            for (int i = 0; i < 5; i++) {
+
+		              LunchBox lb = inputLunchBox();
+		              System.out.println();
+		              addLunchBoxOrder(lunchBoxList, lb);
+		              System.out.println();
+
+		            }
+
+		          } else if (choice == 2) {
+
+		            C206_CaseStudy.setHeader("VIEW LUNCH BOX ORDERS");
+		            viewAllLunchBoxOrders(lunchBoxList);
+
+		          } else if (choice == 3) {
+
+		            C206_CaseStudy.setHeader("DELETE LUNCH BOX ORDERS");
+		            deleteLunchBoxOrders(lunchBoxList);
+
+		          } else {
+
+		            System.out.println("Invalid Option!");
+
+		          }
+				
+			}else if (option == 5) {
+				// Syazwan Bills 
+				menuBill();
+				int billOptions = Helper.readInt("Enter option > ");
+				
+				if (billOptions == 1) {
+					C206_CaseStudy.setHeader("CREATE ORDER BILL ");
+					createOrderBill(orderBillArr);
+				}else if (billOptions == 2 ) {
+					C206_CaseStudy.setHeader("VIEW MONTHLY BILL");
+					String orderBill = viewMonthlyBill(orderBillArr);
+					System.out.println(orderBill);
+				}else if (billOptions == 3) {
+					C206_CaseStudy.setHeader("DELETE ORDER BILL");
+					deleteOrderBill(orderBillArr);
+				}else {
+					System.out.println("Invalid option!");
+				}
+				
+			}else if (option == OPTION_QUIT) {
+				System.out.println("Bye!");
+			}else {
+				System.out.println("Invalid option");
+
 			}
 		}
+	}
 
 	
 
@@ -535,6 +633,7 @@ public class C206_CaseStudy {
 
 	}
 
+
 	public static ArrayList<Menu> addDailyMenu() {
 		String Western = randomWestern();
 		String Asian = randomAsian();
@@ -549,20 +648,40 @@ public class C206_CaseStudy {
 
 	}
 
+
 	public static String createMonthlyMenu() {
 
 		int year = Helper.readInt("Enter year: ");
 		int firstDay = Helper.readInt("Enter first day of the month(1(Mon)-7 (Sun)): ");
 		int month = Helper.readInt("Enter month (1-12): ");
-		int[] days = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
-		String[] months = { "JANUARY", "FEBRUARY", "MARCH", "APRIL", "MAY", "JUNE", "JULY", "AUGUST", "SEPTEMBER",
-				"OCTOBER", "NOVEMBER", "DECEMBER" };
 
-		String[] dayname = { "", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
+		int[] days = {
+				0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31
+		};
+		String[] months = {
+				"JANUARY", "FEBRUARY", "MARCH",
+				"APRIL", "MAY", "JUNE",
+				"JULY", "AUGUST", "SEPTEMBER",
+				"OCTOBER", "NOVEMBER", "DECEMBER"
+		};
+
+		String[] dayname = {
+				"", "Monday", "Tuesday", "Wednesday",
+				"Thursday", "Friday", "Saturday",
+				"Sunday"
+		};
+
+		String Western = "";
+		String Asian = "";
+		String Vegetarian = "";
+		String Drink1 = "";
+		String Drink2 = "";
+		String Fruit1 = "";
+		String Fruit2 = "";
 
 		// print calendar header
 		// Display the month and year
-		monthlyMenu = ("\n        " + months[month - 1] + " " + year + "\n");
+		monthlyMenu = ("\n        "+ months[month-1] + " " + year+ "\n");
 
 		// Display the lines
 		monthlyMenu += (" __________________________________\n\n");
@@ -571,35 +690,52 @@ public class C206_CaseStudy {
 		int fullweek = 7;
 
 		for (int i = 1, j = firstDay; i <= days[month]; i++, j++) {
+		if (j <= maxday) {
 
-			if (j <= maxday) {
+			monthlyMenu += String.format("%5d ", i);
+			monthlyMenu += months[month-1];
+			monthlyMenu += "  (" + dayname[j] + ")\n"; 
+			monthlyMenu += "  --------------------------\n";
 
-				monthlyMenu += String.format("%5d ", i);
-				monthlyMenu += months[month - 1];
-				monthlyMenu += "  (" + dayname[j] + ")\n";
-				monthlyMenu += "  --------------------------\n";
-				addDailyMenu();
+			Western = String.format("     %5s: %s \n", "Western",  randomWestern());
+			Asian = String.format("     %5s: %s \n", "Asian",  randomAsian());
+			Vegetarian = String.format("     %5s: %s \n", "Vegetarian",  randomVegetarian());
+			Drink1 = String.format("     %5s: %s \n", "Drinks",  randomDrink());
+			Drink2 = String.format("     %5s: %s \n", "Drinks",  randomDrink());
+			Fruit1 = String.format("     %5s: %s \n", "Fruit",  randomFruit());
+			Fruit2 = String.format("     %5s: %s \n\n", "Fruit",  randomFruit());
 
-				monthlyMenu += menuList.get(menuList.size() - 1).toString();
+			Menu mm = new Menu(Western, Asian, Vegetarian, Drink1, Drink2, Fruit1, Fruit2);
+			addDailyMenu(menuList, mm);
 
-			}
-			if (j > maxday && j <= fullweek) {
-				monthlyMenu += String.format("%5d ", i);
-				monthlyMenu += months[month - 1];
-
-				monthlyMenu += "  (" + dayname[j] + ")\n";
-				monthlyMenu += "  --------------------------\n";
-				monthlyMenu += "     WEEKEND!\n\n";
-
-			}
-			if (j == fullweek) {
-				j = 0;
-			}
+			monthlyMenu += Western + Asian + Vegetarian + Drink1 + Drink2 + Fruit1 + Fruit2;
+			
 		}
 
-		return monthlyMenu;
-	}
+				if (j > maxday && j <= fullweek) {
+					monthlyMenu += String.format("%5d ", i);
+					monthlyMenu += months[month - 1];
 
+					monthlyMenu += "  (" + dayname[j] + ")\n";
+					monthlyMenu += "  --------------------------\n";
+					monthlyMenu += "     WEEKEND!\n\n";
+
+				}
+				if (j == fullweek) {
+					j = 0;
+				}
+			}
+		
+
+		return monthlyMenu;
+}
+	
+	public static void  addDailyMenu(ArrayList<Menu> MenuList, Menu mm) {
+
+       menuList.add(mm);
+
+	}
+ 
 	public static String viewMonthlyMenu() {
 		String output = "";
 		if (monthlyMenu.isEmpty()) {
@@ -645,6 +781,26 @@ public class C206_CaseStudy {
 		System.out.println("Successfully placed a lunch box order!");
 
 	}
+	
+	
+	
+	
+	
+	//=============================================== OPTION 5 BILL ==================================================
+	public static void createOrderBill(ArrayList<Bill>orderBillArr) {
+		String userId = Helper.readString("Enter userId > ");
+		String dateOrdered  = Helper.readString("Enter month in this format : dd/MM > ");
+		int orderedMeal = Helper.readInt("Enter the price of the meal > ");
+		int orderedDrink = Helper.readInt("Enter the price of the drinks > ");
+		int orderedFruit = Helper.readInt("Enter the price of fruits > ");
+		
+		//lol
+		int dailyAmt = orderedMeal + orderedDrink + orderedFruit ;
+		
+		Bill b1 = new Bill (userId, dateOrdered, dailyAmt , orderedMeal , orderedDrink , orderedFruit);
+		
+		orderBillArr.add(b1);
+
 
 	public static String retrieveAllLunchBoxOrders(ArrayList<LunchBox> lunchBoxList) {
 		String output = "";
@@ -702,8 +858,21 @@ public class C206_CaseStudy {
 
 		Bill ob1 = new Bill(username, menu, bill, date);
 
+
 		System.out.println("Order Bill Added!");
 	}
+
+	public static String viewMonthlyBill(ArrayList<Bill>orderBillArr) {
+		
+			String output = " ";
+			int sumDailyAmt = 0;
+			output = String.format("%-10s %-10s %-10s \n", "USERID", "DATE" , "SUM OF DAILY AMOUNT");
+			for (Bill b :  orderBillArr) {
+				//monthlybill = orderBillArr + sum(Daily Amount)
+				sumDailyAmt += b.getDailyAmt();
+				output += String.format("%-10s %-10s %-15d \n", b.getID(),b.getDate(),sumDailyAmt);
+				
+
 
 	public static String viewOrderBill(ArrayList<Bill> orderBillArr) {
 		C206_CaseStudy.setHeader("VIEW ORDER BILL");
@@ -713,9 +882,25 @@ public class C206_CaseStudy {
 			output += String.format("%-10s %-10s %-10d %-10s \n", b.getUsername(), b.getMenu(), b.getAmount(),
 					b.getDate());
 
+
 		}
 		return output;
 	}
+
+	
+	public static void deleteOrderBill(ArrayList<Bill>orderBillArr) {
+			//boolean isFound to check whether the conditions are met 
+		   boolean isFound = false;
+		   String userId = Helper.readString("Enter userId to delete > ");
+		   
+		   for (int i=0; i<orderBillArr.size(); i++){
+			if (orderBillArr.get(i) != null && orderBillArr.get(i).getID().equals(userId)) {
+			   orderBillArr.remove(i);
+			   isFound = true;
+			   System.out.println("Username: "+ userId  +" is deleted");
+			   break;
+			}
+
 
 	public static void deleteOrderBill(ArrayList<Bill> orderBillArr) {
 		// boolean isFound to check whether the conditions are met
@@ -728,6 +913,7 @@ public class C206_CaseStudy {
 				isFound = true;
 				System.out.println("Username: " + userDelete + " is deleted");
 				break;
+
 			}
 		}
 		if (isFound == false) {
