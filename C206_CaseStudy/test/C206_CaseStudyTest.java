@@ -37,6 +37,8 @@ public class C206_CaseStudyTest {
 	private Vegetarian v2;
 	private Vegetarian v3;
 	
+	private Menu mm1;
+	private Menu mm2;
 
 	private ArrayList<Account> accountArr;
 	private ArrayList<western> westernArr;
@@ -46,7 +48,7 @@ public class C206_CaseStudyTest {
 	private ArrayList<Fruits>  fruitsArr;
 	
 	
-	public static ArrayList<Menu> menuList = new ArrayList<Menu>();
+	private ArrayList<Menu> menuList = new ArrayList<Menu>();
 	
 	public C206_CaseStudyTest() {
 		super();
@@ -58,43 +60,34 @@ public class C206_CaseStudyTest {
 		acc1 = new Account("Roy Tan", "schoolR0ck$", "4E4","Credit Card");
 		acc2 = new Account("Hannah", "12345abc", "3E2","Credit Card");
 		
-		w1 = new western("Fries");
-		w2 = new western("Pizza");
-		w3 = new western("Spaghetti");
-		w4 = new western("Fish & Chips");
+		mm1 = new Menu(1,"Fries", "Chilli Crab", "Vegi Burger", "Coke", "Fanta", "Apple", "Orange");
+		mm2 = new Menu(2,"Pizza", "Chicken Rice", "Cauliflower Rice", "Sprite", "Ayataka", "WaterMelon", "BlueBerry");
 		
-		
-
-		a1 = new asian("Chilli Crab");
-		a2 = new asian("Chicken Rice");
-		a3 = new asian("Nasi Lemak");
-		a4 = new asian("Cai Fan");
-
-		d1 = new drinks("Coke");
-		d2 = new drinks("Fanta");
-		d3 = new drinks("Sprite");
-		d4 = new drinks("Ayataka");
-
-		f1 = new Fruits("Apple");
-		f2 = new Fruits("Orange");
-		f3 = new Fruits("WaterMelon");
-		f4 = new Fruits("BlueBerry");
-		
-		v1 = new Vegetarian("Vegi Burger");
-		v2 = new Vegetarian("BlueBerry");
-		v3 = new Vegetarian("BlueBerry");
-		
-		String day1 = "";
-				
-		day1 += String.format("     %5s: %s \n", "Western",  "Fries");
-		day1 += String.format("     %5s: %s \n", "Asian",  "Chilli Crab");
-		day1 += String.format("     %5s: %s \n", "Vegetarian", "Vegi Burger");
-        day1 += String.format("     %5s: %s \n", "Drinks",  "Coke");
-        day1 += String.format("     %5s: %s \n", "Drinks",  "Fanta");
-        day1 += String.format("     %5s: %s \n", "Drinks",  randomDrink());
-        day1 += String.format("     %5s: %s \n", "Fruit",  randomFruit());
-        day1 += String.format("     %5s: %s \n", "Fruit",  randomFruit());
-        day1 += String.format("     %5s: %s \n\n", "Fruit",  randomFruit());
+//		w1 = new western("Fries");
+//		w2 = new western("Pizza");
+//		w3 = new western("Spaghetti");
+//		w4 = new western("Fish & Chips");
+//		
+//		
+//
+//		a1 = new asian("Chilli Crab");
+//		a2 = new asian("Chicken Rice");
+//		a3 = new asian("Nasi Lemak");
+//		a4 = new asian("Cai Fan");
+//
+//		d1 = new drinks("Coke");
+//		d2 = new drinks("Fanta");
+//		d3 = new drinks("Sprite");
+//		d4 = new drinks("Ayataka");
+//
+//		f1 = new Fruits("Apple");
+//		f2 = new Fruits("Orange");
+//		f3 = new Fruits("WaterMelon");
+//		f4 = new Fruits("BlueBerry");
+//		
+//		v1 = new Vegetarian("Vegi Burger");
+//		v2 = new Vegetarian("BlueBerry");
+//		v3 = new Vegetarian("BlueBerry");
 		
 		
 	}
@@ -161,8 +154,11 @@ public class C206_CaseStudyTest {
 		
 		// Menu list is not null, so that can add a new item - boundary
 		assertNotNull("Check if there is valid Menu arraylist to add to", menuList);
-		//Test if MonthlyMenu is empty 
-		assertTrue(monthlyMenu.isEmpty());
+	
+		//Given an empty list, after adding 1 item, the size of the list is 1 - normal
+		//The item just added is as same as the first item of the list
+		
+		
 		
 
 
