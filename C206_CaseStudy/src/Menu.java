@@ -29,7 +29,7 @@ public class Menu {
 	
 	public String getWestern() {
 		return Western;
-	}
+	} 
 	
 	public String getAsian() {
 		return Asian;
