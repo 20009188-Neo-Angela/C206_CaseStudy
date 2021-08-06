@@ -7,26 +7,11 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class C206_CaseStudyTest {
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-	
-	private ArrayList<Account> accountArr;
-	
-	
-	public C206_CaseStudyTest() {
-		super();
-		
-	}
-
-=======
-=======
 	
 	private Account acc1;
 	private Account acc2;
 	
 	
->>>>>>> branch 'master' of https://github.com/20009188-Neo-Angela/C206_CaseStudy.git
 	private western w1;
 	private western w2;
 	private western w3;
@@ -52,14 +37,8 @@ public class C206_CaseStudyTest {
 	private Vegetarian v2;
 	private Vegetarian v3;
 	
-<<<<<<< HEAD
-	private Bill b1;
-	private Bill b2;
-	
-=======
 	private Menu mm1;
 	private Menu mm2;
->>>>>>> branch 'master' of https://github.com/20009188-Neo-Angela/C206_CaseStudy.git
 
 	private ArrayList<Account> accountArr;
 	private ArrayList<western> westernArr;
@@ -67,20 +46,15 @@ public class C206_CaseStudyTest {
 	private ArrayList<Vegetarian>  vegetarianArr;
 	private ArrayList<drinks>  drinksArr;
 	private ArrayList<Fruits>  fruitsArr;
-<<<<<<< HEAD
-	private ArrayList <Bill> orderBillArr;
-	public static String monthlyMenu ="";
-=======
 	
 	
 	private ArrayList<Menu> menuList = new ArrayList<Menu>();
->>>>>>> branch 'master' of https://github.com/20009188-Neo-Angela/C206_CaseStudy.git
 	
 	public C206_CaseStudyTest() {
 		super();
 	}
 	
-
+	@Before
 	public void setUp() throws Exception {
 		
 		acc1 = new Account("Roy Tan", "schoolR0ck$", "4E4","Credit Card");
@@ -115,23 +89,13 @@ public class C206_CaseStudyTest {
 //		v2 = new Vegetarian("BlueBerry");
 //		v3 = new Vegetarian("BlueBerry");
 		
-		b1= new Bill("syaz123","drinks" ,100, "07/2021");
-		b2 = new Bill("syaz456", "western", 150, "08/2021");
-		
-		
 		
 	}
-	
-	
-	
-		// TODO Auto-generated constructor stub
-	
-	
+
+
 
 	@Test
 	public void c206_test() {
-		
-	
 		//fail("Not yet implemented"); 
 		assertTrue("C206_CaseStudy_SampleTest ",true);
 	}
@@ -206,10 +170,15 @@ public class C206_CaseStudyTest {
 		assertNotNull("Check if there is valid Menu arraylist to add to", menuList);
 	
 		//Given an empty list, after adding 1 item, the size of the list is 1 - normal
+		C206_CaseStudy.addDailyMenu(menuList, mm1);
+		assertEquals("Check that Menu arraylist size is 1", 1, menuList.size());
+		
 		//The item just added is as same as the first item of the list
+		assertSame("Check that Menu is added", mm1, menuList.get(menuList.size()-1));
 		
-		
-		
+		//Add another item. test The size of the list is 2? -normal
+		C206_CaseStudy.addDailyMenu(menuList, mm2);
+		assertEquals("Check that Menu arraylist size is 2", 2, menuList.size());
 
 
 		
@@ -249,7 +218,7 @@ public class C206_CaseStudyTest {
 	        }
 
 			
-	}
+	} 
 	
 	@Test
 	public void deleteMonthlyMenuTest() {
@@ -269,28 +238,7 @@ public class C206_CaseStudyTest {
 	
 	
 	//=============================================== OPTION 5 BILL =============================================================
-	public void createOrderBilTest() {
-		//Test that orderBillArr is not null, so that an order bill can be created 
-		assertNotNull("Check if the OrderBillArr arraylist is valid to be added to", orderBillArr);
-		
-		//Given an empty list, after adding 1 item, the size of the list is 1 - normal
-				//The item just added is as same as the first item of the list
-				C206_CaseStudy.createOrderBill( orderBillArr, b1);
-				assertEquals("Check that orderBillArr arraylist size is 1", 1, orderBillArr.size());
-				assertSame("Check that the Bill is added", b1, orderBillArr.get(0));
-				
-				//Add another item. test The size of the list is 2? -normal
-				//The item just added is as same as the second item of the list
-				C206_CaseStudy.createOrderBill(orderBillArr,b2);
-				assertEquals("Check that the orderBillArr arraylist size is 2", 2, orderBillArr.size());
-				assertSame("Check that the Bill is added", b2, orderBillArr.get(1));
-	}
-	public void viewOrderBill() {
-		//Test that 
-	}
-	public void deleteOrderBill() {
-		//Test that 
-	}
+
 	@After
 	public void tearDown() throws Exception {
 	
