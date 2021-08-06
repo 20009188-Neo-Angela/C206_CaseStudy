@@ -15,7 +15,7 @@ public class C206_CaseStudy {
 	public static ArrayList<Menu> menuList = new ArrayList<Menu>();
 	public static String monthlyMenu ="";
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) { 
 		
 		
 		ArrayList<LunchBox> lunchBoxList = new ArrayList<LunchBox>();
