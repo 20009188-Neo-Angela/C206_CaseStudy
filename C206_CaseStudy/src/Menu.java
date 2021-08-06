@@ -1,7 +1,7 @@
 
 public class Menu {
 	
-
+	private int ID;
 	private String Western;
 	private String Asian;
 	private String Vegetarian; 
@@ -9,10 +9,12 @@ public class Menu {
 	private String Drink2;
 	private String Fruit1;
 	private String Fruit2;
+	
 	 
 	
-	public Menu(String Western, String Asian, String Vegetarian, String Drink1, String Drink2, String Fruit1, String Fruit2) {
-	
+	public Menu(int ID, String Western, String Asian, String Vegetarian, String Drink1, String Drink2, String Fruit1, String Fruit2) {
+		
+		this.ID = ID;
 		this.Western = Western;
 		this.Asian = Asian;
 		this.Vegetarian = Vegetarian;
@@ -23,6 +25,9 @@ public class Menu {
 		 
 	} 
 	
+	public int getID() {
+		return ID;
+	}
 	
 	public String getWestern() {
 		return Western;
@@ -51,6 +56,7 @@ public class Menu {
 	public String getFruit2() {
 		return Fruit2;
 	}
+	
 	
 	
 	public String toString() {
