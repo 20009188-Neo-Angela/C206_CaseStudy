@@ -11,10 +11,12 @@ public class C206_CaseStudy {
 	public static ArrayList<Vegetarian> vegetarianArr = new ArrayList<Vegetarian>();
 	public static ArrayList<drinks> drinksArr = new ArrayList<drinks>();
 	public static ArrayList<Fruits> fruitsArr = new ArrayList<Fruits>();
+	public static String monthlyMenu ="";
 	
 	public static void main(String[] args) {
 		
 		
+		ArrayList<LunchBox> lunchBoxList = new ArrayList<LunchBox>();
 		ArrayList<Bill> orderBillArr = new ArrayList<Bill>();
 		ArrayList<Account> accountArr = new ArrayList <Account> ();
 		
@@ -89,25 +91,11 @@ public class C206_CaseStudy {
 				
 				if (itemOption == 1) {
 					C206_CaseStudy.setHeader("VIEW");
-					for (western i : westernArr) {
-						System.out.println("Western Food: " + i.getName());
-					}
-					System.out.println("");
-
-					for (asian i : asianArr) {
-						System.out.println("Asian Food: " + i.getName());
-					}
-					System.out.println("");
-
-					for (drinks i : drinksArr) {
-						System.out.println("Drinks: " + i.getName());
-					}
-					System.out.println("");
-
-					for (Fruits i : fruitsArr) {
-						System.out.println("Fruits: " + i.getName());
-					}
-					System.out.println("");
+					viewWestern(westernArr);
+					viewAsian(asianArr);
+					viewDrinks(drinksArr);
+					viewFruits(fruitsArr);
+					viewVege(vegetarianArr);
 
 				} else if (itemOption == 2) {
 					C206_CaseStudy.setHeader("DELETE");
@@ -156,44 +144,37 @@ public class C206_CaseStudy {
 
 					if (category.equalsIgnoreCase("western")) {
 						String item = Helper.readString("Choose a item to add: ");
-						for (western i : westernArr) {
-							if (i == null) {
-								i = new western(item);
-								westernArr.add(i);
-
-							}
-						}
+						western itemw = new western(item);
+						addWestern(westernArr, itemw);
 
 					} else if (category.equalsIgnoreCase("asian")) {
 						for (asian i : asianArr) {
 							String item = Helper.readString("Choose a item to add: ");
-							if (i == null) {
-								i = new asian(item);
-								asianArr.add(i);
-
-							}
+							asian items = new asian(item);
+							addAsian(asianArr, items);
 						}
 					} else if (category.equalsIgnoreCase("drinks")) {
 
 						for (drinks i : drinksArr) {
 							String item = Helper.readString("Choose a item to add: ");
-							if (i == null) {
-								i = new drinks(item);
-								drinksArr.add(i);
-
-							}
+							drinks itemw = new drinks(item);
+							addDrinks(drinksArr,itemw);
+							
 						}
 					} else if (category.equalsIgnoreCase("fruits")) {
 						for (Fruits i : fruitsArr) {
 							String item = Helper.readString("Choose a item to add: ");
-							if (i == null) {
-								i = new Fruits(item);
-								fruitsArr.add(i);
-							}
+							Fruits itemw = new Fruits(item);
+							addFruits(fruitsArr, itemw);
 						}
 
-					}else {
-						System.out.println("Invalid option");
+					}else if (category.equalsIgnoreCase("vegetarian")) {
+						for (Vegetarian i : vegetarianArr) {
+							String item = Helper.readString("Choose a item to add: ");
+							Vegetarian itemw = new Vegetarian(item);
+							addVegetarian(vegetarianArr, itemw);
+									
+						}
 					}
 				
 				}
@@ -205,17 +186,20 @@ public class C206_CaseStudy {
 				int monthlyOption = Helper.readInt("Enter option to select Monthly Menu > ");
 				
 				if(monthlyOption == 1 ) {
-					C206_CaseStudy.setHeader("CREATE MONTHLY MENU");
-					String menu = createMonthlyMenu();
-					System.out.println(menu);
-					System.out.println("Menu Created!");
+					createMonthlyMenu();
+					System.out.println("Menu Successfully Created!");
 								
 				}else if (monthlyOption == 2) {
-					C206_CaseStudy.setHeader("VIEW MONTHLY MENU");
+					
+					String menu = viewMonthlyMenu();
+					System.out.println(menu);
+					
 					
 	
 				}else if (monthlyOption == 3) {
-					C206_CaseStudy.setHeader("DELETE MONTHLY MENU");
+					String output = deleteMonthlyMenu();
+					System.out.println(output);
+					
 					
 					
 				}else {
@@ -227,6 +211,27 @@ public class C206_CaseStudy {
 				
 			}else if (option == 4) {
 				// Angela Lunch Box Order
+				lunchBox();
+				
+				int choice = Helper.readInt("Enter option > ");
+				
+				if (choice == 1) {
+					
+					
+					
+				} else if (choice == 2) {
+					
+					
+					
+				} else if (choice == 3) {
+					
+					
+					
+				} else {
+					
+					System.out.println("Invalid Option!");
+					
+				}
 				
 				
 				
@@ -296,6 +301,13 @@ public class C206_CaseStudy {
 		System.out.println("2. View Monthly Menu");
 		System.out.println("3. Delete Monthly Menu");
 	}
+	
+	private static void lunchBox() {
+		System.out.println("1. Add/Place Lunch Box Order");
+		System.out.println("2. View Lunch Box Order");
+		System.out.println("3. Delete/Cancel Lunch Box Order");
+	}
+	
 	private static void menuBill() {
 		System.out.println("1. Create Order Bill ");
 		System.out.println("2. View Order Bill ");
@@ -367,10 +379,97 @@ public class C206_CaseStudy {
 	
 	
 	//=============================================== OPTION 2 MENU ITEMS ==================================================
+	//View items From menu bank
+	public static String viewWestern(ArrayList<western> westernArr) {
+		String output = "";
+		
+		for (western i : westernArr) {
+			output += String.format("%10s", i.getName());
+		}
+		
+		
+		return output;
+	}
+	
+	public static String viewAsian(ArrayList<asian> asianArr) {
+		String output = "";
+		
+		for (asian i : asianArr) {
+			output += String.format("%10s", i.getName());
+		}
+		
+		
+		return output;
+	}
+	
+	public static String viewDrinks(ArrayList<drinks> drinksArr) {
+		String output = "";
+		
+		for (drinks i : drinksArr) {
+			output += String.format("%10s", i.getName());
+		}
+		
+		
+		return output;
+	}
+	
+	public static String viewFruits(ArrayList<Fruits> fruitsArr) {
+		String output = "";
+		
+		for (Fruits i : fruitsArr) {
+			output += String.format("%10s", i.getName());
+		}
+		
+		
+		return output;
+	}
+	
+	public static String viewVege(ArrayList<Vegetarian> vegetarianArr) {
+		String output = "";
+		
+		for (Vegetarian i : vegetarianArr) {
+			output += String.format("%10s", i.getName());
+		}
+		
+		
+		return output;
+	}
+	
+	//Delete Items from menu bank
 	
 	
 	
+	//Add items into menu bank
+	public static void addWestern(ArrayList<western> westernArr, western cc) {
+		
+		westernArr.add(cc);
+		System.out.println("Western added");
+	}
 	
+	public static void addAsian(ArrayList<asian> asianArr, asian cc) {
+		
+		asianArr.add(cc);
+		System.out.println("Asian added");
+	}
+	
+	public static void addVegetarian(ArrayList<Vegetarian> vegetarianArr, Vegetarian cc) {
+	
+		vegetarianArr.add(cc);
+		System.out.println("Vegetarian added");
+	}
+
+	public static void addDrinks(ArrayList<drinks> drinksArr, drinks cc) {
+	
+		drinksArr.add(cc);
+		System.out.println("Drinks added");
+	}
+
+	public static void addFruits(ArrayList<Fruits> fruitsArr, Fruits cc) {
+	
+		fruitsArr.add(cc);
+		System.out.println("Fruits added");
+	}
+
 	
 	
 	
@@ -422,7 +521,6 @@ public class C206_CaseStudy {
 		int year = Helper.readInt("Enter year: ");
 		int firstDay = Helper.readInt("Enter first day of the month(1(Mon)-7 (Sun)): ");
 		int month = Helper.readInt("Enter month (1-12): ");
-		String monthlyMenu = "";
 		int[] days = {
                0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31
             };
@@ -480,16 +578,51 @@ public class C206_CaseStudy {
 			return monthlyMenu;
 	}
 	
+
 	
+	public static String viewMonthlyMenu() {
+		String output = "";
+		if(monthlyMenu.isEmpty()) {
+			output = "There is no menu to view!";
+			
+		}else {
+			C206_CaseStudy.setHeader("MONTHLY MENU");
+			output = monthlyMenu;
+		}
+		return output;
+	}
 	
-	
-	
+	public static String deleteMonthlyMenu() {
+		String output = "";
+		if(monthlyMenu.isEmpty()) {
+			output = "There is no menu to delete!";
+			
+		}else {
+			monthlyMenu = "";
+			output = "Menu deleted!";
+		}
+		return output;
+	}
 	
 	
 	
 	
 	//=============================================== OPTION 4 LUNCH BOX ORDER ==================================================
+	public static LunchBox inputLunchBox() {
+		String meal = Helper.readString("Enter meal > ");
+		String drink = Helper.readString("Enter drink > ");
+		String fruit = Helper.readString("Enter fruit > ");
+
+		LunchBox lb = new LunchBox(meal, drink, fruit);
+		return lb;
+		
+	}
 	
+	public static void addLunchBoxOrder(ArrayList<LunchBox> lunchBoxList, LunchBox lb) {
+		
+		lunchBoxList.add(lb);
+		System.out.println("Successfully placed a lunch box order!");
+	}
 	
 	
 	
