@@ -654,6 +654,7 @@ public class C206_CaseStudy {
 			int sumDailyAmt = 0;
 			output = String.format("%-10s %-10s %-10s \n", "USERID", "DATE" , "SUM OF DAILY AMOUNT");
 			for (Bill b :  orderBillArr) {
+				//monthlybill = orderBillArr + sum(Daily Amount)
 				sumDailyAmt += b.getDailyAmt();
 				output += String.format("%-10s %-10s %-15d \n", b.getID(),b.getDate(),sumDailyAmt);
 				
