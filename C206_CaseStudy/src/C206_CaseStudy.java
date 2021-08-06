@@ -610,7 +610,21 @@ public class C206_CaseStudy {
 	
 	
 	//=============================================== OPTION 4 LUNCH BOX ORDER ==================================================
+	public static LunchBox inputLunchBox() {
+		String meal = Helper.readString("Enter meal > ");
+		String drink = Helper.readString("Enter drink > ");
+		String fruit = Helper.readString("Enter fruit > ");
+
+		LunchBox lb = new LunchBox(meal, drink, fruit);
+		return lb;
+		
+	}
 	
+	public static void addLunchBoxOrder(ArrayList<LunchBox> lunchBoxList, LunchBox lb) {
+		
+		lunchBoxList.add(lb);
+		System.out.println("Successfully placed a lunch box order!");
+	}
 	
 	
 	
