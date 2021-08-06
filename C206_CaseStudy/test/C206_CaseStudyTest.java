@@ -27,12 +27,12 @@ public class C206_CaseStudyTest {
 	private drinks d3;
 	private drinks d4;
 	
-	private Fruits f1; 
+	private Fruits f1;
 	private Fruits f2;
 	private Fruits f3;
 	private Fruits f4;
 	
-	 
+	
 	private Vegetarian v1;
 	private Vegetarian v2;
 	private Vegetarian v3;
@@ -218,7 +218,7 @@ public class C206_CaseStudyTest {
 	        }
 
 			
-	}
+	} 
 	
 	@Test
 	public void deleteMonthlyMenuTest() {

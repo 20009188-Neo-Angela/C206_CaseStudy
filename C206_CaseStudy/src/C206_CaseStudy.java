@@ -18,7 +18,7 @@ public class C206_CaseStudy {
 	public static ArrayList<Fruits> fruitsArr = new ArrayList<Fruits>();
 
 	public static ArrayList<Menu> menuList = new ArrayList<Menu>();
-	public static String monthlyMenu = ""; 
+	public static String monthlyMenu = "";
 
 	public static void main(String[] args) {
 
@@ -757,9 +757,9 @@ public class C206_CaseStudy {
 		output = String.format("%-10s %-10s %-10s %-10s \n", "USERNAME", "MENU", "AMOUNT", "DATE ");
 		for (Bill b : orderBillArr) {
 			output += String.format("%-10s %-10s %-10d %-10s \n", b.getUsername(), b.getMenu(), b.getAmount(),
-					b.getDate());
+					b.getDate()); 
 
-		} 
+		}
 		return output;
 		//Kidsd
 	}
