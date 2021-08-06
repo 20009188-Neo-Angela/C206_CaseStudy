@@ -401,46 +401,71 @@ public class C206_CaseStudy {
 	// Delete Items from menu bank
 	public static void removeWestern(ArrayList<western> westernArr, String category) {
 		if (category.equalsIgnoreCase("western")) {
-			String item = Helper.readString("Choose a item to delete: ");
-			westernArr.remove(item);
-			System.out.println("Western Removed!");
+			String item = Helper.readString("Enter item to delete: ");
+			for (int i = 0; i < westernArr.size(); i++) {
+				if (item.equalsIgnoreCase(westernArr.get(i).getName())) {
+						westernArr.remove(i);
+						System.out.println("Item deleted!");
+					}
+	
+				}
+			}
 		}
 
-	}
 
 	public static void removeAsian(ArrayList<asian> asianArr, String category) {
 		if (category.equalsIgnoreCase("asian")) {
-			String item = Helper.readString("Choose a item to delete: ");
-			asianArr.remove(item);
-			System.out.println("Asian Removed!");
-		}
+			String item = Helper.readString("Enter item to delete: ");
+			for (int i = 0; i < asianArr.size(); i++) {
+				if (item.equalsIgnoreCase(asianArr.get(i).getName())) {
+					asianArr.remove(i);
+						System.out.println("Item deleted!");
+					}
+	
+				}
+			}
 
 	}
 
 	public static void removeVegetarian(ArrayList<Vegetarian> vegetarianArr, String category) {
 		if (category.equalsIgnoreCase("vegetarian")) {
-			String item = Helper.readString("Choose a item to delete: ");
-			vegetarianArr.remove(item);
-			System.out.println("vegetarian Removed!");
-		}
+			String item = Helper.readString("Enter item to delete: ");
+			for (int i = 0; i < vegetarianArr.size(); i++) {
+				if (item.equalsIgnoreCase(vegetarianArr.get(i).getName())) {
+					vegetarianArr.remove(i);
+					System.out.println("Item deleted!");
+					}
+	
+				}
+			}
 
 	}
 
 	public static void removeDrinks(ArrayList<drinks> drinksArr, String category) {
 		if (category.equalsIgnoreCase("drinks")) {
-			String item = Helper.readString("Choose a item to delete: ");
-			drinksArr.remove(item);
-			System.out.println("Drinks Removed!");
-		}
+			String item = Helper.readString("Enter item to delete: ");
+			for (int i = 0; i < drinksArr.size(); i++) {
+				if (item.equalsIgnoreCase(drinksArr.get(i).getName())) {
+					drinksArr.remove(i);
+					System.out.println("Item deleted!");
+					}
+	
+				}
+			}
 
 	}
 
 	public static void removeFruits(ArrayList<Fruits> fruitsArr, String category) {
 		if (category.equalsIgnoreCase("fruits")) {
-			String item = Helper.readString("Choose a item to delete: ");
-			fruitsArr.remove(item);
-			System.out.println("Fruits Removed!");
-		}
+			String item = Helper.readString("Enter item to delete: ");
+			for (int i = 0; i < fruitsArr.size(); i++) {
+				if (item.equalsIgnoreCase(fruitsArr.get(i).getName())) {
+					fruitsArr.remove(i);
+					System.out.println("Item deleted!");
+					}
+	
+				}
+			}
 
 	}
 
