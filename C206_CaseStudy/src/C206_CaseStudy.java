@@ -44,6 +44,11 @@ public class C206_CaseStudy {
 		drinksArr.add(new drinks("Sprite", 1));
 		drinksArr.add(new drinks("Ayataka", 1));
 
+<<<<<<< HEAD
+		orderBillArr.add(new Bill("t0326720i", "09/08" , 12, 4, 4, 4));
+		orderBillArr.add(new Bill("lol", "08/09 ", 9 , 3, 3, 3));
+		
+=======
 		fruitsArr.add(new Fruits("Apple", 2));
 		fruitsArr.add(new Fruits("Orange", 2));
 		fruitsArr.add(new Fruits("WaterMelon", 2));
@@ -56,6 +61,7 @@ public class C206_CaseStudy {
 
 		orderBillArr.add(new Bill("t0326720i", "drinks", 1000, "01/2012"));
 		orderBillArr.add(new Bill("lol", "western", 1500, "02/2021"));
+>>>>>>> branch 'master' of https://github.com/20009188-Neo-Angela/C206_CaseStudy.git
 		int option = 0;
 
 		while (option != OPTION_QUIT) {
@@ -248,6 +254,63 @@ public class C206_CaseStudy {
 
 					System.out.println("Invalid option");
 				}
+<<<<<<< HEAD
+						
+				
+				
+				
+			}else if (option == 4) {
+				// Angela Lunch Box Order
+				lunchBox();
+				
+				int choice = Helper.readInt("Enter option > ");
+				
+				if (choice == 1) {
+					
+					
+					
+				} else if (choice == 2) {
+					
+					
+					
+				} else if (choice == 3) {
+					
+					
+					
+				} else {
+					
+					System.out.println("Invalid Option!");
+					
+				}
+				
+				
+				
+				
+			}else if (option == 5) {
+				// Syazwan Bills 
+				menuBill();
+				int billOptions = Helper.readInt("Enter option > ");
+				
+				if (billOptions == 1) {
+					C206_CaseStudy.setHeader("CREATE ORDER BILL ");
+					createOrderBill(orderBillArr);
+				}else if (billOptions == 2 ) {
+					C206_CaseStudy.setHeader("VIEW MONTHLY BILL");
+					String orderBill = viewMonthlyBill(orderBillArr);
+					System.out.println(orderBill);
+				}else if (billOptions == 3) {
+					C206_CaseStudy.setHeader("DELETE ORDER BILL");
+					deleteOrderBill(orderBillArr);
+				}else {
+					System.out.println("Invalid option!");
+				}
+				
+			}else if (option == OPTION_QUIT) {
+				System.out.println("Bye!");
+			}else {
+				System.out.println("Invalid option");
+=======
+>>>>>>> branch 'master' of https://github.com/20009188-Neo-Angela/C206_CaseStudy.git
 			}
 		}
 	}
@@ -708,6 +771,27 @@ public class C206_CaseStudy {
 		System.out.println("Successfully placed a lunch box order!");
 
 	}
+<<<<<<< HEAD
+	
+	
+	
+	
+	
+	//=============================================== OPTION 5 BILL ==================================================
+	public static void createOrderBill(ArrayList<Bill>orderBillArr) {
+		String userId = Helper.readString("Enter userId > ");
+		String dateOrdered  = Helper.readString("Enter month in this format : dd/MM > ");
+		int orderedMeal = Helper.readInt("Enter the price of the meal > ");
+		int orderedDrink = Helper.readInt("Enter the price of the drinks > ");
+		int orderedFruit = Helper.readInt("Enter the price of fruits > ");
+		
+		//lol
+		int dailyAmt = orderedMeal + orderedDrink + orderedFruit ;
+		
+		Bill b1 = new Bill (userId, dateOrdered, dailyAmt , orderedMeal , orderedDrink , orderedFruit);
+		
+		orderBillArr.add(b1);
+=======
 
 	public static String retrieveAllLunchBoxOrders(ArrayList<LunchBox> lunchBoxList) {
 		String output = "";
@@ -764,9 +848,25 @@ public class C206_CaseStudy {
 		String date = Helper.readString("Enter month in this format : MM/YYYY > ");
 
 		Bill ob1 = new Bill(username, menu, bill, date);
+>>>>>>> branch 'master' of https://github.com/20009188-Neo-Angela/C206_CaseStudy.git
 
 		System.out.println("Order Bill Added!");
 	}
+<<<<<<< HEAD
+	
+		
+	
+	public static String viewMonthlyBill(ArrayList<Bill>orderBillArr) {
+		
+			String output = " ";
+			int sumDailyAmt = 0;
+			output = String.format("%-10s %-10s %-10s \n", "USERID", "DATE" , "SUM OF DAILY AMOUNT");
+			for (Bill b :  orderBillArr) {
+				//monthlybill = orderBillArr + sum(Daily Amount)
+				sumDailyAmt += b.getDailyAmt();
+				output += String.format("%-10s %-10s %-15d \n", b.getID(),b.getDate(),sumDailyAmt);
+				
+=======
 
 	public static String viewOrderBill(ArrayList<Bill> orderBillArr) {
 		C206_CaseStudy.setHeader("VIEW ORDER BILL");
@@ -776,10 +876,25 @@ public class C206_CaseStudy {
 			output += String.format("%-10s %-10s %-10d %-10s \n", b.getUsername(), b.getMenu(), b.getAmount(),
 					b.getDate());
 
+>>>>>>> branch 'master' of https://github.com/20009188-Neo-Angela/C206_CaseStudy.git
 		}
 		return output;
 		//Kidsd
 	}
+<<<<<<< HEAD
+	
+	public static void deleteOrderBill(ArrayList<Bill>orderBillArr) {
+			//boolean isFound to check whether the conditions are met 
+		   boolean isFound = false;
+		   String userId = Helper.readString("Enter userId to delete > ");
+		   
+		   for (int i=0; i<orderBillArr.size(); i++){
+			if (orderBillArr.get(i) != null && orderBillArr.get(i).getID().equals(userId)) {
+			   orderBillArr.remove(i);
+			   isFound = true;
+			   System.out.println("Username: "+ userId  +" is deleted");
+			   break;
+=======
 
 	public static void deleteOrderBill(ArrayList<Bill> orderBillArr) {
 		// boolean isFound to check whether the conditions are met
@@ -792,6 +907,7 @@ public class C206_CaseStudy {
 				isFound = true;
 				System.out.println("Username: " + userDelete + " is deleted");
 				break;
+>>>>>>> branch 'master' of https://github.com/20009188-Neo-Angela/C206_CaseStudy.git
 			}
 		}
 		if (isFound == false) {
