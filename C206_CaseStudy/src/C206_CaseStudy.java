@@ -715,7 +715,6 @@ public class C206_CaseStudy {
 
 		}
 		return output;
-		//Kidsd
 	}
 
 	public static void deleteOrderBill(ArrayList<Bill> orderBillArr) {
