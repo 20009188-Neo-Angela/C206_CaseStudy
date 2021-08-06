@@ -278,8 +278,7 @@ public class C206_CaseStudy {
 		System.out.println("3. Delete Order Bill");
 	}
 
-	// ================================================ OPTION 1 USER ACCOUNT
-	// ================================================
+	//================================================= OPTION 1 USER ACCOUNT ============================================//
 
 	// Add user account
 	public static Account inputAccount() {
@@ -345,8 +344,7 @@ public class C206_CaseStudy {
 		}
 	}
 
-	// =============================================== OPTION 2 MENU ITEMS
-	// ==================================================
+	//================================================ OPTION 2 MENU ITEMS ===============================================//
 	// View items From menu bank
 	public static String viewWestern(ArrayList<western> westernArr) {
 		String output = "";
@@ -500,8 +498,7 @@ public class C206_CaseStudy {
 
 	}
 
-	// =============================================== OPTION 3 MONTHLY MENU
-	// ==================================================
+	//================================================ OPTION 3 MONTHLY MENU =============================================//
 
 	public static String randomWestern() {
 		Random rand = new Random();
@@ -628,8 +625,7 @@ public class C206_CaseStudy {
 		return output;
 	}
 
-	// =============================================== OPTION 4 LUNCH BOX ORDER
-	// ==================================================
+	//================================================ OPTION 4 LUNCH BOX ORDER ==========================================//
 	public static LunchBox inputLunchBox() {
 
 		int orderID = Helper.readInt("Enter order ID > ");
@@ -697,8 +693,7 @@ public class C206_CaseStudy {
 		}
 	}
 
-	// =============================================== OPTION 5 BILL
-	// ==================================================
+	//================================================ OPTION 5 BILL =====================================================//
 	public static void createOrderBill(ArrayList<Bill> orderBillArr) {
 		String username = Helper.readString("Enter username > ");
 		String menu = Helper.readString("Enter menu category > ");
