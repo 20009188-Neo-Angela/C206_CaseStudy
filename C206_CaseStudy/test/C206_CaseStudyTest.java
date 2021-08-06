@@ -146,26 +146,17 @@ public class C206_CaseStudyTest {
 	public void createMonthlyMenuTest() {
 		
 		//assertNotNull("Check if there is valid western items arraylist to random generate", westernArr);
+		
 		//Test if MonthlyMenu is empty 
 		assertTrue(monthlyMenu.isEmpty());
 		
-		//Test if MonthlyMenu is not empty
+
+
 		
-		// add into arrayList so that it would not be empty
-		C206_CaseStudy.addWestern(westernArr, w1);
-		C206_CaseStudy.addWestern(westernArr, w2);
-		C206_CaseStudy.addWestern(westernArr, w3);
-		C206_CaseStudy.addWestern(westernArr, w4);
-		
-		C206_CaseStudy.addAsian(asianArr, a1);
-		C206_CaseStudy.addAsian(asianArr, a2);
-		C206_CaseStudy.addAsian(asianArr, a3);
-		C206_CaseStudy.addAsian(asianArr, a4);
-		
-		String monthlyMenu = C206_CaseStudy.createMonthlyMenu();
-		assertFalse(monthlyMenu.isEmpty());
-		
-		
+		// Test is after creating MonthlyMenu is not empty
+		String testOutput = C206_CaseStudy.createMonthlyMenu();
+		assertFalse(testOutput.isEmpty());
+				
 	}
 	
 	@Test
@@ -175,25 +166,41 @@ public class C206_CaseStudyTest {
 		C206_CaseStudy.createMonthlyMenu();
 		assertFalse(C206_CaseStudy.monthlyMenu.isEmpty());
 		
+		C206_CaseStudy.createMonthlyMenu();
+		String testOutput = C206_CaseStudy.viewMonthlyMenu();
+	
 		
+		
+		// Test if the expected output String contains the menu item 
+		 if (testOutput.contains("Fries") || testOutput.contains("Pizza") ||testOutput.contains("Spaghetti")||testOutput.contains("Fish & Chips") ) {
+	            assertTrue(testOutput, true);
+	        }
+		 if (testOutput.contains("Chilli Crab") || testOutput.contains("Chicken Rice") ||testOutput.contains("Nasi Lemak")||testOutput.contains("Cai Fan") ) {
+	            assertTrue(testOutput, true);
+	        }
+		 if (testOutput.contains("Coke") || testOutput.contains("Fanta") ||testOutput.contains("Sprite")||testOutput.contains("Ayataka") ) {
+	            assertTrue(testOutput, true);
+	        }
+		 if (testOutput.contains("Apple") || testOutput.contains("Orange") ||testOutput.contains("WaterMelon")||testOutput.contains("BlueBerry") ) {
+	            assertTrue(testOutput, true);
+	        }
+		 if (testOutput.contains("Vegi Burger") || testOutput.contains("Pumpkin Soup") ||testOutput.contains("Vegetarian Meatball")||testOutput.contains("Cauliflower Rice") ) {
+	            assertTrue(testOutput, true);
+	        }
+
 			
-		// Test if the expected output String is same as the variable MonthlyMenu retrieved from the Case Study
-		String viewMenu = C206_CaseStudy.viewMonthlyMenu();
-		String testOutput = C206_CaseStudy.monthlyMenu;
-		assertEquals("Test that View Monthly Menu has the expected output ", testOutput, viewMenu);
-		
 	}
 	
 	@Test
 	public void deleteMonthlyMenuTest() {
 		
 		// Test that MonthlyMenu is not empty
-		String testCreate = C206_CaseStudy.monthlyMenu;
-		assertFalse(testCreate.isEmpty());
+		C206_CaseStudy.createMonthlyMenu();
+		assertFalse(C206_CaseStudy.monthlyMenu.isEmpty());
 		
 		// Test that after delete, monthly menu is empty
 		C206_CaseStudy.deleteMonthlyMenu();
-		assertTrue(testCreate.isEmpty());
+		assertTrue(C206_CaseStudy.monthlyMenu.isEmpty());
 		
 	}
 	
