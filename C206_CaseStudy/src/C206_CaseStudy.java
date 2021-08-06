@@ -682,8 +682,8 @@ public class C206_CaseStudy {
          }
 		
 
-//		LunchBox lb = new LunchBox(meal, drink, fruit);
-//		return lb;
+		LunchBox lb = new LunchBox(meal, drink, fruit);
+		return lb;
 		
 	}
 	
