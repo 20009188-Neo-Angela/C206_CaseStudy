@@ -26,30 +26,30 @@ public class C206_CaseStudy {
 		accountArr.add(new Account("Hannah", "12345abc", "3E2","Credit Card"));
 
 
-		westernArr.add(new western("Fries"));
-		westernArr.add(new western("Pizza"));
-		westernArr.add(new western("Spaghetti"));
-		westernArr.add(new western("Fish & Chips"));
+		westernArr.add(new western("Fries", 4));
+		westernArr.add(new western("Pizza", 2));
+		westernArr.add(new western("Spaghetti", 2));
+		westernArr.add(new western("Fish & Chips", 3));
 
-		asianArr.add(new asian("Chilli Crab"));
-		asianArr.add(new asian("Chicken Rice"));
-		asianArr.add(new asian("Nasi Lemak"));
-		asianArr.add(new asian("Cai Fan"));
+		asianArr.add(new asian("Chilli Crab", 4));
+		asianArr.add(new asian("Chicken Rice", 2));
+		asianArr.add(new asian("Nasi Lemak", 3));
+		asianArr.add(new asian("Cai Fan", 2));
 
-		drinksArr.add(new drinks("Coke"));
-		drinksArr.add(new drinks("Fanta"));
-		drinksArr.add(new drinks("Sprite"));
-		drinksArr.add(new drinks("Ayataka"));
+		drinksArr.add(new drinks("Coke", 1));
+		drinksArr.add(new drinks("Fanta", 1));
+		drinksArr.add(new drinks("Sprite", 1));
+		drinksArr.add(new drinks("Ayataka", 1));
 
-		fruitsArr.add(new Fruits("Apple"));
-		fruitsArr.add(new Fruits("Orange"));
-		fruitsArr.add(new Fruits("WaterMelon"));
-		fruitsArr.add(new Fruits("BlueBerry"));
+		fruitsArr.add(new Fruits("Apple", 2));
+		fruitsArr.add(new Fruits("Orange", 2));
+		fruitsArr.add(new Fruits("WaterMelon", 2));
+		fruitsArr.add(new Fruits("BlueBerry", 2));
 		
-		vegetarianArr.add(new Vegetarian("Vegi Burger"));
-		vegetarianArr.add(new Vegetarian("Pumpkin Soup"));
-		vegetarianArr.add(new Vegetarian("Vegetarian Meatball"));
-		vegetarianArr.add(new Vegetarian("Cauliflower RiceA"));
+		vegetarianArr.add(new Vegetarian("Vegi Burger", 2));
+		vegetarianArr.add(new Vegetarian("Pumpkin Soup", 2));
+		vegetarianArr.add(new Vegetarian("Vegetarian Meatball", 2));
+		vegetarianArr.add(new Vegetarian("Cauliflower RiceA", 2));
 
 		orderBillArr.add(new Bill("t0326720i","drinks", 1000 , "01/2012"));
 		orderBillArr.add(new Bill("lol", "western", 1500, "02/2021"));
@@ -109,28 +109,34 @@ public class C206_CaseStudy {
 					if (category.equalsIgnoreCase("western")) {
 						for (western i : westernArr) {
 							String item = Helper.readString("Choose a item to delete: ");
-							western itemw = new western(item);
-							removeWestern(westernArr, itemw);
+							if (i.getName().equalsIgnoreCase(item)) {
+								removeWestern(westernArr, i);
+							}
+							
 						}
 
 					} else if (category.equalsIgnoreCase("asian")) {
 						for (asian i : asianArr) {
 							String item = Helper.readString("Choose a item to delete: ");
-							asian itemw = new asian(item);
-							removeAsian(asianArr, itemw);
+							if (i.getName().equalsIgnoreCase(item)) {
+								removeAsian(asianArr, i);
+							}
+								
 						}
 					} else if (category.equalsIgnoreCase("drinks")) {
 
 						for (drinks i : drinksArr) {
 							String item = Helper.readString("Choose a item to delete: ");
-							drinks itemw = new drinks(item);
-							removeDrinks(drinksArr, itemw);
+							if (i.getName().equalsIgnoreCase(item)) {
+								removeDrinks(drinksArr, i);
+							}
 						}
 					} else if (category.equalsIgnoreCase("fruits")) {
 						for (Fruits i : fruitsArr) {
 							String item = Helper.readString("Choose a item to delete: ");
-							Fruits itemw = new Fruits(item);
-							removeFruits(fruitsArr, itemw);
+							if (i.getName().equalsIgnoreCase(item)) {
+								removeFruits(fruitsArr, i);
+							}
 
 							
 						}
@@ -144,34 +150,39 @@ public class C206_CaseStudy {
 
 					if (category.equalsIgnoreCase("western")) {
 						String item = Helper.readString("Choose a item to add: ");
-						western itemw = new western(item);
+						int cost = Helper.readInt("Price of the item: ");
+						western itemw = new western(item, cost);
 						addWestern(westernArr, itemw);
 
 					} else if (category.equalsIgnoreCase("asian")) {
 						for (asian i : asianArr) {
 							String item = Helper.readString("Choose a item to add: ");
-							asian items = new asian(item);
-							addAsian(asianArr, items);
+							int cost = Helper.readInt("Price of the item: ");
+							asian itemw = new asian(item, cost);
+							addAsian(asianArr, itemw);
 						}
 					} else if (category.equalsIgnoreCase("drinks")) {
 
 						for (drinks i : drinksArr) {
 							String item = Helper.readString("Choose a item to add: ");
-							drinks itemw = new drinks(item);
+							int cost = Helper.readInt("Price of the item: ");
+							drinks itemw = new drinks(item, cost);
 							addDrinks(drinksArr,itemw);
 							
 						}
 					} else if (category.equalsIgnoreCase("fruits")) {
 						for (Fruits i : fruitsArr) {
 							String item = Helper.readString("Choose a item to add: ");
-							Fruits itemw = new Fruits(item);
+							int cost = Helper.readInt("Price of the item: ");
+							Fruits itemw = new Fruits(item, cost);
 							addFruits(fruitsArr, itemw);
 						}
 
 					}else if (category.equalsIgnoreCase("vegetarian")) {
 						for (Vegetarian i : vegetarianArr) {
 							String item = Helper.readString("Choose a item to add: ");
-							Vegetarian itemw = new Vegetarian(item);
+							int cost = Helper.readInt("Price of the item: ");
+							Vegetarian itemw = new Vegetarian(item, cost);
 							addVegetarian(vegetarianArr, itemw);
 									
 						}
@@ -391,7 +402,7 @@ public class C206_CaseStudy {
 		String output = "";
 		
 		for (western i : westernArr) {
-			output += String.format("Western: %10s \n", i.getName());
+			output += String.format("Western: %10s Price: $%d \n", i.getName(), i.getPrice());
 		}
 		
 		
@@ -402,7 +413,7 @@ public class C206_CaseStudy {
 		String output = "";
 		
 		for (asian i : asianArr) {
-			output += String.format("Asian: %10s \n", i.getName());
+			output += String.format("Asian: %10s Price: $%d \n", i.getName(), i.getPrice());
 		}
 		
 		
@@ -413,7 +424,7 @@ public class C206_CaseStudy {
 		String output = "";
 		
 		for (drinks i : drinksArr) {
-			output += String.format("Drinks: %10s \n", i.getName());
+			output += String.format("Drinks: %10s Price: $%d \n", i.getName(), i.getPrice());
 		}
 		
 		
@@ -424,7 +435,7 @@ public class C206_CaseStudy {
 		String output = "";
 		
 		for (Fruits i : fruitsArr) {
-			output += String.format("Fruits: %10s \n", i.getName());
+			output += String.format("Fruits: %10s Price: $%d \n", i.getName(), i.getPrice());
 		}
 		
 		
@@ -435,7 +446,7 @@ public class C206_CaseStudy {
 		String output = "";
 		
 		for (Vegetarian i : vegetarianArr) {
-			output += String.format("%10s", i.getName());
+			output += String.format("Vegetarian: %10s Price: $%d\n", i.getName(), i.getPrice());
 		}
 		
 		
@@ -682,6 +693,7 @@ public class C206_CaseStudy {
              monthlyMenu += choices;
 
          }
+		 }
 		
 
 //		LunchBox lb = new LunchBox(meal, drink, fruit);
