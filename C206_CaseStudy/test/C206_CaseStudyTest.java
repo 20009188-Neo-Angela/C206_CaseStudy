@@ -102,10 +102,10 @@ public class C206_CaseStudyTest {
 			//The item just added is as same as the first item of the list
 			C206_CaseStudy.addAccount(accountArr, acc1);		
 			assertEquals("Test that Account arraylist size is 1", 1, accountArr.size());
-			assertSame("Test that Chromebook is added", acc1, accountArr.get(0));
+			assertSame("Test that Account is added", acc1, accountArr.get(0));
 			
 			//Add another account. test The size of the list is 2? - normal
-			//The account just added is as same as the second item of the list
+			//The account just added is as same as the second account of the list
 			C206_CaseStudy.addAccount(accountArr, acc2);
 			assertEquals("Test that Account arraylist size is 2", 2, accountArr.size());
 			assertSame("Test that Account is added", acc2, accountArr.get(1));
@@ -122,14 +122,14 @@ public class C206_CaseStudyTest {
 			//Given an empty list, after adding 2 items, test if the size of the list is 2 - normal
 			C206_CaseStudy.addAccount(accountArr, acc1);
 			C206_CaseStudy.addAccount(accountArr, acc2);
-			assertEquals("Test that Camcorder arraylist size is 2", 2, accountArr.size());
+			assertEquals("Test that Account arraylist size is 2", 2, accountArr.size());
 			
-			//test if the expected output string same as the list of Account retrieved from the SourceCentre	
+			//test if the expected output string same as the list of Account retrieved from the CaseStudy	
 			viewAccount= C206_CaseStudy.retrieveAccount(accountArr);
 			testOutput = String.format("%-10s %-15s %-12s %-10s\n", accountArr.get(0).toString());
 			testOutput += String.format("%-10s %-15s %-12s %-10s\n", accountArr.get(1).toString() );
 		
-			assertEquals("Test that ViewAllCamcorderlist", testOutput, viewAccount);
+			assertEquals("Test that ViewAccount", testOutput, viewAccount);
 			
 		}
 
