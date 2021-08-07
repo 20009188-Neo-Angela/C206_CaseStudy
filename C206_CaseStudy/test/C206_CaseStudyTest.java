@@ -269,6 +269,7 @@ public class C206_CaseStudyTest {
 		C206_CaseStudy.addDailyMenu(menuList, mm1);
 		assertSame("Check that Menu is added", mm1, menuList.get(0));
 		C206_CaseStudy.updateDailyMenu(menuList);
+		assertNotSame(mm1, menuList.get(0));
 		
 	
 		

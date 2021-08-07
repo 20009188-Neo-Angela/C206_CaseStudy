@@ -713,7 +713,8 @@ public class C206_CaseStudy {
 			System.out.println(viewMonthlyMenu());
 			int index = Helper.readInt("Enter day to edit menu > ");
 			index = index - 1;
-			String userWestern = Helper.readString("Enter Wester Dish > ");
+			System.out.println(menuList.get(index));
+			String userWestern = Helper.readString("Enter Western Dish > ");
 			String userAsian = Helper.readString("Enter Asian Dish > ");
 			String userVeg = Helper.readString("Enter Vegetarian Dish > ");
 			String userDrink1 = Helper.readString("Enter Drink 1 > ");
