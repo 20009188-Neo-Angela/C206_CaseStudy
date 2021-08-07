@@ -373,6 +373,7 @@ public class C206_CaseStudyTest {
 	
 	
 	//=============================================== OPTION 5 BILL =============================================================
+	//Syazwan's bill test methods ->
 	public void createOrderBillTest() {
 		//  orderBillArr is not null, so that can add a new item - boundary
 				assertNotNull("Check if there is valid Menu arraylist to add to", orderBillArr);
