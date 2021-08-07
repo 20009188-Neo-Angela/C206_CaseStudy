@@ -328,6 +328,33 @@ public class C206_CaseStudyTest {
 		
 	}
 	
+	@Test
+	public void doFoundLunchBoxOrder() {
+
+		// Test if LunchBox list is not null but empty - boundary
+		assertNotNull("Test if there is valid LunchBox arraylist to retrieve lunch box orders", lunchBoxList);
+		
+		// normal condition
+		C206_CaseStudy.addLunchBoxOrder(lunchBoxList, lb2);
+		assertEquals("Check that lunch box order ID matched", 456, lunchBoxList.get(0).getOrderID());
+		assertNotNull("Test that the lunch box order is not empty", lb2);
+		// error condition
+		Boolean ok = C206_CaseStudy.doFoundLunchBoxOrder(lunchBoxList, 456 - 1) ;
+		char confirm = 'Y';
+		assertFalse("Test if the lunch box order ID is found?", ok);
+		//error condition
+		C206_CaseStudy.addLunchBoxOrder(lunchBoxList, lb3);
+		ok = C206_CaseStudy.doFoundLunchBoxOrder(lunchBoxList, 777);
+		assertFalse("Test that lunch box order ID does not exist is NOT found?", ok);
+		//error condition
+		ok = C206_CaseStudy.doFoundLunchBoxOrder(lunchBoxList, 777);
+		assertNotSame("Test if the lunch box order ID matches the records?", ok);
+		// error condition
+		C206_CaseStudy.addLunchBoxOrder(lunchBoxList, lb1);
+		assertNotEquals("Check that lunch box order ID matched", 789, lunchBoxList.get(2).getOrderID());
+
+	}
+	
 	
 	
 	
