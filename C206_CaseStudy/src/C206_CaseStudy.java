@@ -530,7 +530,7 @@ public class C206_CaseStudy {
 			System.out.println("Drink added");
 		}
 
-	}
+	} 
 
 	public static void addFruits(ArrayList<Fruits> fruitsArr, String category) {
 		if (category.equalsIgnoreCase("fruits")) {

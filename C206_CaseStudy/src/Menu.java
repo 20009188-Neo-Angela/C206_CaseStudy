@@ -17,7 +17,7 @@ public class Menu {
 		this.ID = ID;
 		this.Western = Western;
 		this.Asian = Asian;
-		this.Vegetarian = Vegetarian;
+		this.Vegetarian = Vegetarian; 
 		this.Drink1 = Drink1;
 		this.Drink2 = Drink2;
 		this.Fruit1 = Fruit1;

@@ -231,7 +231,7 @@ public class C206_CaseStudyTest {
 		assertSame("Check that Menu is added", mm2, menuList.get(1));
 				
 	}
-	
+	 
 	@Test
 	public void retrieveMonthlyMenuTest() {
 		
