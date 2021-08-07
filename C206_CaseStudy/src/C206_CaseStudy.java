@@ -358,6 +358,8 @@ public class C206_CaseStudy {
 			Account a = itr.next();
 			if (username.equals(a.getUsername()) && password.equals(a.getPassword())) {
 				itr.remove();
+				
+				System.out.println("Account Deleted.");
 			}
 		}
 	}
