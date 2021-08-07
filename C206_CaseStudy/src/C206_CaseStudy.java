@@ -170,7 +170,6 @@ public class C206_CaseStudy {
 
 					// Angela Lunch Box Order
 					lunchBox();
-					
 					int choice = Helper.readInt("Enter option > ");
 
 					if (choice == 1) {
@@ -180,7 +179,7 @@ public class C206_CaseStudy {
 
 						C206_CaseStudy.setHeader("PLACE LUNCH BOX ORDERS");
 
-						for (int i = 0; i < 7; i++) {
+						for (int i = 0; i < 5; i++) {
 
 							LunchBox lb = inputLunchBox();
 							System.out.println();
@@ -567,21 +566,6 @@ public class C206_CaseStudy {
 		return fruitsArr.get(randomInt).getName();
 
 	}
-	
-	
-	public static void randomMenuList() {
-		for (int k =0; k< 32; k++) {
-			String Western = randomWestern();
-			String Asian = randomAsian();
-			String Vegetarian = randomVegetarian();
-			String Drink1 = randomDrink();
-			String Drink2 = randomDrink();
-			String Fruit1 = randomFruit();
-			String Fruit2 = randomFruit();
-			Menu mm = new Menu(k, Western, Asian, Vegetarian, Drink1, Drink2, Fruit1, Fruit2);
-			addDailyMenu(menuList, mm);
-		}
-	}
 
 	public static String createMonthlyMenu() {
 
@@ -592,9 +576,6 @@ public class C206_CaseStudy {
 		int[] days = {
 				0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31
 		};
-		
-		
-		
 		String[] months = {
 				"JANUARY", "FEBRUARY", "MARCH",
 				"APRIL", "MAY", "JUNE",
@@ -622,31 +603,29 @@ public class C206_CaseStudy {
 
 		for (int i = 1, j = firstDay; i <= days[month]; i++, j++) {
 		if (j <= maxday) {
-//			String Western = randomWestern();
-//			String Asian = randomAsian();
-//			String Vegetarian = randomVegetarian();
-//			String Drink1 = randomDrink();
-//			String Drink2 = randomDrink();
-//			String Fruit1 = randomFruit();
-//			String Fruit2 = randomFruit();
+			String Western = randomWestern();
+			String Asian = randomAsian();
+			String Vegetarian = randomVegetarian();
+			String Drink1 = randomDrink();
+			String Drink2 = randomDrink();
+			String Fruit1 = randomFruit();
+			String Fruit2 = randomFruit();
 			
 			monthlyMenu += String.format("%5d ", i);
 			monthlyMenu += months[month-1];
 			monthlyMenu += "  (" + dayname[j] + ")\n"; 
 			monthlyMenu += "  --------------------------\n";
 
-//			monthlyMenu += String.format("     %5s: %s \n", "Western",  Western);
-//			monthlyMenu += String.format("     %5s: %s \n", "Asian",  Asian);
-//			monthlyMenu += String.format("     %5s: %s \n", "Vegetarian",  Vegetarian);
-//			monthlyMenu += String.format("     %5s: %s \n", "Drinks",  Drink1);
-//			monthlyMenu += String.format("     %5s: %s \n", "Drinks",  Drink2);
-//			monthlyMenu += String.format("     %5s: %s \n", "Fruit",  Fruit1);
-//			monthlyMenu += String.format("     %5s: %s \n\n", "Fruit",  Fruit2);
-			randomMenuList();
-			monthlyMenu+=menuList.get(i-1).toString();
-				
-		
-		
+			monthlyMenu += String.format("     %5s: %s \n", "Western",  Western);
+			monthlyMenu += String.format("     %5s: %s \n", "Asian",  Asian);
+			monthlyMenu += String.format("     %5s: %s \n", "Vegetarian",  Vegetarian);
+			monthlyMenu += String.format("     %5s: %s \n", "Drinks",  Drink1);
+			monthlyMenu += String.format("     %5s: %s \n", "Drinks",  Drink2);
+			monthlyMenu += String.format("     %5s: %s \n", "Fruit",  Fruit1);
+			monthlyMenu += String.format("     %5s: %s \n\n", "Fruit",  Fruit2);
+			
+			Menu mm = new Menu(i, Western, Asian, Vegetarian, Drink1, Drink2, Fruit1, Fruit2);
+			addDailyMenu(menuList, mm);
 					
 		}
 
@@ -697,79 +676,9 @@ public class C206_CaseStudy {
 		      output = "There is no menu to delete!";
 
 		    } else {
-//		      monthlyMenu = "";
-		      int index = Helper.readInt("Enter day to delete > ");
-		      menuList.set(index, null);
-		      String[] months = {
-						"JANUARY", "FEBRUARY", "MARCH",
-						"APRIL", "MAY", "JUNE",
-						"JULY", "AUGUST", "SEPTEMBER",
-						"OCTOBER", "NOVEMBER", "DECEMBER"
-				};
-
-				String[] dayname = {
-						"", "Monday", "Tuesday", "Wednesday",
-						"Thursday", "Friday", "Saturday",
-						"Sunday"
-				};
-
-
-
-				// print calendar header
-				// Display the month and year
-				monthlyMenu = ("\n        "+ months[month-1] + " " + year+ "\n");
-
-				// Display the lines
-				monthlyMenu += (" __________________________________\n\n");
-
-				int maxday = 5;
-				int fullweek = 7;
-
-				for (int i = 1, j = firstDay; i <= days[month]; i++, j++) {
-				if (j <= maxday) {
-//					String Western = randomWestern();
-//					String Asian = randomAsian();
-//					String Vegetarian = randomVegetarian();
-//					String Drink1 = randomDrink();
-//					String Drink2 = randomDrink();
-//					String Fruit1 = randomFruit();
-//					String Fruit2 = randomFruit();
-					
-					monthlyMenu += String.format("%5d ", i);
-					monthlyMenu += months[month-1];
-					monthlyMenu += "  (" + dayname[j] + ")\n"; 
-					monthlyMenu += "  --------------------------\n";
-
-//					monthlyMenu += String.format("     %5s: %s \n", "Western",  Western);
-//					monthlyMenu += String.format("     %5s: %s \n", "Asian",  Asian);
-//					monthlyMenu += String.format("     %5s: %s \n", "Vegetarian",  Vegetarian);
-//					monthlyMenu += String.format("     %5s: %s \n", "Drinks",  Drink1);
-//					monthlyMenu += String.format("     %5s: %s \n", "Drinks",  Drink2);
-//					monthlyMenu += String.format("     %5s: %s \n", "Fruit",  Fruit1);
-//					monthlyMenu += String.format("     %5s: %s \n\n", "Fruit",  Fruit2);
-					randomMenuList();
-					monthlyMenu+=menuList.get(i-1).toString();
-						
-				
-				
-							
-				}
-
-						if (j > maxday && j <= fullweek) {
-							monthlyMenu += String.format("%5d ", i);
-							monthlyMenu += months[month - 1];
-
-							monthlyMenu += "  (" + dayname[j] + ")\n";
-							monthlyMenu += "  --------------------------\n";
-							monthlyMenu += "     WEEKEND!\n\n";
-
-						}
-						if (j == fullweek) {
-							j = 0;
-						}
-					}
+		      monthlyMenu = "";
 		      output = "Menu deleted!";
-//		      menuList.clear();
+		      menuList.clear();
 		    }
 		    return output;
 		  }

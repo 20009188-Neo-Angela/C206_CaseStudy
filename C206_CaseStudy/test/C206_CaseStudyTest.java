@@ -250,7 +250,7 @@ public class C206_CaseStudyTest {
 		
 		// Test that after delete, monthly menu is empty
 		C206_CaseStudy.deleteMonthlyMenu();
-		assertNotNull(menuList.isEmpty());
+		assertNull(menuList);
 		
 	}
 	
