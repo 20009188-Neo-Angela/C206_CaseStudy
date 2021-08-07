@@ -385,6 +385,10 @@ public class C206_CaseStudyTest {
 	}
 	@After
 	public void tearDown() throws Exception {
+		
+		acc1 = null;
+		acc2 = null;
+		
 		lb1 = null;
 		lb2 = null;
 		lb3 = null;
