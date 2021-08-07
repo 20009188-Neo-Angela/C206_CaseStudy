@@ -316,7 +316,9 @@ public class C206_CaseStudy {
 	}
 
 	// View User Account
-
+	
+	
+	// to retrieve
 	public static String retrieveAccount(ArrayList<Account> accountArr) {
 		String output = "";
 

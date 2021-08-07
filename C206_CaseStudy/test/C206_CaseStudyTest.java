@@ -194,7 +194,7 @@ public class C206_CaseStudyTest {
 		    accountArr.clear();
 		    assertEquals("Test that Account arraylist is empty", 0, accountArr.size());
 
-		    // Test that list can't be cleared if it's empty
+		    // Test that list can't be cleared if it is empty
 		    assertEquals("Test that Account arraylist can't be cleared if it's empty", 0, accountArr.size());
 		    accountArr.clear();
 		    
