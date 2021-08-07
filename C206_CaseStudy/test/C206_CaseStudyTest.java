@@ -376,39 +376,23 @@ public class C206_CaseStudyTest {
 	//=============================================== OPTION 5 BILL =============================================================
 	//Syazwan's bill test methods ->
 
-	public void createOrderBill() {
+	public void inputBill() {
 		//  orderBillArr is not null, so that can add a new item - boundary
 		assertNotNull("Check if there is valid Menu arraylist to add to", orderBillArr);
+	}
+	public void createOrderBill() {
 
 		//Given an empty list, after adding 1 item, the size of the list is 1 - normal
 		C206_CaseStudy.createOrderBill(orderBillArr, b1);
 		assertEquals("Check that Menu arraylist size is 1", 1, orderBillArr.size());
 
 		//The item just added is as same as the first item of the list
-		assertSame("Check that Menu is added", mm1, orderBillArr.get(0));
+		assertSame("Check that Menu is added", b1, orderBillArr.get(0));
 
 		//Add another item. test The size of the list is 2? -normal
 		C206_CaseStudy.createOrderBill(orderBillArr, b2);
 		assertEquals("Check that Menu arraylist size is 2", 2, orderBillArr.size());
 		assertSame("Check that Menu is added", b2, orderBillArr.get(1));
-
-	public void inputBill() {
-	//  orderBillArr is not null, so that can add a new item - boundary
-					assertNotNull("Check if there is valid Menu arraylist to add to", orderBillArr);
-	}
-	public void createOrderBill() {
-		
-				//Given an empty list, after adding 1 item, the size of the list is 1 - normal
-				C206_CaseStudy.createOrderBill(orderBillArr, b1);
-				assertEquals("Check that Menu arraylist size is 1", 1, orderBillArr.size());
-				
-				//The item just added is as same as the first item of the list
-				assertSame("Check that Menu is added", b1, orderBillArr.get(0));
-				
-				//Add another item. test The size of the list is 2? -normal
-				C206_CaseStudy.createOrderBill(orderBillArr, b2);
-				assertEquals("Check that Menu arraylist size is 2", 2, orderBillArr.size());
-				assertSame("Check that Menu is added", b2, orderBillArr.get(1));
 
 	}
 	public void viewMonthlyBill() {
