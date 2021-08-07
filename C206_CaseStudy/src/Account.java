@@ -47,8 +47,6 @@ public class Account {
 
 	public String getPaymentMethods() {
 		return paymentMethods;
-	}
-	
-	
+	}	
 	
 }

@@ -115,6 +115,7 @@ public class C206_CaseStudyTest {
 
 	// ================================================ OPTION 1 USER ACCOUNT
 	// ================================================
+	@Test
 	public void addAccount() {
 		// Account list is not null, so that can add a new item - boundary
 		assertNotNull("Test if there is valid Account arraylist to add to", accountArr);
@@ -132,6 +133,7 @@ public class C206_CaseStudyTest {
 		assertSame("Test that Account is added", acc2, accountArr.get(1));
 	}
 
+	@Test
 	public void viewAccount() {
 		// Test if Account list is not null but empty -boundary
 		assertNotNull("Test if there is valid Account arraylist to retrieve item", accountArr);
@@ -156,7 +158,8 @@ public class C206_CaseStudyTest {
 		assertEquals("Test that ViewAccount", testOutput, viewAccount);
 
 	}
-
+	
+	@Test
 	public void deleteAccount() {
 		// delete account testing
 		// Test if list is not null but empty -boundary
