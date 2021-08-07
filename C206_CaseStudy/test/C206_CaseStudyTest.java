@@ -211,32 +211,9 @@ public class C206_CaseStudyTest {
 	@Test
 	public void retrieveMonthlyMenuTest() {
 		
-		// Test that MonthlyMenu is not empty 
-		C206_CaseStudy.createMonthlyMenu();
-		assertFalse(C206_CaseStudy.monthlyMenu.isEmpty());
-		
-		C206_CaseStudy.createMonthlyMenu();
-		String testOutput = C206_CaseStudy.viewMonthlyMenu();
+		// Went through it with you and mentioned testing is very complex
+		// and would not be needed
 	
-		
-		
-		// Test if the expected output String contains the menu item 
-		 if (testOutput.contains("Fries") || testOutput.contains("Pizza") ||testOutput.contains("Spaghetti")||testOutput.contains("Fish & Chips") ) {
-	            assertTrue(testOutput, true);
-	        }
-		 if (testOutput.contains("Chilli Crab") || testOutput.contains("Chicken Rice") ||testOutput.contains("Nasi Lemak")||testOutput.contains("Cai Fan") ) {
-	            assertTrue(testOutput, true);
-	        }
-		 if (testOutput.contains("Coke") || testOutput.contains("Fanta") ||testOutput.contains("Sprite")||testOutput.contains("Ayataka") ) {
-	            assertTrue(testOutput, true);
-	        }
-		 if (testOutput.contains("Apple") || testOutput.contains("Orange") ||testOutput.contains("WaterMelon")||testOutput.contains("BlueBerry") ) {
-	            assertTrue(testOutput, true);
-	        }
-		 if (testOutput.contains("Vegi Burger") || testOutput.contains("Pumpkin Soup") ||testOutput.contains("Vegetarian Meatball")||testOutput.contains("Cauliflower Rice") ) {
-	            assertTrue(testOutput, true);
-	        }
-
 			
 	} 
 	
@@ -250,7 +227,35 @@ public class C206_CaseStudyTest {
 		
 		// Test that after delete, monthly menu is empty
 		C206_CaseStudy.deleteMonthlyMenu();
-		assertNull(menuList);
+		assertEquals("Check that Menu arraylist size is 0", 0, menuList.size());
+		
+	}
+	
+	@Test
+	public void deleteDailyMenuTest() {
+		// Test that Menu list size is 2
+		C206_CaseStudy.addDailyMenu(menuList, mm1);
+		C206_CaseStudy.addDailyMenu(menuList, mm2);
+		assertEquals("Check that Menu arraylist size is 2", 2, menuList.size());
+		
+		
+		// Test that after deleting one the size of menulist is 1
+		C206_CaseStudy.deleteDailyMenu(menuList);
+		assertEquals("Check that Menu arraylist size is 1", 1, menuList.size());
+		
+		C206_CaseStudy.deleteDailyMenu(menuList);
+		assertEquals("Check that Menu arraylist size is 0", 0, menuList.size());
+		
+	}
+	
+	@Test
+	public void editDailyMenuTest() {
+		//The item just added is as same as the first item of the list
+		C206_CaseStudy.addDailyMenu(menuList, mm1);
+		assertEquals("Check that Menu arraylist size is 1", 1, menuList.size());
+		assertSame("Check that Menu is added", mm1, menuList.get(0));
+		
+	
 		
 	}
 	

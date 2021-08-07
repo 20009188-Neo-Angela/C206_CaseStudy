@@ -33,30 +33,59 @@ public class Menu {
 		return Western;
 	} 
 	
+	public void setWestern(String Western) {
+		this.Western = Western;
+	}
+	
+	
 	public String getAsian() {
 		return Asian;
+	}
+	
+	public void setAsian(String Asian) {
+		this.Asian = Asian;
 	}
 	
 	public String getVegetarian() {
 		return Vegetarian;
 	}
 	
+	public void setVegetarian(String Vegetarian) {
+		this.Vegetarian = Vegetarian;
+	}
+	
+	
 	public String getDrink1() {
 		return Drink1;
+	}
+	
+	public void setDrink1(String Drink1) {
+		this.Drink1 = Drink1;
 	}
 	
 	public String getDrink2() {
 		return Drink2;
 	}
 	
+	public void setDrink2(String Drink2) {
+		this.Drink2 = Drink2;
+	}
+	
 	public String getFruit1() {
 		return Fruit1;
+	}
+	
+	public void setFruit1(String Fruit1) {
+		this.Fruit1 = Fruit1;
 	}
 	
 	public String getFruit2() {
 		return Fruit2;
 	}
 	
+	public void setFruit2(String Fruit2) {
+		this.Fruit2 = Fruit2;
+	}
 	
 	
 	public String toString() {
