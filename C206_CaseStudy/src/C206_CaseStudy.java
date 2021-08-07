@@ -213,7 +213,7 @@ public class C206_CaseStudy {
 
 					if (billOptions == 1) {
 						C206_CaseStudy.setHeader("CREATE ORDER BILL ");
-						createOrderBill(orderBillArr);
+						createOrderBill(orderBillArr, null);
 					} else if (billOptions == 2) {
 						C206_CaseStudy.setHeader("VIEW ORDER BILL");
 						String orderBill = viewMonthlyBill(orderBillArr);
@@ -749,7 +749,7 @@ public class C206_CaseStudy {
 	}
 
 	//================================================ OPTION 5 BILL =====================================================//
-	public static void createOrderBill(ArrayList<Bill>orderBillArr) {
+	public static Bill inputBill() {
 		String userId = Helper.readString("Enter userId > ");
 		String dateOrdered  = Helper.readString("Enter month in this format : dd/MM > ");
 		int orderedMeal = Helper.readInt("Enter the price of the meal > ");
@@ -759,6 +759,11 @@ public class C206_CaseStudy {
 		int dailyAmt = orderedMeal + orderedDrink + orderedFruit ;
 		
 		Bill b1 = new Bill (userId, dateOrdered, dailyAmt , orderedMeal , orderedDrink , orderedFruit);
+		return b1;
+	}
+	
+	public static void createOrderBill(ArrayList<Bill>orderBillArr, Bill b1) {
+		
 		
 		orderBillArr.add(b1);
 
