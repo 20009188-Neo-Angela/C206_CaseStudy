@@ -23,6 +23,15 @@ public class Account {
 		this.formClass = formClass;
 		this.paymentMethods = paymentMethods;
 	}
+	
+	public String toString() {
+		
+		// Write your codes here
+		String itemInfo = String.format("%-10s %-15s %-12s %-10s", 
+				username,password,formClass,paymentMethods);			
+		
+		return itemInfo;
+	}
 
 	public String getUsername() {
 		return username;

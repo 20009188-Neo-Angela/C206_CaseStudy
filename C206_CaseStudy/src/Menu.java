@@ -17,7 +17,7 @@ public class Menu {
 		this.ID = ID;
 		this.Western = Western;
 		this.Asian = Asian;
-		this.Vegetarian = Vegetarian;
+		this.Vegetarian = Vegetarian; 
 		this.Drink1 = Drink1;
 		this.Drink2 = Drink2;
 		this.Fruit1 = Fruit1;
@@ -27,6 +27,10 @@ public class Menu {
 	
 	public int getID() {
 		return ID;
+	}
+	
+	public void setID(int ID) {
+		this.ID = ID;
 	}
 	
 	public String getWestern() {
@@ -89,7 +93,8 @@ public class Menu {
 	
 	
 	public String toString() {
-		String dailyInfo = String.format("     %5s: %s \n", "Western",  Western);
+		String dailyInfo = String.format("     %5s: %s \n", "ID",  ID);
+		dailyInfo = String.format("     %5s: %s \n", "Western",  Western);
 		dailyInfo += String.format("     %5s: %s \n", "Asian",  Asian);
 		dailyInfo += String.format("     %5s: %s \n", "Vegetarian",  Vegetarian);
 		dailyInfo += String.format("     %5s: %s \n", "Drinks",  Drink1);
