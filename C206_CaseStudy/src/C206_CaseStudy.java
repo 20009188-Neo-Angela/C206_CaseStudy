@@ -322,8 +322,7 @@ public class C206_CaseStudy {
 
 		for (Account a : accountArr) {
 
-			output += String.format("%-10s %-15s %-12s %-10s\n", a.getUsername(), a.getPassword(), a.getFormClass(),
-					a.getPaymentMethods());
+			output += String.format("%-50s \n", a.toString());
 		}
 		return output;
 	}
@@ -341,8 +340,7 @@ public class C206_CaseStudy {
 
 		for (Account a : accountArr) {
 
-			output += String.format("%-10s %-15s %-12s %-10s\n", a.getUsername(), a.getPassword(), a.getFormClass(),
-					a.getPaymentMethods());
+			output += String.format("%-50s \n", a.toString());
 		}
 		return output;
 	}

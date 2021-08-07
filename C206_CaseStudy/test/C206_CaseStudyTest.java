@@ -128,6 +128,8 @@ public class C206_CaseStudyTest {
 	}
 	
 	//================================================ OPTION 1 USER ACCOUNT  ================================================
+	
+		@Test
 		public void addAccount() {
 			// Account list is not null, so that can add a new item - boundary
 			assertNotNull("Test if there is valid Account arraylist to add to", accountArr);
@@ -144,7 +146,9 @@ public class C206_CaseStudyTest {
 			assertEquals("Test that Account arraylist size is 2", 2, accountArr.size());
 			assertSame("Test that Account is added", acc2, accountArr.get(1));
 		}
-		public void viewAccount() {
+		
+		@Test
+		public void viewAccountTest() {
 			// Test if Account list is not null but empty -boundary
 			assertNotNull("Test if there is valid Account arraylist to retrieve item", accountArr);
 			
@@ -160,14 +164,16 @@ public class C206_CaseStudyTest {
 			
 			//test if the expected output string same as the list of Account retrieved from the CaseStudy	
 			viewAccount= C206_CaseStudy.retrieveAccount(accountArr);
-			testOutput = String.format("%-10s %-15s %-12s %-10s\n", accountArr.get(0).toString());
-			testOutput += String.format("%-10s %-15s %-12s %-10s\n", accountArr.get(1).toString() );
+			testOutput = String.format("%-50s \n", accountArr.get(0).toString());
+			testOutput += String.format("%-50s \n", accountArr.get(1).toString() );
 		
 			assertEquals("Test that ViewAccount", testOutput, viewAccount);
 			
 		}
 
+		@Test
 		public void deleteAccount( ) {
+			
 			// delete account testing
 			// Test if list is not null but empty -boundary
 			assertNotNull("Test if there is valid Account arraylist to delete from", accountArr);
