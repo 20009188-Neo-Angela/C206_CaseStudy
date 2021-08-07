@@ -241,7 +241,7 @@ public class C206_CaseStudyTest {
 		assertFalse(menuList.isEmpty());
 		
 		// Test that after delete, monthly menu is empty
-		C206_CaseStudy.deleteMonthlyMenu();
+		C206_CaseStudy.doDeleteMonthlyMenu(menuList);
 		assertEquals("Check that Menu arraylist size is 0", 0, menuList.size());
 		
 	}
@@ -255,10 +255,10 @@ public class C206_CaseStudyTest {
 		
 		
 		// Test that after deleting one the size of menulist is 1
-		C206_CaseStudy.deleteDailyMenu(menuList);
+		C206_CaseStudy.doDeleteDailyMenu(menuList, 2);
 		assertEquals("Check that Menu arraylist size is 1", 1, menuList.size());
 		
-		C206_CaseStudy.deleteDailyMenu(menuList);
+		C206_CaseStudy.doDeleteDailyMenu(menuList, 1);
 		assertEquals("Check that Menu arraylist size is 0", 0, menuList.size());
 		
 	}
@@ -267,12 +267,11 @@ public class C206_CaseStudyTest {
 	public void editDailyMenuTest() {
 		//The item just added is as same as the first item of the list
 		C206_CaseStudy.addDailyMenu(menuList, mm1);
+		C206_CaseStudy.addDailyMenu(menuList, mm2);
 		assertSame("Check that Menu is added", mm1, menuList.get(0));
-		C206_CaseStudy.updateDailyMenu(menuList);
+		assertSame(mm2, menuList.get(1));
+		C206_CaseStudy.doEditDailyMenu(menuList, 0, 4, "vv", "nn", "nn",  "nnn", "mm", "mm", "mm");
 		assertNotSame(mm1, menuList.get(0));
-		
-	
-		
 	}
 	
 	//=============================================== OPTION 4 LUNCH BOX ORDER ==================================================
