@@ -249,7 +249,7 @@ public class C206_CaseStudyTest {
 		C206_CaseStudy.addDailyMenu(menuList, mm2);
 		assertFalse(menuList.isEmpty());
 		
-		// Test that after delete, monthly menu is empty
+		// Test that after delete, menu list size is 0
 		C206_CaseStudy.doDeleteMonthlyMenu(menuList);
 		assertEquals("Check that Menu arraylist size is 0", 0, menuList.size());
 		
@@ -267,6 +267,7 @@ public class C206_CaseStudyTest {
 		C206_CaseStudy.doDeleteDailyMenu(menuList, 2);
 		assertEquals("Check that Menu arraylist size is 1", 1, menuList.size());
 		
+		// Test that after deleting another, the size of menuList is 0
 		C206_CaseStudy.doDeleteDailyMenu(menuList, 1);
 		assertEquals("Check that Menu arraylist size is 0", 0, menuList.size());
 		
@@ -279,7 +280,9 @@ public class C206_CaseStudyTest {
 		C206_CaseStudy.addDailyMenu(menuList, mm2);
 		assertSame("Check that Menu is added", mm1, menuList.get(0));
 		assertSame(mm2, menuList.get(1));
-		C206_CaseStudy.doEditDailyMenu(menuList, 0, 4, "vv", "nn", "nn",  "nnn", "mm", "mm", "mm");
+		
+		//Test that after editing the first item of the list is no longer the same
+		C206_CaseStudy.doEditDailyMenu(menuList, 0, 4, "Fish & Chips", "Cai Fan", "Pumpkin Soup",  "Water", "Juice", "Mango", "Papaya");
 		assertNotSame(mm1, menuList.get(0));
 	}
 	
