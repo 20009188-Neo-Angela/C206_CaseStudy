@@ -374,52 +374,53 @@ public class C206_CaseStudyTest {
 	
 	//=============================================== OPTION 5 BILL =============================================================
 	//Syazwan's bill test methods ->
-	public void createOrderBillTest() {
+	public void createOrderBill() {
 		//  orderBillArr is not null, so that can add a new item - boundary
-				assertNotNull("Check if there is valid Menu arraylist to add to", orderBillArr);
-			
-				//Given an empty list, after adding 1 item, the size of the list is 1 - normal
-				C206_CaseStudy.createOrderBill(orderBillArr, b1);
-				assertEquals("Check that Menu arraylist size is 1", 1, orderBillArr.size());
-				
-				//The item just added is as same as the first item of the list
-				assertSame("Check that Menu is added", mm1, orderBillArr.get(0));
-				
-				//Add another item. test The size of the list is 2? -normal
-				C206_CaseStudy.createOrderBill(orderBillArr, b2);
-				assertEquals("Check that Menu arraylist size is 2", 2, orderBillArr.size());
-				assertSame("Check that Menu is added", b2, orderBillArr.get(1));
+		assertNotNull("Check if there is valid Menu arraylist to add to", orderBillArr);
+
+		//Given an empty list, after adding 1 item, the size of the list is 1 - normal
+		C206_CaseStudy.createOrderBill(orderBillArr, b1);
+		assertEquals("Check that Menu arraylist size is 1", 1, orderBillArr.size());
+
+		//The item just added is as same as the first item of the list
+		assertSame("Check that Menu is added", mm1, orderBillArr.get(0));
+
+		//Add another item. test The size of the list is 2? -normal
+		C206_CaseStudy.createOrderBill(orderBillArr, b2);
+		assertEquals("Check that Menu arraylist size is 2", 2, orderBillArr.size());
+		assertSame("Check that Menu is added", b2, orderBillArr.get(1));
 	}
 	public void viewMonthlyBillTest() {
 		// Test if orderBillArr list is not null but empty -boundary
-					assertNotNull("Test if there is valid orderBillArr arraylist to retrieve item", orderBillArr);
-					
-					//test if the list of bills retrieved from the CaseStudy is empty 
-					String viewBill= C206_CaseStudy.viewMonthlyBill(orderBillArr);
-					String testOutput = "";
-					assertEquals("Check that viewBill has the same output as the testOutput", testOutput,viewBill);
-					
-					//after adding 2 items, test if the size of the list is 2
-					C206_CaseStudy.createOrderBill(orderBillArr, b1);
-					C206_CaseStudy.createOrderBill(orderBillArr, b2);
-					assertEquals("Test that Account arraylist size is 2", 2, accountArr.size());
-					
-					//test if the expected output string same as the bills retrieved from the CaseStudy	
-					String viewBill1= C206_CaseStudy.viewMonthlyBill(orderBillArr);
-					testOutput = String.format("%-10s %-15s %-12s %-10s\n", orderBillArr.get(0).toString());
-					testOutput += String.format("%-10s %-15s %-12s %-10s\n", orderBillArr.get(1).toString() );
-					
-					assertEquals("Test that viewBill", testOutput, viewBill1);
+		assertNotNull("Test if there is valid orderBillArr arraylist to retrieve item", orderBillArr);
+
+		//test if the list of bills retrieved from the CaseStudy is empty 
+		String viewBill= C206_CaseStudy.viewMonthlyBill(orderBillArr);
+		String testOutput = "";
+		assertEquals("Check that viewBill has the same output as the testOutput", testOutput,viewBill);
+
+		//after adding 2 items, test if the size of the list is 2
+		C206_CaseStudy.createOrderBill(orderBillArr, b1);
+		C206_CaseStudy.createOrderBill(orderBillArr, b2);
+		assertEquals("Test that Account arraylist size is 2", 2, accountArr.size());
+
+		//test if the expected output string same as the bills retrieved from the CaseStudy	
+		String viewBill1= C206_CaseStudy.viewMonthlyBill(orderBillArr);
+		testOutput = String.format("%-10s %-15s %-12s %-10s\n", orderBillArr.get(0).toString());
+		testOutput += String.format("%-10s %-15s %-12s %-10s\n", orderBillArr.get(1).toString() );
+
+		assertEquals("Test that viewBill", testOutput, viewBill1);
 	}
 	public void deleteOrderBillTest() {
 		// Test that orderBillArr is not empty
 		assertNotNull("Test if there is valid orderBillArr arraylist to retrieve item", orderBillArr);
-				
-				// Test that after delete, monthly menu is empty
-				C206_CaseStudy.deleteOrderBill(orderBillArr);
-				assertTrue(C206_CaseStudy.orderBillArr.isEmpty());
-				
+
+		// Test that after delete, monthly menu is empty
+		C206_CaseStudy.deleteOrderBill(orderBillArr);
+		assertTrue(C206_CaseStudy.orderBillArr.isEmpty());
+
 	}
+	
 	@After
 	public void tearDown() throws Exception {
 		
