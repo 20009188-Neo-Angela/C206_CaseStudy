@@ -170,6 +170,7 @@ public class C206_CaseStudy {
 
 					// Angela Lunch Box Order
 					lunchBox();
+					
 					int choice = Helper.readInt("Enter option > ");
 
 					if (choice == 1) {
@@ -179,7 +180,7 @@ public class C206_CaseStudy {
 
 						C206_CaseStudy.setHeader("PLACE LUNCH BOX ORDERS");
 
-						for (int i = 0; i < 5; i++) {
+						for (int i = 0; i < 7; i++) {
 
 							LunchBox lb = inputLunchBox();
 							System.out.println();
