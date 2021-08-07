@@ -57,6 +57,10 @@ public class Bill {
 		return fruit;
 	}
 	
+	public void setDailyAmt(int dailyAmt) {
+		this.dailyAmt = dailyAmt;
+	}
+	
 	
 	
 }

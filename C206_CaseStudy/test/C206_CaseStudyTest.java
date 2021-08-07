@@ -610,8 +610,8 @@ public class C206_CaseStudyTest {
 		// test if the expected output string same as the bills retrieved from the
 		// CaseStudy
 		String viewBill1 = C206_CaseStudy.viewMonthlyBill(orderBillArr);
-		testOutput = String.format("%-10s %-10s %-15d \n", orderBillArr.get(0).toString());
-		testOutput += String.format("%-10s %-10s %-15d \n", orderBillArr.get(1).toString());
+		testOutput += String.format("%-10s %-10s %-15d \n", orderBillArr.get(0).getID(), orderBillArr.get(0).getDate(), orderBillArr.get(0).getDailyAmt());
+		testOutput += String.format("%-10s %-10s %-15d \n", orderBillArr.get(1).getID(), orderBillArr.get(1).getDate(), orderBillArr.get(1).getDailyAmt());
 
 		assertEquals("Test that viewBill", testOutput, viewBill1);
 	}
