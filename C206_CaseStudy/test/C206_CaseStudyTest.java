@@ -152,8 +152,8 @@ public class C206_CaseStudyTest {
 		// test if the expected output string same as the list of Account retrieved from
 		// the CaseStudy
 		viewAccount = C206_CaseStudy.retrieveAccount(accountArr);
-		testOutput = String.format("%-10s %-15s %-12s %-10s\n", accountArr.get(0).toString());
-		testOutput += String.format("%-10s %-15s %-12s %-10s\n", accountArr.get(1).toString());
+		testOutput = String.format("%-50s \n", accountArr.get(0).toString());
+		testOutput += String.format("%-50s \n", accountArr.get(1).toString());
 
 		assertEquals("Test that ViewAccount", testOutput, viewAccount);
 
