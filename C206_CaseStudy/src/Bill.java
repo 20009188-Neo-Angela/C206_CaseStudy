@@ -8,21 +8,27 @@
  */
 public class Bill {
 	private String ID;
-	private String Date;
+	private String date;
 	private int dailyAmt;
 	private int meal;
 	private int drink;
 	private int fruit;
 	
-	public Bill(String iD, String date, int dailyAmt, int meal, int drink, int fruit) {
+	public Bill(String ID, String date, int dailyAmt, int meal, int drink, int fruit) {
 		super();
-		this.ID = iD;
-		this.Date = date;
+		this.ID = ID;
+		this.date = date;
 		this.dailyAmt = dailyAmt;
 		this.meal = meal;
 		this.drink = drink;
 		this.fruit = fruit;
 		
+	}
+	public String toString() {
+			String BillInfo = String.format("%-10s %-10s %-15d \n", ID, date, dailyAmt);
+				
+		// Write your codes here
+		return BillInfo;
 	}
 
 
@@ -31,7 +37,7 @@ public class Bill {
 	}
 
 	public String getDate() {
-		return Date;
+		return date;
 	}
 
 	public int getDailyAmt() {

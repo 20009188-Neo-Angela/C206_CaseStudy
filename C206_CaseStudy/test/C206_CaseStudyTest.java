@@ -375,10 +375,12 @@ public class C206_CaseStudyTest {
 	
 	//=============================================== OPTION 5 BILL =============================================================
 	//Syazwan's bill test methods ->
+	@Test
 	public void inputBill() {
 	//  orderBillArr is not null, so that can add a new item - boundary
 					assertNotNull("Check if there is valid Menu arraylist to add to", orderBillArr);
 	}
+	@Test
 	public void createOrderBill() {
 		
 				//Given an empty list, after adding 1 item, the size of the list is 1 - normal
@@ -393,27 +395,29 @@ public class C206_CaseStudyTest {
 				assertEquals("Check that Menu arraylist size is 2", 2, orderBillArr.size());
 				assertSame("Check that Menu is added", b2, orderBillArr.get(1));
 	}
+	@Test
 	public void viewMonthlyBill() {
 		// Test if orderBillArr list is not null but empty -boundary
 					assertNotNull("Test if there is valid orderBillArr arraylist to retrieve item", orderBillArr);
 					
 					//test if the list of bills retrieved from the CaseStudy is empty 
 					String viewBill= C206_CaseStudy.viewMonthlyBill(orderBillArr);
-					String testOutput = "";
+					String testOutput = String.format("%-10s %-10s %-10s \n", "USERID", "DATE" , "TOTAL AMOUNT");
 					assertEquals("Check that viewBill has the same output as the testOutput", testOutput,viewBill);
 					
 					//after adding 2 items, test if the size of the list is 2
 					C206_CaseStudy.createOrderBill(orderBillArr, b1);
 					C206_CaseStudy.createOrderBill(orderBillArr, b2);
-					assertEquals("Test that Account arraylist size is 2", 2, accountArr.size());
+					assertEquals("Test that Account arraylist size is 2", 2, orderBillArr.size());
 					
 					//test if the expected output string same as the bills retrieved from the CaseStudy	
 					String viewBill1= C206_CaseStudy.viewMonthlyBill(orderBillArr);
-					testOutput = String.format("%-10s %-15s %-12s %-10s\n", orderBillArr.get(0).toString());
-					testOutput += String.format("%-10s %-15s %-12s %-10s\n", orderBillArr.get(1).toString() );
+					testOutput += String.format("%-10s %-10s %-15d \n", orderBillArr.get(0).toString());
+					testOutput += String.format("%-10s %-10s %-15d \n", orderBillArr.get(1).toString() );
 					
 					assertEquals("Test that viewBill", testOutput, viewBill1);
 	}
+	@Test
 	public void deleteOrderBill() {
 		// Test that orderBillArr is not empty
 		assertNotNull("Test if there is valid orderBillArr arraylist to retrieve item", orderBillArr);

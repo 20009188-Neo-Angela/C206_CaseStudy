@@ -56,7 +56,7 @@ public class C206_CaseStudy {
 		vegetarianArr.add(new Vegetarian("Cauliflower Rice", 2));
 
 		orderBillArr.add(new Bill("t0326720i", "03/09", 9,3,3,3));
-		orderBillArr.add(new Bill("lol", "03/09," , 12, 4,4,4));
+		orderBillArr.add(new Bill("lol", "03/09" , 12, 4,4,4));
 		int option = 0;
 
 		while (option != OPTION_QUIT) {
@@ -838,7 +838,7 @@ public class C206_CaseStudy {
 			
 			String output = " ";
 			int sumDailyAmt = 0;
-			output = String.format("%-10s %-10s %-10s \n", "USERID", "DATE" , "SUM OF DAILY AMOUNT");
+			output = String.format("%-10s %-10s %-10s \n", "USERID", "DATE" , "TOTAL AMOUNT");
 			for (Bill b :  orderBillArr) {
 				//monthlybill = orderBillArr + sum(DailyAmt)
 				sumDailyAmt += b.getDailyAmt();
