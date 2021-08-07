@@ -124,6 +124,7 @@ public class C206_CaseStudyTest {
 		b1 = new Bill ("hi", "03/09", 15,5,5,5);
 		b2 = new Bill("hey", "04/09" , 18 , 6,6,6);
 		
+		orderBillArr = new ArrayList<Bill>();
 		
 	}
 
@@ -374,23 +375,25 @@ public class C206_CaseStudyTest {
 	
 	//=============================================== OPTION 5 BILL =============================================================
 	//Syazwan's bill test methods ->
-	public void createOrderBillTest() {
-		//  orderBillArr is not null, so that can add a new item - boundary
-				assertNotNull("Check if there is valid Menu arraylist to add to", orderBillArr);
-			
+	public void inputBill() {
+	//  orderBillArr is not null, so that can add a new item - boundary
+					assertNotNull("Check if there is valid Menu arraylist to add to", orderBillArr);
+	}
+	public void createOrderBill() {
+		
 				//Given an empty list, after adding 1 item, the size of the list is 1 - normal
 				C206_CaseStudy.createOrderBill(orderBillArr, b1);
 				assertEquals("Check that Menu arraylist size is 1", 1, orderBillArr.size());
 				
 				//The item just added is as same as the first item of the list
-				assertSame("Check that Menu is added", mm1, orderBillArr.get(0));
+				assertSame("Check that Menu is added", b1, orderBillArr.get(0));
 				
 				//Add another item. test The size of the list is 2? -normal
 				C206_CaseStudy.createOrderBill(orderBillArr, b2);
 				assertEquals("Check that Menu arraylist size is 2", 2, orderBillArr.size());
 				assertSame("Check that Menu is added", b2, orderBillArr.get(1));
 	}
-	public void viewMonthlyBillTest() {
+	public void viewMonthlyBill() {
 		// Test if orderBillArr list is not null but empty -boundary
 					assertNotNull("Test if there is valid orderBillArr arraylist to retrieve item", orderBillArr);
 					
@@ -411,7 +414,7 @@ public class C206_CaseStudyTest {
 					
 					assertEquals("Test that viewBill", testOutput, viewBill1);
 	}
-	public void deleteOrderBillTest() {
+	public void deleteOrderBill() {
 		// Test that orderBillArr is not empty
 		assertNotNull("Test if there is valid orderBillArr arraylist to retrieve item", orderBillArr);
 				
