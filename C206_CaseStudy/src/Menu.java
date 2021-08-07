@@ -10,7 +10,7 @@ public class Menu {
 	private String Fruit1;
 	private String Fruit2;
 	
-	 
+	
 	
 	public Menu(int ID, String Western, String Asian, String Vegetarian, String Drink1, String Drink2, String Fruit1, String Fruit2) {
 		
