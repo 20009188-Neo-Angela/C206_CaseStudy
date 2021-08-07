@@ -298,8 +298,8 @@ public class C206_CaseStudy {
 		return acc;
 	}
 
-	public static void addAccount(ArrayList<Account> accountList, Account acc) {
-		accountList.add(acc);
+	public static void addAccount(ArrayList<Account> accountArr, Account acc) {
+		accountArr.add(acc);
 		System.out.println("User Account Created!");
 	}
 

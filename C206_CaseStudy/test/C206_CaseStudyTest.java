@@ -72,6 +72,8 @@ public class C206_CaseStudyTest {
 		acc1 = new Account("Roy Tan", "schoolR0ck$", "4E4","Credit Card");
 		acc2 = new Account("Hannah", "12345abc", "3E2","Credit Card");
 		
+		accountArr = new ArrayList<Account>();
+		
 		mm1 = new Menu(1, "Fries", "Chilli Crab", "Vegi Burger", "Coke", "Fanta", "Apple", "Orange");
 		mm2 = new Menu(2, "Pizza", "Chicken Rice", "Cauliflower Rice", "Sprite", "Ayataka", "WaterMelon", "BlueBerry");
 
@@ -166,9 +168,22 @@ public class C206_CaseStudyTest {
 		}
 
 		public void deleteAccount( ) {
-			// Trying 
-			//Kid
-		}
+			// delete account testing
+			// Test if list is not null but empty -boundary
+			assertNotNull("Test if there is valid Account arraylist to delete from", accountArr);
+
+			// Given a list with 2 items, after deleting 2 items, test if the list is empty
+	        accountArr.clear();
+		    C206_CaseStudy.addAccount(accountArr, acc1);
+		    C206_CaseStudy.addAccount(accountArr, acc2);
+		    accountArr.clear();
+		    assertEquals("Test that Account arraylist is empty", 0, accountArr.size());
+
+		    // Test that list can't be cleared if it's empty
+		    assertEquals("Test that Account arraylist can't be cleared if it's empty", 0, accountArr.size());
+		    accountArr.clear();
+		    
+	  }
 
 	
 	//=============================================== OPTION 2 MENU ITEMS ==================================================
