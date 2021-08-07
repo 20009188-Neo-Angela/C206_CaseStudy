@@ -768,7 +768,7 @@ public class C206_CaseStudy {
 
 		for (int i = 0; i < lunchBoxList.size(); i++) {
 
-			output += String.format("%-85s \n", lunchBoxList.get(i));
+			output += String.format("%-85s \n", lunchBoxList.get(i).toString());
 		}
 		return output;
 	}
