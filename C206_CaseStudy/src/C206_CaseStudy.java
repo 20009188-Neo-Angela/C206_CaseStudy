@@ -691,7 +691,7 @@ public class C206_CaseStudy {
 
 		    } else {
 		      monthlyMenu = "";
-		      output = "Menu deleted!";
+		      output = "Monthly Menu deleted!";
 		      doDeleteMonthlyMenu(menuList);
 		      System.out.println("delete");
 		      System.out.println(menuList.size());
