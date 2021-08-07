@@ -8,7 +8,7 @@ public class Menu {
 	private String Drink1;
 	private String Drink2;
 	private String Fruit1;
-	private String Fruit2;
+	private String Fruit2; 
 	
 	
 	

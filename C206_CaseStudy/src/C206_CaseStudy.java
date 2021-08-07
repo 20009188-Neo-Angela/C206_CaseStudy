@@ -706,8 +706,8 @@ public class C206_CaseStudy {
 			menuList.remove(index-1);
 			System.out.println("Day Menu delete!");
 			System.out.println(menuList.size());
-		}
-		
+		} 
+		 
 		public static void updateDailyMenu(ArrayList <Menu> menuList) {
 			
 			System.out.println(viewMonthlyMenu());

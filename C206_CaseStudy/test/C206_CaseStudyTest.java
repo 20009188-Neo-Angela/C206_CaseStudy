@@ -248,7 +248,7 @@ public class C206_CaseStudyTest {
 	
 	@Test
 	public void deleteDailyMenuTest() {
-		// Test that Menu list size is 2
+		// Test that Menu list size is 2 
 		C206_CaseStudy.addDailyMenu(menuList, mm1);
 		C206_CaseStudy.addDailyMenu(menuList, mm2);
 		assertEquals("Check that Menu arraylist size is 2", 2, menuList.size());
@@ -267,8 +267,8 @@ public class C206_CaseStudyTest {
 	public void editDailyMenuTest() {
 		//The item just added is as same as the first item of the list
 		C206_CaseStudy.addDailyMenu(menuList, mm1);
-		assertEquals("Check that Menu arraylist size is 1", 1, menuList.size());
 		assertSame("Check that Menu is added", mm1, menuList.get(0));
+		C206_CaseStudy.updateDailyMenu(menuList);
 		
 	
 		
