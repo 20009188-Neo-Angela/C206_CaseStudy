@@ -278,7 +278,7 @@ public class C206_CaseStudyTest {
 		assertEquals("Check that Menu arraylist size is 0", 0, menuList.size());
 		
 	}
-	
+	 
 	@Test
 	public void editDailyMenuTest() {
 		//The item just added is as same as the first item of the list
