@@ -153,16 +153,26 @@ public class C206_CaseStudy {
 
 						String menu = viewMonthlyMenu();
 						System.out.println(menu);
-//						
-//						for(int i=0; i<menuList.size(); i++) {
-//							System.out.println(menuList.get(i).getAsian());
-//						}
+						
+						for(int i=0; i<menuList.size(); i++) {
+							System.out.println(menuList.get(i).getAsian());
+						}
+						
+						System.out.println(menuList.size());
 
 					} else if (monthlyOption == 3) {
 						String output = deleteMonthlyMenu();
 						System.out.println(output);
 
-					} else {
+					} else if(monthlyOption == 4) {
+						deleteDailyMenu(menuList);
+						
+					
+					}else if(monthlyOption == 5) {
+						updateDailyMenu(menuList);
+						
+					}else {
+					
 						System.out.println("Invalid option");
 					}
 
@@ -269,6 +279,8 @@ public class C206_CaseStudy {
 		System.out.println("1. Create Monthly Menu");
 		System.out.println("2. View Monthly Menu");
 		System.out.println("3. Delete Monthly Menu");
+		System.out.println("4. Delete Daily Menu");
+		System.out.println("5. Edit Daily Menu");
 	}
 
 	private static void lunchBox() {
@@ -298,8 +310,8 @@ public class C206_CaseStudy {
 		return acc;
 	}
 
-	public static void addAccount(ArrayList<Account> accountList, Account acc) {
-		accountList.add(acc);
+	public static void addAccount(ArrayList<Account> accountArr, Account acc) {
+		accountArr.add(acc);
 		System.out.println("User Account Created!");
 	}
 
@@ -346,6 +358,8 @@ public class C206_CaseStudy {
 			Account a = itr.next();
 			if (username.equals(a.getUsername()) && password.equals(a.getPassword())) {
 				itr.remove();
+				
+				System.out.println("Account Deleted.");
 			}
 		}
 	}
@@ -623,8 +637,8 @@ public class C206_CaseStudy {
 			monthlyMenu += String.format("     %5s: %s \n", "Drinks",  Drink2);
 			monthlyMenu += String.format("     %5s: %s \n", "Fruit",  Fruit1);
 			monthlyMenu += String.format("     %5s: %s \n\n", "Fruit",  Fruit2);
-
-			Menu mm = new Menu(Western, Asian, Vegetarian, Drink1, Drink2, Fruit1, Fruit2);
+			
+			Menu mm = new Menu(i, Western, Asian, Vegetarian, Drink1, Drink2, Fruit1, Fruit2);
 			addDailyMenu(menuList, mm);
 					
 		}
@@ -647,11 +661,14 @@ public class C206_CaseStudy {
 		return monthlyMenu;
 }
 	
-	public static void addDailyMenu(ArrayList<Menu> MenuList, Menu mm) {
+	public static void addDailyMenu(ArrayList<Menu> menuList, Menu mm) {
 		
        menuList.add(mm);
-       System.out.println("add!");
-       System.out.println(menuList.size());
+//       System.out.println("add!");
+//       System.out.println(menuList.size());
+//       for(int i =0; i< menuList.size(); i++) {
+//       System.out.println(i);
+//       }
 
 	}
  
@@ -667,18 +684,63 @@ public class C206_CaseStudy {
 		return output;
 	}
 
-	public static String deleteMonthlyMenu() {
-		String output = "";
-		if (monthlyMenu.isEmpty()) {
-			output = "There is no menu to delete!";
+	  public static String deleteMonthlyMenu() {
+		    String output = "";
+		    if (monthlyMenu.isEmpty()) {
+		      output = "There is no menu to delete!";
 
-		} else {
-			monthlyMenu = "";
-			output = "Menu deleted!";
-			menuList.clear();
+		    } else {
+		      monthlyMenu = "";
+		      output = "Menu deleted!";
+		      menuList.clear();
+		      System.out.println("delete");
+		      System.out.println(menuList.size());
+		    }
+		    return output;
+		  }
+	  
+	  
+		public static void deleteDailyMenu(ArrayList<Menu> menuList) {
+
+			System.out.println(viewMonthlyMenu());
+
+			int index = Helper.readInt("Enter day to cancel order > ");
+			menuList.remove(index-1);
+			System.out.println("Day Menu delete!");
+			System.out.println(menuList.size());
+		} 
+		 
+		public static void updateDailyMenu(ArrayList <Menu> menuList) {
+			
+			System.out.println(viewMonthlyMenu());
+			int index = Helper.readInt("Enter day to edit menu > ");
+			index = index - 1;
+			System.out.println(menuList.get(index));
+			String userWestern = Helper.readString("Enter Western Dish > ");
+			String userAsian = Helper.readString("Enter Asian Dish > ");
+			String userVeg = Helper.readString("Enter Vegetarian Dish > ");
+			String userDrink1 = Helper.readString("Enter Drink 1 > ");
+			String userDrink2 = Helper.readString("Enter Drink 2 > ");
+			String userFruit1 = Helper.readString("Enter Fruit 1  > ");
+			String userFruit2 = Helper.readString("Enter Fruit 2 >");
+			
+			char confirm = Helper.readChar("Confirm Changes? (Y/N) ");
+			
+			if ((confirm == 'Y') || (confirm == 'y')) {
+				System.out.println("Successfully Updated!");
+				menuList.get(index).setWestern(userWestern);
+				menuList.get(index).setAsian(userAsian);
+				menuList.get(index).setVegetarian(userVeg);
+				menuList.get(index).setDrink1(userDrink1);
+				menuList.get(index).setDrink2(userDrink2);
+				menuList.get(index).setFruit1(userFruit1);
+				menuList.get(index).setFruit2(userFruit2);
+				System.out.println(menuList.get(index).toString());
+				
+			}
+			
 		}
-		return output;
-	}
+
 
 	//================================================ OPTION 4 LUNCH BOX ORDER ==========================================//
 	public static LunchBox inputLunchBox() {
@@ -706,7 +768,7 @@ public class C206_CaseStudy {
 
 		for (int i = 0; i < lunchBoxList.size(); i++) {
 
-			output += String.format("%-85s \n", lunchBoxList.get(i));
+			output += String.format("%-85s \n", lunchBoxList.get(i).toString());
 		}
 		return output;
 	}

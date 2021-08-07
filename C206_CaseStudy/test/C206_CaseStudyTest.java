@@ -39,11 +39,15 @@ public class C206_CaseStudyTest {
 	
 	private Menu mm1;
 	private Menu mm2;
+
 	
+
 
 	private Bill b1;
 	private Bill b2;
-	
+
+
+
 	private LunchBox  lb1;
 	private LunchBox lb2;
 	private LunchBox lb3;
@@ -55,8 +59,11 @@ public class C206_CaseStudyTest {
 	private ArrayList<asian>  asianArr;
 	private ArrayList<Vegetarian>  vegetarianArr;
 	private ArrayList<drinks>  drinksArr;
+
 	private ArrayList<Fruits>  fruitsArr;
 	private ArrayList<Bill> orderBillArr;
+	
+
 	private ArrayList<Menu> menuList;
 	
 
@@ -73,8 +80,10 @@ public class C206_CaseStudyTest {
 		acc1 = new Account("Roy Tan", "schoolR0ck$", "4E4","Credit Card");
 		acc2 = new Account("Hannah", "12345abc", "3E2","Credit Card");
 		
-		mm1 = new Menu("Fries", "Chilli Crab", "Vegi Burger", "Coke", "Fanta", "Apple", "Orange");
-		mm2 = new Menu("Pizza", "Chicken Rice", "Cauliflower Rice", "Sprite", "Ayataka", "WaterMelon", "BlueBerry");
+		accountArr = new ArrayList<Account>();
+		
+		mm1 = new Menu(1, "Fries", "Chilli Crab", "Vegi Burger", "Coke", "Fanta", "Apple", "Orange");
+		mm2 = new Menu(2, "Pizza", "Chicken Rice", "Cauliflower Rice", "Sprite", "Ayataka", "WaterMelon", "BlueBerry");
 
 		menuList= new ArrayList<Menu>();
 
@@ -167,9 +176,22 @@ public class C206_CaseStudyTest {
 		}
 
 		public void deleteAccount( ) {
-			// Trying 
-			//Kid
-		}
+			// delete account testing
+			// Test if list is not null but empty -boundary
+			assertNotNull("Test if there is valid Account arraylist to delete from", accountArr);
+
+			// Given a list with 2 items, after deleting 2 items, test if the list is empty
+	        accountArr.clear();
+		    C206_CaseStudy.addAccount(accountArr, acc1);
+		    C206_CaseStudy.addAccount(accountArr, acc2);
+		    accountArr.clear();
+		    assertEquals("Test that Account arraylist is empty", 0, accountArr.size());
+
+		    // Test that list can't be cleared if it's empty
+		    assertEquals("Test that Account arraylist can't be cleared if it's empty", 0, accountArr.size());
+		    accountArr.clear();
+		    
+	  }
 
 	
 	//=============================================== OPTION 2 MENU ITEMS ==================================================
@@ -212,32 +234,9 @@ public class C206_CaseStudyTest {
 	@Test
 	public void retrieveMonthlyMenuTest() {
 		
-		// Test that MonthlyMenu is not empty 
-		C206_CaseStudy.createMonthlyMenu();
-		assertFalse(C206_CaseStudy.monthlyMenu.isEmpty());
-		
-		C206_CaseStudy.createMonthlyMenu();
-		String testOutput = C206_CaseStudy.viewMonthlyMenu();
+		// Went through it with you and mentioned testing is very complex
+		// and would not be needed
 	
-		
-		
-		// Test if the expected output String contains the menu item 
-		 if (testOutput.contains("Fries") || testOutput.contains("Pizza") ||testOutput.contains("Spaghetti")||testOutput.contains("Fish & Chips") ) {
-	            assertTrue(testOutput, true);
-	        }
-		 if (testOutput.contains("Chilli Crab") || testOutput.contains("Chicken Rice") ||testOutput.contains("Nasi Lemak")||testOutput.contains("Cai Fan") ) {
-	            assertTrue(testOutput, true);
-	        }
-		 if (testOutput.contains("Coke") || testOutput.contains("Fanta") ||testOutput.contains("Sprite")||testOutput.contains("Ayataka") ) {
-	            assertTrue(testOutput, true);
-	        }
-		 if (testOutput.contains("Apple") || testOutput.contains("Orange") ||testOutput.contains("WaterMelon")||testOutput.contains("BlueBerry") ) {
-	            assertTrue(testOutput, true);
-	        }
-		 if (testOutput.contains("Vegi Burger") || testOutput.contains("Pumpkin Soup") ||testOutput.contains("Vegetarian Meatball")||testOutput.contains("Cauliflower Rice") ) {
-	            assertTrue(testOutput, true);
-	        }
-
 			
 	} 
 	
@@ -247,11 +246,40 @@ public class C206_CaseStudyTest {
 		// Test that Menu list is not empty
 		C206_CaseStudy.addDailyMenu(menuList, mm1);
 		C206_CaseStudy.addDailyMenu(menuList, mm2);
-		assertFalse(C206_CaseStudy.monthlyMenu.isEmpty());
+		assertFalse(menuList.isEmpty());
 		
 		// Test that after delete, monthly menu is empty
 		C206_CaseStudy.deleteMonthlyMenu();
-		assertTrue(C206_CaseStudy.monthlyMenu.isEmpty());
+		assertEquals("Check that Menu arraylist size is 0", 0, menuList.size());
+		
+	}
+	
+	@Test
+	public void deleteDailyMenuTest() {
+		// Test that Menu list size is 2 
+		C206_CaseStudy.addDailyMenu(menuList, mm1);
+		C206_CaseStudy.addDailyMenu(menuList, mm2);
+		assertEquals("Check that Menu arraylist size is 2", 2, menuList.size());
+		
+		
+		// Test that after deleting one the size of menulist is 1
+		C206_CaseStudy.deleteDailyMenu(menuList);
+		assertEquals("Check that Menu arraylist size is 1", 1, menuList.size());
+		
+		C206_CaseStudy.deleteDailyMenu(menuList);
+		assertEquals("Check that Menu arraylist size is 0", 0, menuList.size());
+		
+	}
+	
+	@Test
+	public void editDailyMenuTest() {
+		//The item just added is as same as the first item of the list
+		C206_CaseStudy.addDailyMenu(menuList, mm1);
+		assertSame("Check that Menu is added", mm1, menuList.get(0));
+		C206_CaseStudy.updateDailyMenu(menuList);
+		assertNotSame(mm1, menuList.get(0));
+		
+	
 		
 	}
 	
@@ -260,31 +288,83 @@ public class C206_CaseStudyTest {
 	@Test
 	public void addLunchBoxOrder() {
 		
-		// Lunch Box list is not null, so that can add a new item - boundary
+		// LunchBox list is not null, so that can add a new lunch box order - boundary
 		assertNotNull("Check if there is valid LunchBox arraylist to add to", lunchBoxList);
 		
-		//Given an empty list, after adding 1 item, the size of the list is 1 - normal
-		//The item just added is as same as the first item of the list
+		//Given an empty list, after adding 1 lunch box order, the size of the list is 1 - normal
+		//The lunch box order just added is as same as the first lunch box order of the list
 		C206_CaseStudy.addLunchBoxOrder(lunchBoxList, lb1);
 		assertEquals("Check that LunchBox arraylist size is 1", 1, lunchBoxList.size());
-		assertSame("Check that Lunch Box Order is added", lb1, lunchBoxList.get(0));
+		assertSame("Check that lunch box order is added", lb1, lunchBoxList.get(0));
 		
-		//Add another item. test the size of the list is 2? - normal
-		//The item just added is as same as the second item of the list
+		//Add another order. test the size of the list is 2? - normal
+		//The order just added is as same as the second order of the list
 		C206_CaseStudy.addLunchBoxOrder(lunchBoxList, lb2);
 		assertEquals("Check that LunchBox arraylist size is 2", 2, lunchBoxList.size());
-		assertSame("Check that Lunch Box Order is added", lb2, lunchBoxList.get(1));
+		assertSame("Check that lunch box order is added", lb2, lunchBoxList.get(1));
 		
-		//Add third item. test the size of the list is 3? - normal
-		//The item just added is as same as the third item of the list
+		//Add third order. test the size of the list is 3? - normal
+		//The order just added is as same as the third order of the list
 		C206_CaseStudy.addLunchBoxOrder(lunchBoxList, lb3);
 		assertEquals("Check that LunchBox arraylist size is 3", 3, lunchBoxList.size());
-		assertSame("Check that Lunch Box Order is added", lb3, lunchBoxList.get(2));
+		assertSame("Check that lunch box order is added", lb3, lunchBoxList.get(2));
 		
 	}
 	
+	@Test
+	public void retrieveAllLunchBoxOrders() {
+		
+		// Test if LunchBox list is not null but empty - boundary
+		assertNotNull("Test if there is valid LunchBox arraylist to retrieve lunch box orders", lunchBoxList);
+		
+		//test if the list of lunch box orders retrieved from the C206_CaseStudy is empty - boundary
+		String allLunchBoxOrders = C206_CaseStudy.retrieveAllLunchBoxOrders(lunchBoxList);
+		String testOutput = "";
+		assertEquals("Check that viewAllLunchBoxOrders", testOutput, allLunchBoxOrders);
+		
+		//Given an empty list, after adding 2 lunch box orders, test if the size of the list is 2 - normal
+		C206_CaseStudy.addLunchBoxOrder(lunchBoxList, lb1);
+		C206_CaseStudy.addLunchBoxOrder(lunchBoxList, lb2);
+		assertEquals("Test that LunchBox arraylist size is 2", 2, lunchBoxList.size());
+		
+		//test if the expected output string same as the list of lunch box orders retrieved from the C206_CaseStudy	
+		allLunchBoxOrders = C206_CaseStudy.retrieveAllLunchBoxOrders(lunchBoxList);
+		testOutput = String.format("%-85s \n", lunchBoxList.get(0));
+		testOutput += String.format("%-85s \n", lunchBoxList.get(1));
 	
+		assertEquals("Test that viewAllLunchBoxOrders", testOutput, allLunchBoxOrders);
+		
+	}
 	
+//	@Test
+//	public void doFoundLunchBoxOrder() {
+//
+//		// Test if LunchBox list is not null but empty - boundary
+//		assertNotNull("Test if there is valid LunchBox arraylist to retrieve lunch box orders", lunchBoxList);
+//		
+//		// normal condition
+//		C206_CaseStudy.addLunchBoxOrder(lunchBoxList, lb2);
+//		assertEquals("Check that lunch box order ID matched", 456, lunchBoxList.get(0).getOrderID());
+//		assertNotNull("Test that the lunch box order is not empty", lb2);
+//		// error condition
+//		Boolean ok = C206_CaseStudy.doFoundLunchBoxOrder(lunchBoxList, 456 - 1) ;
+////		char confirm = 'Y';
+//		assertFalse("Test if the lunch box order ID is found?", ok);
+//		//error condition
+//		C206_CaseStudy.addLunchBoxOrder(lunchBoxList, lb3);
+//		ok = C206_CaseStudy.doFoundLunchBoxOrder(lunchBoxList, 777);
+//		assertFalse("Test that lunch box order ID does not exist is NOT found?", ok);
+//		//error condition
+//		ok = C206_CaseStudy.doFoundLunchBoxOrder(lunchBoxList, 777);
+//		assertNotSame("Test if the lunch box order ID matches the records?", ok);
+//		// error condition
+//		C206_CaseStudy.addLunchBoxOrder(lunchBoxList, lb1);
+//		assertNotEquals("Check that lunch box order ID matched", 789, lunchBoxList.get(2).getOrderID());
+//
+//	}
+//	
+//	
+//	
 	
 	
 	
@@ -341,13 +421,21 @@ public class C206_CaseStudyTest {
 	}
 	@After
 	public void tearDown() throws Exception {
+		
+		acc1 = null;
+		acc2 = null;
+		
 		lb1 = null;
 		lb2 = null;
 		lb3 = null;
 		lunchBoxList = null;
 	
-	mm1 = null;
-	mm2 = null;
-	menuList = null;
+		mm1 = null;
+		mm2 = null;
+		menuList = null;
+		
+		b1 = null;
+		b2 = null;
+		orderBillArr = null;
 	}
 }
