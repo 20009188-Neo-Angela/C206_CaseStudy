@@ -705,8 +705,7 @@ public class C206_CaseStudy {
 
 	}
 
-	// ================================================ OPTION 4 LUNCH BOX ORDER
-	// ==========================================//
+	//================================================= OPTION 4 LUNCH BOX ORDER =========================================//
 	public static LunchBox inputLunchBox() {
 
 		int orderID = Helper.readInt("Enter order ID > ");
@@ -748,10 +747,6 @@ public class C206_CaseStudy {
 
 		for (int i = 0; i < lunchBoxList.size(); i++) {
 			if (orderID == lunchBoxList.get(i).getOrderID()) {
-				char confirm = Helper.readChar("Do you really want to cancel the lunch box order? (Y/N) > ");
-				if (confirm == 'y' || confirm == 'Y') {
-					lunchBoxList.remove(orderID - 1);
-				}
 				isFound = true;
 			}
 		}
@@ -760,16 +755,23 @@ public class C206_CaseStudy {
 	}
 
 	public static void deleteLunchBoxOrders(ArrayList<LunchBox> lunchBoxList) {
-
+		
 		viewAllLunchBoxOrders(lunchBoxList);
 
 		int orderID = Helper.readInt("Enter order ID to cancel the lunch box order > ");
-
+		
 		Boolean isFound = doFoundLunchBoxOrder(lunchBoxList, orderID);
 
 		if (isFound == false) {
 			System.out.println("Invalid Lunch Box Order!");
 		} else {
+			
+			char confirm = Helper.readChar("Do you really want to cancel the lunch box order? (Y/N) > ");
+			
+			if (confirm == 'y' || confirm == 'Y') {
+				lunchBoxList.remove(orderID - 1);
+			}
+			
 			System.out.println("Lunch Box with Order ID " + orderID + " is successfully cancelled!");
 		}
 	}

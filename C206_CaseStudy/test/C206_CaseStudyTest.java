@@ -481,94 +481,151 @@ public class C206_CaseStudyTest {
 
 	}
 
-	// =============================================== OPTION 4 LUNCH BOX ORDER
-	// ==================================================
+	//================================================ OPTION 4 LUNCH BOX ORDER ==========================================//
 
 	@Test
 	public void addLunchBoxOrder() {
 
-		// LunchBox list is not null, so that can add a new lunch box order - boundary
+		// Boundary
 		assertNotNull("Check if there is valid LunchBox arraylist to add to", lunchBoxList);
+		assertEquals("Check that LunchBox arraylist size is 0", 0, lunchBoxList.size());   //check?
 
-		// Given an empty list, after adding 1 lunch box order, the size of the list is
-		// 1 - normal
-		// The lunch box order just added is as same as the first lunch box order of the
-		// list
+		// Normal
 		C206_CaseStudy.addLunchBoxOrder(lunchBoxList, lb1);
 		assertEquals("Check that LunchBox arraylist size is 1", 1, lunchBoxList.size());
 		assertSame("Check that lunch box order is added", lb1, lunchBoxList.get(0));
 
-		// Add another order. test the size of the list is 2? - normal
-		// The order just added is as same as the second order of the list
 		C206_CaseStudy.addLunchBoxOrder(lunchBoxList, lb2);
 		assertEquals("Check that LunchBox arraylist size is 2", 2, lunchBoxList.size());
 		assertSame("Check that lunch box order is added", lb2, lunchBoxList.get(1));
 
-		// Add third order. test the size of the list is 3? - normal
-		// The order just added is as same as the third order of the list
 		C206_CaseStudy.addLunchBoxOrder(lunchBoxList, lb3);
 		assertEquals("Check that LunchBox arraylist size is 3", 3, lunchBoxList.size());
 		assertSame("Check that lunch box order is added", lb3, lunchBoxList.get(2));
+		
+		// Error
+		assertNotEquals("Check that LunchBox arraylist size is 4", 4, lunchBoxList.size());
+		assertNotEquals("Check that LunchBox arraylist size is 1", 1, lunchBoxList.size());   //check?
+		assertNotSame("Check that lunch box order added is the same", lb1, lunchBoxList.get(2));
+		assertNotSame("Check that lunch box order added is the same", lb3, lunchBoxList.get(0));
 
 	}
 
 	@Test
 	public void retrieveAllLunchBoxOrders() {
 
-		// Test if LunchBox list is not null but empty - boundary
+		// Boundary
 		assertNotNull("Test if there is valid LunchBox arraylist to retrieve lunch box orders", lunchBoxList);
 
-		// test if the list of lunch box orders retrieved from the C206_CaseStudy is
-		// empty - boundary
 		String allLunchBoxOrders = C206_CaseStudy.retrieveAllLunchBoxOrders(lunchBoxList);
 		String testOutput = "";
 		assertEquals("Check that viewAllLunchBoxOrders", testOutput, allLunchBoxOrders);
 
-		// Given an empty list, after adding 2 lunch box orders, test if the size of the
-		// list is 2 - normal
+		// Normal
 		C206_CaseStudy.addLunchBoxOrder(lunchBoxList, lb1);
 		C206_CaseStudy.addLunchBoxOrder(lunchBoxList, lb2);
 		assertEquals("Test that LunchBox arraylist size is 2", 2, lunchBoxList.size());
 
-		// test if the expected output string same as the list of lunch box orders
-		// retrieved from the C206_CaseStudy
 		allLunchBoxOrders = C206_CaseStudy.retrieveAllLunchBoxOrders(lunchBoxList);
 		testOutput = String.format("%-85s \n", lunchBoxList.get(0));
 		testOutput += String.format("%-85s \n", lunchBoxList.get(1));
 
 		assertEquals("Test that viewAllLunchBoxOrders", testOutput, allLunchBoxOrders);
+		
+		assertSame("Check that lunch box order added is same", lb1, lunchBoxList.get(0));
+		assertSame("Check that lunch box order added is same", lb2, lunchBoxList.get(1));
+		
+		// Error
+		allLunchBoxOrders = C206_CaseStudy.retrieveAllLunchBoxOrders(lunchBoxList);
+		testOutput = String.format("%s \n", lunchBoxList.get(1).toString());
+		testOutput += String.format("%s \n", lunchBoxList.get(0).toString());
+
+		assertNotEquals("Test that viewAllLunchBoxOrders is NOT equals to the output", testOutput, allLunchBoxOrders);
+		
+		assertNotSame("Check that lunch box order added is same", lb3, lunchBoxList.get(0));
+		assertNotSame("Check that lunch box order added is same", lb1, lunchBoxList.get(1));
 
 	}
-
+	
 //	@Test
-//	public void doFoundLunchBoxOrder() {
-//
-//		// Test if LunchBox list is not null but empty - boundary
-//		assertNotNull("Test if there is valid LunchBox arraylist to retrieve lunch box orders", lunchBoxList);
-//		
-//		// normal condition
-//		C206_CaseStudy.addLunchBoxOrder(lunchBoxList, lb2);
-//		assertEquals("Check that lunch box order ID matched", 456, lunchBoxList.get(0).getOrderID());
-//		assertNotNull("Test that the lunch box order is not empty", lb2);
-//		// error condition
-//		Boolean ok = C206_CaseStudy.doFoundLunchBoxOrder(lunchBoxList, 456 - 1) ;
-////		char confirm = 'Y';
-//		assertFalse("Test if the lunch box order ID is found?", ok);
-//		//error condition
-//		C206_CaseStudy.addLunchBoxOrder(lunchBoxList, lb3);
-//		ok = C206_CaseStudy.doFoundLunchBoxOrder(lunchBoxList, 777);
-//		assertFalse("Test that lunch box order ID does not exist is NOT found?", ok);
-//		//error condition
-//		ok = C206_CaseStudy.doFoundLunchBoxOrder(lunchBoxList, 777);
-//		assertNotSame("Test if the lunch box order ID matches the records?", ok);
-//		// error condition
-//		C206_CaseStudy.addLunchBoxOrder(lunchBoxList, lb1);
-//		assertNotEquals("Check that lunch box order ID matched", 789, lunchBoxList.get(2).getOrderID());
-//
+//	public void viewAllLunchBoxOrders() {
+//		Need to test the JUnit since i have test the retrieve all lunch box orders method already???
 //	}
-//	
-//	
-//	
+
+	@Test
+	public void doFoundLunchBoxOrder() {
+
+		// Boundary
+		assertNotNull("Test if there is valid LunchBox arraylist to retrieve lunch box orders", lunchBoxList);
+		assertEquals("Check that LunchBox arraylist size is 0", 0, lunchBoxList.size());   //check?
+		
+		// Normal
+		C206_CaseStudy.addLunchBoxOrder(lunchBoxList, lb2);
+		assertEquals("Check that lunch box order ID matched", 456, lunchBoxList.get(0).getOrderID());
+		assertSame("Check that lunch box order added is same", lb2, lunchBoxList.get(0));
+		assertNotNull("Test that the lunch box order is not empty", lb2);
+		
+		Boolean ok = C206_CaseStudy.doFoundLunchBoxOrder(lunchBoxList, 456) ;
+		assertTrue("Test if the lunch box order ID is found?", ok);
+		
+		
+		// Error
+		ok = C206_CaseStudy.doFoundLunchBoxOrder(lunchBoxList, 123) ;
+		assertFalse("Test if the lunch box order ID is found?", ok);
+		
+		C206_CaseStudy.addLunchBoxOrder(lunchBoxList, lb3);
+		ok = C206_CaseStudy.doFoundLunchBoxOrder(lunchBoxList, 777);
+		assertFalse("Test that lunch box order ID does not exist is NOT found?", ok);
+		
+		ok = C206_CaseStudy.doFoundLunchBoxOrder(lunchBoxList, 777);
+		assertNotSame("Test if the lunch box order ID matches the records?", ok);
+		
+		C206_CaseStudy.addLunchBoxOrder(lunchBoxList, lb1);
+		assertNotEquals("Check that lunch box order ID matched", 789, lunchBoxList.get(2).getOrderID());
+
+	}
+	
+//	@Test
+//	public void deleteLunchBoxOrders() {
+//		
+//		// Boundary
+//		assertNotNull("Check if there is valid LunchBox arraylist to delete lunchbox orders", lunchBoxList);
+//		assertEquals("Check that LunchBox arraylist size is 0", 0, lunchBoxList.size());   //check?
+//
+//		// Normal
+//		C206_CaseStudy.addLunchBoxOrder(lunchBoxList, lb1);
+//		C206_CaseStudy.addLunchBoxOrder(lunchBoxList, lb2);
+//		C206_CaseStudy.addLunchBoxOrder(lunchBoxList, lb3);
+//		assertEquals("Check that LunchBox arraylist size is 3", 3, lunchBoxList.size());
+//		
+//		C206_CaseStudy.deleteLunchBoxOrders(lunchBoxList);
+//		assertEquals("Check that LunchBox arraylist size is 2", 2, lunchBoxList.size());
+//		assertSame("Check that lunch box order ID removed is the same", lb1, lunchBoxList.get(0).getOrderID());
+//		
+//		C206_CaseStudy.deleteLunchBoxOrders(lunchBoxList);
+//		assertEquals("Check that LunchBox arraylist size is 1", 1, lunchBoxList.size());
+//		assertSame("Check that lunch box order ID removed is the same", lb3, lunchBoxList.get(2).getOrderID());
+//		
+//
+//		// Error
+//		assertNotEquals("Check that LunchBox arraylist size is 4", 4, lunchBoxList.size());
+//		assertNotEquals("Check that LunchBox arraylist size is 0", 0, lunchBoxList.size());   //check?
+//		
+//		C206_CaseStudy.deleteLunchBoxOrders(lunchBoxList, 123);
+//		assertNotSame("Check that lunch box order ID removed is NOT the same", lb2, lunchBoxList.get(1).getOrderID());
+//		
+//		C206_CaseStudy.deleteLunchBoxOrders(lunchBoxList, 777);
+//		assertNotSame("Check that lunch box order ID CANNOT be removed as it does not exist", lb2, lunchBoxList.get(1).getOrderID());
+//		
+//		C206_CaseStudy.deleteLunchBoxOrders(lunchBoxList, 789);
+//		assertNotSame("Check that lunch box order ID CANNOT be removed again", lb2, lunchBoxList.get(1).getOrderID());
+//		
+//	}
+	
+	
+	
+	
+	
 
 	// =============================================== OPTION 5 BILL
 	// =============================================================
