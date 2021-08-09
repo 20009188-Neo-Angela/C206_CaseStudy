@@ -1,4 +1,6 @@
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Iterator;
@@ -237,27 +239,42 @@ public class C206_CaseStudy {
 
 					String menu = viewMonthlyMenu();
 					System.out.println(menu);
+					
+					if (!monthlyMenu.isEmpty()) {
+						
+						C206_CaseStudy.setHeader("PLACE LUNCH BOX ORDERS");
 
-					C206_CaseStudy.setHeader("PLACE LUNCH BOX ORDERS");
+						for (int i = 0; i < 5; i++) {
 
-					for (int i = 0; i < 5; i++) {
+							LunchBox lb = inputLunchBox();
+							System.out.println();
+							addLunchBoxOrder(lunchBoxList, lb);
+							System.out.println();
 
-						LunchBox lb = inputLunchBox();
-						System.out.println();
-						addLunchBoxOrder(lunchBoxList, lb);
-						System.out.println();
-
+						}
+						
+					} else {
+						
+						System.out.println("Please CREATE a menu first!");
+						
 					}
 
 				} else if (choice == 2) {
 
 					C206_CaseStudy.setHeader("VIEW LUNCH BOX ORDERS");
 					viewAllLunchBoxOrders(lunchBoxList);
+					double price = 0;
+					calculateTotalPrice(lunchBoxList, price);
 
 				} else if (choice == 3) {
 
 					C206_CaseStudy.setHeader("DELETE LUNCH BOX ORDERS");
-					deleteLunchBoxOrders(lunchBoxList);
+					deleteLunchBoxOrder(lunchBoxList);
+
+				} else if (choice == 4) {
+
+					C206_CaseStudy.setHeader("UPDATE LUNCH BOX ORDERS");
+					updateLunchBoxOrder(lunchBoxList);
 
 				} else {
 
@@ -335,7 +352,8 @@ public class C206_CaseStudy {
 		C206_CaseStudy.setHeader("LUNCH BOX SELECTION");
 		System.out.println("1. Add/Place Lunch Box Order");
 		System.out.println("2. View Lunch Box Order");
-		System.out.println("3. Delete/Cancel Lunch Box Order\n");
+		System.out.println("3. Delete/Cancel Lunch Box Order");
+		System.out.println("4. Update Lunch Box Order\n");
 	}
 
 	private static void menuBill() {
@@ -709,21 +727,43 @@ public class C206_CaseStudy {
 	public static LunchBox inputLunchBox() {
 
 		int orderID = Helper.readInt("Enter order ID > ");
-		String date = Helper.readString("Enter date > ");
+		String date = Helper.readString("Enter date (dd/mm/yyyy) > ");
 		String meal = Helper.readString("Enter meal > ");
 		String drink = Helper.readString("Enter drink > ");
 		String fruit = Helper.readString("Enter fruit > ");
-
-		LunchBox lb = new LunchBox(orderID, date, meal, drink, fruit);
+		double price = Helper.readDouble("Enter total price > $");
+		
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/M/yyyy");
+		LocalDate formattedDate = LocalDate.parse(date, formatter);
+		
+		LunchBox lb = new LunchBox(orderID, formattedDate, meal, drink, fruit, price);
 		return lb;
 
 	}
 
 	public static void addLunchBoxOrder(ArrayList<LunchBox> lunchBoxList, LunchBox lb) {
+		
+		if (!lb.getDate().equals(null) && !lb.getMeal().isEmpty() && !lb.getDrink().isEmpty() && !lb.getFruit().isEmpty()) {
+			
+			lunchBoxList.add(lb);
+			System.out.println("Successfully placed a lunch box order!");
+			
+		} else {
+			
+			System.out.println("Please fill in all the fields!");
+			
+		}
 
-		lunchBoxList.add(lb);
-		System.out.println("Successfully placed a lunch box order!");
-
+	}
+	
+	public static void calculateTotalPrice(ArrayList<LunchBox> lunchBoxList, double price) {
+		
+		double sum = 0;
+		
+		for (LunchBox i : lunchBoxList) {
+			sum += i.getPrice();
+		}
+		System.out.println(String.format("Total price: $%.2f", sum));
 	}
 
 	public static String retrieveAllLunchBoxOrders(ArrayList<LunchBox> lunchBoxList) {
@@ -741,8 +781,8 @@ public class C206_CaseStudy {
 		output += retrieveAllLunchBoxOrders(lunchBoxList);
 		System.out.println(output);
 	}
-
-	public static boolean doFoundLunchBoxOrder(ArrayList<LunchBox> lunchBoxList, int orderID) {
+	
+	public static boolean doFoundLunchBoxOrderID(ArrayList<LunchBox> lunchBoxList, int orderID) {
 		boolean isFound = false;
 
 		for (int i = 0; i < lunchBoxList.size(); i++) {
@@ -754,26 +794,130 @@ public class C206_CaseStudy {
 
 	}
 
-	public static void deleteLunchBoxOrders(ArrayList<LunchBox> lunchBoxList) {
+	public static boolean doDeleteLunchBoxOrder(ArrayList<LunchBox> lunchBoxList, int orderID, String date) {
+		boolean isDelete = false;
+		
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/M/yyyy");
+		LocalDate formattedDate = LocalDate.parse(date, formatter);
+
+		for (int i = 0; i < lunchBoxList.size(); i++) {
+			if (orderID == lunchBoxList.get(i).getOrderID() &&
+					formattedDate.getDayOfYear() - LocalDate.now().getDayOfYear() > 0) {
+				lunchBoxList.remove(lunchBoxList.get(i));
+				isDelete = true;
+			}
+		}
+		return isDelete;
+
+	}
+
+	public static void deleteLunchBoxOrder(ArrayList<LunchBox> lunchBoxList) {
 		
 		viewAllLunchBoxOrders(lunchBoxList);
 
 		int orderID = Helper.readInt("Enter order ID to cancel the lunch box order > ");
 		
-		Boolean isFound = doFoundLunchBoxOrder(lunchBoxList, orderID);
-
+		Boolean isFound = doFoundLunchBoxOrderID(lunchBoxList, orderID);
+		
 		if (isFound == false) {
+			
 			System.out.println("Invalid Lunch Box Order!");
+			
 		} else {
+			
+			String date = Helper.readString("Enter date (dd/mm/yyyy) > ");
+			
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/M/yyyy");
+			LocalDate formattedDate = LocalDate.parse(date, formatter);
 			
 			char confirm = Helper.readChar("Do you really want to cancel the lunch box order? (Y/N) > ");
 			
 			if (confirm == 'y' || confirm == 'Y') {
-				lunchBoxList.remove(orderID - 1);
+				
+				Boolean isDelete = doDeleteLunchBoxOrder(lunchBoxList, orderID, date);
+				
+				if (isDelete == false) {
+					System.out.println("Cancellation FAILED!");
+				} else {
+
+					System.out.println("Lunch Box with Order ID " + orderID + " is successfully cancelled!");
+
+				}
+				
+			} else {
+				
+				System.out.println("No lunch box order is being deleted!");
+				
 			}
 			
-			System.out.println("Lunch Box with Order ID " + orderID + " is successfully cancelled!");
 		}
+		
+	}
+	
+	public static boolean doUpdateLunchBoxOrder(ArrayList<LunchBox> lunchBoxList, int orderID, LocalDate formattedDate, String meal, String drink, String fruit, double price) {
+		boolean isUpdated = false;
+
+		for (int i = 0; i < lunchBoxList.size(); i++) {
+			if (orderID == lunchBoxList.get(i).getOrderID() && !formattedDate.equals(null) &&
+					!meal.isEmpty() && !drink.isEmpty() && !fruit.isEmpty()) {
+				
+				lunchBoxList.get(i).setDate(formattedDate);
+				lunchBoxList.get(i).setMeal(meal);
+				lunchBoxList.get(i).setDrink(drink);
+				lunchBoxList.get(i).setFruit(fruit);
+				lunchBoxList.get(i).setPrice(price);
+				
+				isUpdated = true;
+				
+			}
+		}
+		return isUpdated;
+	}
+	
+	public static void updateLunchBoxOrder(ArrayList<LunchBox> lunchBoxList) {
+		
+		viewAllLunchBoxOrders(lunchBoxList);
+
+		int orderID = Helper.readInt("Enter order ID to update the lunch box order > ");
+		
+		Boolean isFound = doFoundLunchBoxOrderID(lunchBoxList, orderID);
+		
+		if (isFound == false) {
+			
+			System.out.println("Invalid Lunch Box Order!");
+			
+		} else {
+			
+			char confirm = Helper.readChar("Do you really want to update the lunch box order? (Y/N) > ");
+			
+			
+			if (confirm == 'y' || confirm == 'Y') {
+				
+				String date = Helper.readString("\nEnter new date > ");
+				String meal = Helper.readString("Enter new meal > ");
+				String drink = Helper.readString("Enter new drink > ");
+				String fruit = Helper.readString("Enter new fruit > ");
+				double price = Helper.readDouble("Enter total price > $");
+				
+				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/M/yyyy");
+				LocalDate formattedDate = LocalDate.parse(date, formatter);
+				
+				Boolean isUpdated = doUpdateLunchBoxOrder(lunchBoxList, orderID, formattedDate, meal, drink, fruit, price);
+				
+				if (isUpdated == false) {
+					System.out.println("Update FAILED!");
+				} else {
+					System.out.println("Lunch Box with Order ID " + orderID + " is successfully updated!");
+				}
+				
+			} else {
+				
+				System.out.println("No lunch box order is being updated!");
+				
+			}
+			
+		}
+
 	}
 
 	// ================================================ OPTION 5 BILL
