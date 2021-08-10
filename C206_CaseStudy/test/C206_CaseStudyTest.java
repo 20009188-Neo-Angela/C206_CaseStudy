@@ -731,8 +731,8 @@ public class C206_CaseStudyTest {
 		// Test that orderBillArr is not empty
 		assertNotNull("Test if there is valid orderBillArr arraylist to retrieve item", orderBillArr);
 
-		// Test that after delete, monthly menu is empty
-		C206_CaseStudy.deleteOrderBill(orderBillArr);
+		// Test that after delete, order bill is empty
+		C206_CaseStudy.deleteOrderBill(orderBillArr, null);
 		assertTrue(C206_CaseStudy.orderBillArr.isEmpty());
 
 	}

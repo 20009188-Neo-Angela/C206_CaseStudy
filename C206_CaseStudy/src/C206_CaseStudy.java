@@ -299,7 +299,7 @@ public class C206_CaseStudy {
 					System.out.println(orderBill);
 				} else if (billOptions == 3) {
 					C206_CaseStudy.setHeader("DELETE ORDER BILL");
-					deleteOrderBill(orderBillArr);
+					 dodeleteOrderBill(orderBillArr);
 				} else {
 					System.out.println("Invalid option!");
 				}
@@ -1002,21 +1002,32 @@ public class C206_CaseStudy {
 		return output;
 	}
 
-	public static void deleteOrderBill(ArrayList<Bill> orderBillArr) {
+
+	public static boolean deleteOrderBill(ArrayList<Bill> orderBillArr, String userId) {
 		// boolean isFound to check whether the conditions are met
 		boolean isFound = false;
-		String userId = Helper.readString("Enter userId to delete > ");
 
 		for (int i = 0; i < orderBillArr.size(); i++) {
 			if (orderBillArr.get(i) != null && orderBillArr.get(i).getID().equals(userId)) {
 				orderBillArr.remove(i);
 				isFound = true;
-				System.out.println("Username: " + userId + " is deleted");
 				break;
 			}
 		}
+		return isFound;
+		
+		}
+	
+	public static void dodeleteOrderBill(ArrayList<Bill>orderBillArr) {
+		String userId = Helper.readString("Enter userId to delete > ");
+		
+		Boolean isFound = deleteOrderBill(orderBillArr, userId);
+		
 		if (isFound == false) {
-			System.out.println("Username not found");
+			System.out.println("User ID not found!");
+		} else {
+			viewMonthlyBill(orderBillArr);
+			System.out.println("Username: " + userId + " is deleted");
 		}
 
 	}
