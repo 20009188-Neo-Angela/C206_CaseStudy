@@ -8,7 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class C206_CaseStudyTest {
-
+ 
 	private Account acc1;
 	private Account acc2;
 
