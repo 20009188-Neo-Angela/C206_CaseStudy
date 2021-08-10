@@ -495,21 +495,21 @@ public class C206_CaseStudyTest {
 		// Normal
 		C206_CaseStudy.addLunchBoxOrder(lunchBoxList, lb1);
 		assertEquals("Check that LunchBox arraylist size is 1", 1, lunchBoxList.size());
-		assertSame("Check that lunch box order is added", lb1, lunchBoxList.get(0));
+		assertSame("Check that first lunch box order is added to the lunchBoxList index position (0)", lb1, lunchBoxList.get(0));
 
 		C206_CaseStudy.addLunchBoxOrder(lunchBoxList, lb2);
 		assertEquals("Check that LunchBox arraylist size is 2", 2, lunchBoxList.size());
-		assertSame("Check that lunch box order is added", lb2, lunchBoxList.get(1));
+		assertSame("Check that second lunch box order is added to the lunchBoxList index position (1)", lb2, lunchBoxList.get(1));
 
 		C206_CaseStudy.addLunchBoxOrder(lunchBoxList, lb3);
 		assertEquals("Check that LunchBox arraylist size is 3", 3, lunchBoxList.size());
-		assertSame("Check that lunch box order is added", lb3, lunchBoxList.get(2));
+		assertSame("Check that third lunch box order is added to the lunchBoxList index position (2)", lb3, lunchBoxList.get(2));
 
 		// Error
-		assertNotEquals("Check that LunchBox arraylist size is 4", 4, lunchBoxList.size());
-		assertNotEquals("Check that LunchBox arraylist size is 1", 1, lunchBoxList.size());
-		assertNotSame("Check that lunch box order added is the same", lb1, lunchBoxList.get(2));
-		assertNotSame("Check that lunch box order added is the same", lb3, lunchBoxList.get(0));
+		assertNotEquals("Check that LunchBox arraylist size is NOT equals to 4", 4, lunchBoxList.size());
+		assertNotEquals("Check that LunchBox arraylist size is NOT equals to 1", 1, lunchBoxList.size());
+		assertNotSame("Check that lunch box order added is NOT the same", lb1, lunchBoxList.get(2));
+		assertNotSame("Check that lunch box order added is NOT the same", lb3, lunchBoxList.get(0));
 
 	}
 
@@ -544,8 +544,8 @@ public class C206_CaseStudyTest {
 
 		assertNotEquals("Test that viewAllLunchBoxOrders is NOT equals to the output", testOutput, allLunchBoxOrders);
 
-		assertNotSame("Check that lunch box order added is same", lb3, lunchBoxList.get(0));
-		assertNotSame("Check that lunch box order added is same", lb1, lunchBoxList.get(1));
+		assertNotSame("Check that lunch box order added is NOT the same as lunchBoxList index position (0)", lb3, lunchBoxList.get(0));
+		assertNotSame("Check that lunch box order added is NOT the same as lunchBoxList index position (1)", lb1, lunchBoxList.get(1));
 
 	}
 
@@ -624,12 +624,12 @@ public class C206_CaseStudyTest {
 		assertNotEquals("Check that LunchBox arraylist size is 0", 0, lunchBoxList.size());
 
 		ok = C206_CaseStudy.doDeleteLunchBoxOrder(lunchBoxList, 123, "2222-12-19");
-		assertFalse("Check that lunch box order ID removed is NOT the same", ok);
-		assertNotEquals("Check that lunch box order date is NOT equal", "2222-12-19", lb1.getDate());
+		assertFalse("Check that lunch box order ID removed is UNSUCCESSFUL", ok);
+		assertNotEquals("Check that lunch box order date is NOT equal/matched", "2222-12-19", lb1.getDate());
 
 		ok = C206_CaseStudy.doDeleteLunchBoxOrder(lunchBoxList, 777, "2021-12-19");
-		assertFalse("Check that lunch box order ID removed is NOT the same", ok);
-		assertNotEquals("Check that lunch box order date is NOT equal", 777, lb1.getOrderID());
+		assertFalse("Check that lunch box order ID removed is UNSUCCESSFUL", ok);
+		assertNotEquals("Check that lunch box order ID is NOT equal/matched", 777, lb1.getOrderID());
 
 		ok = C206_CaseStudy.doDeleteLunchBoxOrder(lunchBoxList, 789, "2021-08-30");
 		assertFalse("Check that lunch box order ID CANNOT be removed again",ok);
@@ -640,16 +640,16 @@ public class C206_CaseStudyTest {
 
 		// Boundary
 		assertNotNull("Test if there is valid LunchBox arraylist to update lunch box orders", lunchBoxList);
-		assertEquals("Check that LunchBox arraylist size is 0", 0, lunchBoxList.size());   //check?
+		assertEquals("Check that LunchBox arraylist size is 0", 0, lunchBoxList.size());
 
 		// Normal
 		C206_CaseStudy.addLunchBoxOrder(lunchBoxList, lb1);
 		Boolean ok = C206_CaseStudy.doUpdateLunchBoxOrder(lunchBoxList, 123, "2021-04-05", "Bao", "Coffee", "Durian", 100.00);
-		assertEquals("Check that lunch box order price is different", lunchBoxList.get(0).getDate(), LocalDate.parse("2021-04-05"));
-		assertEquals("Check that lunch box order price is different", lunchBoxList.get(0).getMeal(), "Bao");
-		assertEquals("Check that lunch box order price is different", lunchBoxList.get(0).getDrink(), "Coffee");
-		assertEquals("Check that lunch box order price is different", lunchBoxList.get(0).getFruit(), "Durian");
-		assertNotEquals("Check that lunch box order price is different", lunchBoxList.get(0).getOrderID(), 456);
+		assertEquals("Check that lunch box order date is the same and updated", lunchBoxList.get(0).getDate(), LocalDate.parse("2021-04-05"));
+		assertEquals("Check that lunch box order meal is the same and updated", lunchBoxList.get(0).getMeal(), "Bao");
+		assertEquals("Check that lunch box order drink is the same and updated", lunchBoxList.get(0).getDrink(), "Coffee");
+		assertEquals("Check that lunch box order fruit is the same and updated", lunchBoxList.get(0).getFruit(), "Durian");
+		assertNotEquals("Check that lunch box order ID is different?", lunchBoxList.get(0).getOrderID(), 456);
 		assertTrue("Test if the lunch box order is found?", ok);
 
 
@@ -663,11 +663,11 @@ public class C206_CaseStudyTest {
 
 		C206_CaseStudy.addLunchBoxOrder(lunchBoxList, lb2);
 		ok = C206_CaseStudy.doUpdateLunchBoxOrder(lunchBoxList, 000, "2021-03-21", "Chicken", "Coke", "Apple", 10.00);
-		assertNotEquals("Check that LunchBox arraylist size is 4", 4, lunchBoxList.size());
-		assertFalse("Test if the lunch box order is NOT updated", ok);
+		assertNotEquals("Check that LunchBox arraylist size is NOT equals to 4", 4, lunchBoxList.size());
+		assertFalse("Test if the lunch box order is updated?", ok);
 
 		C206_CaseStudy.addLunchBoxOrder(lunchBoxList, lb3);
-		assertNotEquals("Check that lunch box order ID NOT matched", 999, lunchBoxList.get(2).getOrderID());
+		assertNotEquals("Check that lunch box order ID is NOT matched", 999, lunchBoxList.get(2).getOrderID());
 
 		ok = C206_CaseStudy.doUpdateLunchBoxOrder(lunchBoxList, 789, "2021-12-19", "Chicken", "Coke", "Apple", -1000.00);
 		assertFalse("Test if the lunch box order is NOT updated", ok);
