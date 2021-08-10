@@ -1,20 +1,22 @@
 1
 1
-2
 Roy Tan
 schoolR0ck$
 4E4
 Credit Card
 Account Credit
+6
 2
 3
 Chilli Crab
 4
+6
 3
 1
 2021
 1
 7
+6
 4
 1
 7
@@ -23,6 +25,7 @@ Chilli Crab
 Bubble Tea
 Durian
 50.00
+6
 5
 1
 t0326720i
