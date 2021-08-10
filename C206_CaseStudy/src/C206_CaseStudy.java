@@ -733,17 +733,15 @@ public class C206_CaseStudy {
 		String fruit = Helper.readString("Enter fruit > ");
 		double price = Helper.readDouble("Enter total price > $");
 		
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/M/yyyy");
-		LocalDate formattedDate = LocalDate.parse(date, formatter);
 		
-		LunchBox lb = new LunchBox(orderID, formattedDate, meal, drink, fruit, price);
+		LunchBox lb = new LunchBox(orderID, date, meal, drink, fruit, price);
 		return lb;
 
 	}
 
 	public static void addLunchBoxOrder(ArrayList<LunchBox> lunchBoxList, LunchBox lb) {
 		
-		if (!lb.getDate().equals(null) && !lb.getMeal().isEmpty() && !lb.getDrink().isEmpty() && !lb.getFruit().isEmpty()) {
+		if (!lb.getDate().isEmpty() && !lb.getMeal().isEmpty() && !lb.getDrink().isEmpty() && !lb.getFruit().isEmpty()) {
 			
 			lunchBoxList.add(lb);
 			System.out.println("Successfully placed a lunch box order!");
@@ -798,11 +796,10 @@ public class C206_CaseStudy {
 		boolean isDelete = false;
 		
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/M/yyyy");
-		LocalDate formattedDate = LocalDate.parse(date, formatter);
 
 		for (int i = 0; i < lunchBoxList.size(); i++) {
 			if (orderID == lunchBoxList.get(i).getOrderID() &&
-					formattedDate.getDayOfYear() - LocalDate.now().getDayOfYear() > 0) {
+					LocalDate.parse(date, formatter).getDayOfYear() - LocalDate.now().getDayOfYear() > 0) {
 				lunchBoxList.remove(lunchBoxList.get(i));
 				isDelete = true;
 			}
@@ -826,9 +823,6 @@ public class C206_CaseStudy {
 		} else {
 			
 			String date = Helper.readString("Enter date (dd/mm/yyyy) > ");
-			
-			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/M/yyyy");
-			LocalDate formattedDate = LocalDate.parse(date, formatter);
 			
 			char confirm = Helper.readChar("Do you really want to cancel the lunch box order? (Y/N) > ");
 			
@@ -854,14 +848,14 @@ public class C206_CaseStudy {
 		
 	}
 	
-	public static boolean doUpdateLunchBoxOrder(ArrayList<LunchBox> lunchBoxList, int orderID, LocalDate formattedDate, String meal, String drink, String fruit, double price) {
+	public static boolean doUpdateLunchBoxOrder(ArrayList<LunchBox> lunchBoxList, int orderID, String date, String meal, String drink, String fruit, double price) {
 		boolean isUpdated = false;
 
 		for (int i = 0; i < lunchBoxList.size(); i++) {
-			if (orderID == lunchBoxList.get(i).getOrderID() && !formattedDate.equals(null) &&
+			if (orderID == lunchBoxList.get(i).getOrderID() && !date.isEmpty() &&
 					!meal.isEmpty() && !drink.isEmpty() && !fruit.isEmpty()) {
 				
-				lunchBoxList.get(i).setDate(formattedDate);
+				lunchBoxList.get(i).setDate(date);
 				lunchBoxList.get(i).setMeal(meal);
 				lunchBoxList.get(i).setDrink(drink);
 				lunchBoxList.get(i).setFruit(fruit);
@@ -899,10 +893,7 @@ public class C206_CaseStudy {
 				String fruit = Helper.readString("Enter new fruit > ");
 				double price = Helper.readDouble("Enter total price > $");
 				
-				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/M/yyyy");
-				LocalDate formattedDate = LocalDate.parse(date, formatter);
-				
-				Boolean isUpdated = doUpdateLunchBoxOrder(lunchBoxList, orderID, formattedDate, meal, drink, fruit, price);
+				Boolean isUpdated = doUpdateLunchBoxOrder(lunchBoxList, orderID, date, meal, drink, fruit, price);
 				
 				if (isUpdated == false) {
 					System.out.println("Update FAILED!");

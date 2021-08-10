@@ -74,9 +74,9 @@ public class C206_CaseStudyTest {
 
 		menuList = new ArrayList<Menu>();
 
-		lb1 = new LunchBox(123, "6 August 2021", "Chilli Crab", "Qoo10", "Grape");
-		lb2 = new LunchBox(456, "7 August 2021", "Mee Soto", "Coke", "Mangosteen");
-		lb3 = new LunchBox(789, "8 August 2021", "Chicken Briyani", "Fanta", "Durian");
+		lb1 = new LunchBox(123, "6 August 2021", "Chilli Crab", "Qoo10", "Grape", 35.00);
+		lb2 = new LunchBox(456, "7 August 2021", "Mee Soto", "Coke", "Mangosteen", 10.00);
+		lb3 = new LunchBox(789, "8 August 2021", "Chicken Briyani", "Fanta", "Durian", 50.00);
 
 		lunchBoxList = new ArrayList<LunchBox>();
 
@@ -553,7 +553,7 @@ public class C206_CaseStudyTest {
 //	}
 
 	@Test
-	public void doFoundLunchBoxOrder() {
+	public void doFoundLunchBoxOrderID()  {
 
 		// Boundary
 		assertNotNull("Test if there is valid LunchBox arraylist to retrieve lunch box orders", lunchBoxList);
@@ -565,19 +565,19 @@ public class C206_CaseStudyTest {
 		assertSame("Check that lunch box order added is same", lb2, lunchBoxList.get(0));
 		assertNotNull("Test that the lunch box order is not empty", lb2);
 		
-		Boolean ok = C206_CaseStudy.doFoundLunchBoxOrder(lunchBoxList, 456) ;
+		Boolean ok = C206_CaseStudy.doFoundLunchBoxOrderID(lunchBoxList, 456) ;
 		assertTrue("Test if the lunch box order ID is found?", ok);
 		
 		
 		// Error
-		ok = C206_CaseStudy.doFoundLunchBoxOrder(lunchBoxList, 123) ;
+		ok = C206_CaseStudy.doFoundLunchBoxOrderID(lunchBoxList, 123) ;
 		assertFalse("Test if the lunch box order ID is found?", ok);
 		
 		C206_CaseStudy.addLunchBoxOrder(lunchBoxList, lb3);
-		ok = C206_CaseStudy.doFoundLunchBoxOrder(lunchBoxList, 777);
+		ok = C206_CaseStudy.doFoundLunchBoxOrderID(lunchBoxList, 777);
 		assertFalse("Test that lunch box order ID does not exist is NOT found?", ok);
 		
-		ok = C206_CaseStudy.doFoundLunchBoxOrder(lunchBoxList, 777);
+		ok = C206_CaseStudy.doFoundLunchBoxOrderID(lunchBoxList, 777);
 		assertNotSame("Test if the lunch box order ID matches the records?", ok);
 		
 		C206_CaseStudy.addLunchBoxOrder(lunchBoxList, lb1);
@@ -586,7 +586,7 @@ public class C206_CaseStudyTest {
 	}
 	
 //	@Test
-//	public void deleteLunchBoxOrders() {
+//	public void doDeleteLunchBoxOrder() {
 //		
 //		// Boundary
 //		assertNotNull("Check if there is valid LunchBox arraylist to delete lunchbox orders", lunchBoxList);
@@ -598,11 +598,11 @@ public class C206_CaseStudyTest {
 //		C206_CaseStudy.addLunchBoxOrder(lunchBoxList, lb3);
 //		assertEquals("Check that LunchBox arraylist size is 3", 3, lunchBoxList.size());
 //		
-//		C206_CaseStudy.deleteLunchBoxOrders(lunchBoxList);
+//		C206_CaseStudy.doDeleteLunchBoxOrder(lunchBoxList, 123, "6 August 2021");
 //		assertEquals("Check that LunchBox arraylist size is 2", 2, lunchBoxList.size());
 //		assertSame("Check that lunch box order ID removed is the same", lb1, lunchBoxList.get(0).getOrderID());
 //		
-//		C206_CaseStudy.deleteLunchBoxOrders(lunchBoxList);
+//		C206_CaseStudy.doDeleteLunchBoxOrder(lunchBoxList, 789, "8 August 2021");
 //		assertEquals("Check that LunchBox arraylist size is 1", 1, lunchBoxList.size());
 //		assertSame("Check that lunch box order ID removed is the same", lb3, lunchBoxList.get(2).getOrderID());
 //		
@@ -611,16 +611,53 @@ public class C206_CaseStudyTest {
 //		assertNotEquals("Check that LunchBox arraylist size is 4", 4, lunchBoxList.size());
 //		assertNotEquals("Check that LunchBox arraylist size is 0", 0, lunchBoxList.size());   //check?
 //		
-//		C206_CaseStudy.deleteLunchBoxOrders(lunchBoxList, 123);
+//		C206_CaseStudy.doDeleteLunchBoxOrder((lunchBoxList, 123);
 //		assertNotSame("Check that lunch box order ID removed is NOT the same", lb2, lunchBoxList.get(1).getOrderID());
 //		
-//		C206_CaseStudy.deleteLunchBoxOrders(lunchBoxList, 777);
+//		C206_CaseStudy.doDeleteLunchBoxOrder((lunchBoxList, 777);
 //		assertNotSame("Check that lunch box order ID CANNOT be removed as it does not exist", lb2, lunchBoxList.get(1).getOrderID());
 //		
-//		C206_CaseStudy.deleteLunchBoxOrders(lunchBoxList, 789);
+//		C206_CaseStudy.doDeleteLunchBoxOrder((lunchBoxList, 789);
 //		assertNotSame("Check that lunch box order ID CANNOT be removed again", lb2, lunchBoxList.get(1).getOrderID());
 //		
 //	}
+	
+	@Test
+	public void doUpdateLunchBoxOrder()  {
+
+		// Boundary
+		assertNotNull("Test if there is valid LunchBox arraylist to update lunch box orders", lunchBoxList);
+		assertEquals("Check that LunchBox arraylist size is 0", 0, lunchBoxList.size());   //check?
+		
+		// Normal
+		C206_CaseStudy.addLunchBoxOrder(lunchBoxList, lb1);
+		Boolean ok = C206_CaseStudy.doUpdateLunchBoxOrder(lunchBoxList, 123, "19 December 2021", "Bao", "Coffee", "Durian", 100.00);
+		assertEquals("Check that LunchBox arraylist size is 1", 1, lunchBoxList.size());
+		assertSame("Check that lunch box order added is same", lb1, lunchBoxList.get(0));
+		assertTrue("Test if the lunch box order is found?", ok);
+		
+		lb1.setPrice(70.00);
+		assertSame("Check that lunch box order added is same", lb1, lunchBoxList.get(0));
+		
+//		assertEquals("Check that lunch box order price is $100.00?", 100.00, lunchBoxList.get(0).getPrice());
+		
+		// Error
+		ok = C206_CaseStudy.doUpdateLunchBoxOrder(lunchBoxList, 123, "", "", "", "Durian", 100.00);
+		assertFalse("Test if the lunch box order is updated", ok);
+		
+		C206_CaseStudy.addLunchBoxOrder(lunchBoxList, lb3);
+		ok = C206_CaseStudy.doUpdateLunchBoxOrder(lunchBoxList, 777, "27 October 2021", "Fish", "Black Coffee", "Lychee", 500.00);
+		assertFalse("Test that lunch box order ID does not exist is NOT updated?", ok);
+		
+		C206_CaseStudy.addLunchBoxOrder(lunchBoxList, lb2);
+		ok = C206_CaseStudy.doUpdateLunchBoxOrder(lunchBoxList, 456, "21 March 2021", "Chicken", "Coke", "Apple", 10.00);
+		assertNotEquals("Check that LunchBox arraylist size is 4", 4, lunchBoxList.size());
+		assertNotSame("Test if the lunch box order matches the updated records?", lb3, ok);
+		
+		C206_CaseStudy.addLunchBoxOrder(lunchBoxList, lb3);
+		assertNotEquals("Check that lunch box order ID matched", 999, lunchBoxList.get(2).getOrderID());
+
+	}
 	
 	
 	
