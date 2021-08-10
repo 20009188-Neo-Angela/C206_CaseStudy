@@ -2,6 +2,7 @@
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Random;
 import java.util.Iterator;
 
@@ -724,192 +725,200 @@ public class C206_CaseStudy {
 	}
 
 	//================================================= OPTION 4 LUNCH BOX ORDER =========================================//
-	public static LunchBox inputLunchBox() {
+		public static LunchBox inputLunchBox() {
 
-		int orderID = Helper.readInt("Enter order ID > ");
-		String date = Helper.readString("Enter date (dd/mm/yyyy) > ");
-		String meal = Helper.readString("Enter meal > ");
-		String drink = Helper.readString("Enter drink > ");
-		String fruit = Helper.readString("Enter fruit > ");
-		double price = Helper.readDouble("Enter total price > $");
-		
-		
-		LunchBox lb = new LunchBox(orderID, date, meal, drink, fruit, price);
-		return lb;
+			int orderID = Helper.readInt("Enter order ID > ");
+			String date = Helper.readString("Enter date (yyyy-mm-dd) > ");
+			String meal = Helper.readString("Enter meal > ");
+			String drink = Helper.readString("Enter drink > ");
+			String fruit = Helper.readString("Enter fruit > ");
+			double price = Helper.readDouble("Enter total price > $");
+			
+			
+			LunchBox lb = new LunchBox(orderID, LocalDate.parse(date), meal, drink, fruit, price);
+			return lb;
 
-	}
-
-	public static void addLunchBoxOrder(ArrayList<LunchBox> lunchBoxList, LunchBox lb) {
-		
-		if (!lb.getDate().isEmpty() && !lb.getMeal().isEmpty() && !lb.getDrink().isEmpty() && !lb.getFruit().isEmpty()) {
-			
-			lunchBoxList.add(lb);
-			System.out.println("Successfully placed a lunch box order!");
-			
-		} else {
-			
-			System.out.println("Please fill in all the fields!");
-			
 		}
 
-	}
-	
-	public static void calculateTotalPrice(ArrayList<LunchBox> lunchBoxList, double price) {
-		
-		double sum = 0;
-		
-		for (LunchBox i : lunchBoxList) {
-			sum += i.getPrice();
-		}
-		System.out.println(String.format("Total price: $%.2f", sum));
-	}
-
-	public static String retrieveAllLunchBoxOrders(ArrayList<LunchBox> lunchBoxList) {
-		String output = "";
-
-		for (int i = 0; i < lunchBoxList.size(); i++) {
-
-			output += String.format("%-85s \n", lunchBoxList.get(i).toString());
-		}
-		return output;
-	}
-
-	public static void viewAllLunchBoxOrders(ArrayList<LunchBox> lunchBoxList) {
-		String output = String.format("%-10s %-16s %-25s %-15s %-15s\n", "ORDER ID", "DATE", "MEAL", "DRINK", "FRUIT");
-		output += retrieveAllLunchBoxOrders(lunchBoxList);
-		System.out.println(output);
-	}
-	
-	public static boolean doFoundLunchBoxOrderID(ArrayList<LunchBox> lunchBoxList, int orderID) {
-		boolean isFound = false;
-
-		for (int i = 0; i < lunchBoxList.size(); i++) {
-			if (orderID == lunchBoxList.get(i).getOrderID()) {
-				isFound = true;
-			}
-		}
-		return isFound;
-
-	}
-
-	public static boolean doDeleteLunchBoxOrder(ArrayList<LunchBox> lunchBoxList, int orderID, String date) {
-		boolean isDelete = false;
-		
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/M/yyyy");
-
-		for (int i = 0; i < lunchBoxList.size(); i++) {
-			if (orderID == lunchBoxList.get(i).getOrderID() &&
-					LocalDate.parse(date, formatter).getDayOfYear() - LocalDate.now().getDayOfYear() > 0) {
-				lunchBoxList.remove(lunchBoxList.get(i));
-				isDelete = true;
-			}
-		}
-		return isDelete;
-
-	}
-
-	public static void deleteLunchBoxOrder(ArrayList<LunchBox> lunchBoxList) {
-		
-		viewAllLunchBoxOrders(lunchBoxList);
-
-		int orderID = Helper.readInt("Enter order ID to cancel the lunch box order > ");
-		
-		Boolean isFound = doFoundLunchBoxOrderID(lunchBoxList, orderID);
-		
-		if (isFound == false) {
+		public static void addLunchBoxOrder(ArrayList<LunchBox> lunchBoxList, LunchBox lb) {
 			
-			System.out.println("Invalid Lunch Box Order!");
-			
-		} else {
-			
-			String date = Helper.readString("Enter date (dd/mm/yyyy) > ");
-			
-			char confirm = Helper.readChar("Do you really want to cancel the lunch box order? (Y/N) > ");
-			
-			if (confirm == 'y' || confirm == 'Y') {
+			if (!lb.getMeal().isEmpty() && !lb.getDrink().isEmpty() && !lb.getFruit().isEmpty() && lb.getPrice() > 0) {
 				
-				Boolean isDelete = doDeleteLunchBoxOrder(lunchBoxList, orderID, date);
-				
-				if (isDelete == false) {
-					System.out.println("Cancellation FAILED!");
-				} else {
-
-					System.out.println("Lunch Box with Order ID " + orderID + " is successfully cancelled!");
-
-				}
+				lunchBoxList.add(lb);
+				System.out.println("Successfully placed a lunch box order!");
 				
 			} else {
 				
-				System.out.println("No lunch box order is being deleted!");
+				System.out.println("Please fill in all the fields!");
 				
 			}
-			
+
 		}
 		
-	}
-	
-	public static boolean doUpdateLunchBoxOrder(ArrayList<LunchBox> lunchBoxList, int orderID, String date, String meal, String drink, String fruit, double price) {
-		boolean isUpdated = false;
-
-		for (int i = 0; i < lunchBoxList.size(); i++) {
-			if (orderID == lunchBoxList.get(i).getOrderID() && !date.isEmpty() &&
-					!meal.isEmpty() && !drink.isEmpty() && !fruit.isEmpty()) {
-				
-				lunchBoxList.get(i).setDate(date);
-				lunchBoxList.get(i).setMeal(meal);
-				lunchBoxList.get(i).setDrink(drink);
-				lunchBoxList.get(i).setFruit(fruit);
-				lunchBoxList.get(i).setPrice(price);
-				
-				isUpdated = true;
-				
+		public static void calculateTotalPrice(ArrayList<LunchBox> lunchBoxList, double price) {
+			
+			double sum = 0;
+			
+			for (LunchBox i : lunchBoxList) {
+				sum += i.getPrice();
 			}
+			System.out.println(String.format("Total price: $%.2f", sum));
 		}
-		return isUpdated;
-	}
-	
-	public static void updateLunchBoxOrder(ArrayList<LunchBox> lunchBoxList) {
-		
-		viewAllLunchBoxOrders(lunchBoxList);
 
-		int orderID = Helper.readInt("Enter order ID to update the lunch box order > ");
+		public static String retrieveAllLunchBoxOrders(ArrayList<LunchBox> lunchBoxList) {
+			String output = "";
+
+			for (int i = 0; i < lunchBoxList.size(); i++) {
+
+				output += String.format("%-85s \n", lunchBoxList.get(i).toString());
+			}
+			return output;
+		}
+
+		public static void viewAllLunchBoxOrders(ArrayList<LunchBox> lunchBoxList) {
+			String output = String.format("%-10s %-16s %-25s %-15s %-15s\n", "ORDER ID", "DATE", "MEAL", "DRINK", "FRUIT");
+			output += retrieveAllLunchBoxOrders(lunchBoxList);
+			System.out.println(output);
+		}
 		
-		Boolean isFound = doFoundLunchBoxOrderID(lunchBoxList, orderID);
-		
-		if (isFound == false) {
-			
-			System.out.println("Invalid Lunch Box Order!");
-			
-		} else {
-			
-			char confirm = Helper.readChar("Do you really want to update the lunch box order? (Y/N) > ");
-			
-			
-			if (confirm == 'y' || confirm == 'Y') {
-				
-				String date = Helper.readString("\nEnter new date > ");
-				String meal = Helper.readString("Enter new meal > ");
-				String drink = Helper.readString("Enter new drink > ");
-				String fruit = Helper.readString("Enter new fruit > ");
-				double price = Helper.readDouble("Enter total price > $");
-				
-				Boolean isUpdated = doUpdateLunchBoxOrder(lunchBoxList, orderID, date, meal, drink, fruit, price);
-				
-				if (isUpdated == false) {
-					System.out.println("Update FAILED!");
-				} else {
-					System.out.println("Lunch Box with Order ID " + orderID + " is successfully updated!");
+		public static boolean doFoundLunchBoxOrderID(ArrayList<LunchBox> lunchBoxList, int orderID) {
+			boolean isFound = false;
+
+			for (int i = 0; i < lunchBoxList.size(); i++) {
+				if (orderID == lunchBoxList.get(i).getOrderID()) {
+					isFound = true;
 				}
+			}
+			return isFound;
+
+		}
+		
+		public static int calculateDays(String date) {
+			
+			int days = LocalDate.parse(date).getDayOfYear() - LocalDate.now().getDayOfYear();
+			
+			return days;
+			
+		}
+
+		public static boolean doDeleteLunchBoxOrder(ArrayList<LunchBox> lunchBoxList, int orderID, String date) {
+			boolean isDelete = false;
+
+			for (int i = 0; i < lunchBoxList.size(); i++) {
+				if (orderID == lunchBoxList.get(i).getOrderID() &&
+						calculateDays(date) >= 3) {
+					lunchBoxList.remove(lunchBoxList.get(i));
+					isDelete = true;
+				}
+			}
+			return isDelete;
+
+		}
+
+		public static void deleteLunchBoxOrder(ArrayList<LunchBox> lunchBoxList) {
+			
+			viewAllLunchBoxOrders(lunchBoxList);
+
+			int orderID = Helper.readInt("Enter order ID to cancel the lunch box order > ");
+			
+			Boolean isFound = doFoundLunchBoxOrderID(lunchBoxList, orderID);
+			
+			if (isFound == false) {
+				
+				System.out.println("Invalid Lunch Box Order!");
 				
 			} else {
 				
-				System.out.println("No lunch box order is being updated!");
+				String date = Helper.readString("Enter date (yyyy-mm-dd) > ");
+				
+				char confirm = Helper.readChar("Do you really want to cancel the lunch box order? (Y/N) > ");
+				
+				if (confirm == 'y' || confirm == 'Y') {
+					
+					Boolean isDelete = doDeleteLunchBoxOrder(lunchBoxList, orderID, date);
+					
+					if (isDelete == false) {
+						System.out.println("Cancellation FAILED!");
+					} else {
+
+						System.out.println("Lunch Box with Order ID " + orderID + " is successfully cancelled!");
+
+					}
+					
+				} else {
+					
+					System.out.println("No lunch box order is being deleted!");
+					
+				}
 				
 			}
 			
 		}
+		
+		public static boolean doUpdateLunchBoxOrder(ArrayList<LunchBox> lunchBoxList, int orderID, String date, String meal, String drink, String fruit, double price) {
+			boolean isUpdated = false;
 
-	}
+			for (int i = 0; i < lunchBoxList.size(); i++) {
+				if (orderID == lunchBoxList.get(i).getOrderID() && !date.isEmpty() &&
+						!meal.isEmpty() && !drink.isEmpty() && !fruit.isEmpty() && price > 0) {
+				
+					lunchBoxList.get(i).setDate(LocalDate.parse(date));
+					lunchBoxList.get(i).setMeal(meal);
+					lunchBoxList.get(i).setDrink(drink);
+					lunchBoxList.get(i).setFruit(fruit);
+					lunchBoxList.get(i).setPrice(price);
+					
+					isUpdated = true;
+					
+				}
+			}
+			return isUpdated;
+		}
+		
+		public static void updateLunchBoxOrder(ArrayList<LunchBox> lunchBoxList) {
+			
+			viewAllLunchBoxOrders(lunchBoxList);
+
+			int orderID = Helper.readInt("Enter order ID to update the lunch box order > ");
+			
+			Boolean isFound = doFoundLunchBoxOrderID(lunchBoxList, orderID);
+			
+			if (isFound == false) {
+				
+				System.out.println("Invalid Lunch Box Order!");
+				
+			} else {
+				
+				char confirm = Helper.readChar("Do you really want to update the lunch box order? (Y/N) > ");
+				
+				
+				if (confirm == 'y' || confirm == 'Y') {
+					
+					String date = Helper.readString("\nEnter new date (yyyy-mm-dd) > ");
+					String meal = Helper.readString("Enter new meal > ");
+					String drink = Helper.readString("Enter new drink > ");
+					String fruit = Helper.readString("Enter new fruit > ");
+					double price = Helper.readDouble("Enter total price > $");
+					
+					Boolean isUpdated = doUpdateLunchBoxOrder(lunchBoxList, orderID, date, meal, drink, fruit, price);
+					
+					if (isUpdated == false) {
+						System.out.println("Update FAILED!");
+					} else {
+						System.out.println("Lunch Box with Order ID " + orderID + " is successfully updated!");
+					}
+					
+				} else {
+					
+					System.out.println("No lunch box order is being updated!");
+					
+				}
+				
+			}
+
+		}
+
+
 
 	// ================================================ OPTION 5 BILL
 	// =====================================================//
