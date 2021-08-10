@@ -17,7 +17,7 @@ public class C206_CaseStudy {
 	public static ArrayList<drinks> drinksArr = new ArrayList<drinks>();
 	public static ArrayList<Fruits> fruitsArr = new ArrayList<Fruits>();
 	public static ArrayList<Bill> orderBillArr = new ArrayList<Bill>();
-
+ 
 	public static ArrayList<Menu> menuList = new ArrayList<Menu>();
 	public static String monthlyMenu = "";
 
@@ -153,6 +153,9 @@ public class C206_CaseStudy {
 
 						String menu = viewMonthlyMenu();
 						System.out.println(menu);
+						
+						System.out.println("--------------------------------------");
+						doLoop(menuList);
 						
 						for(int i=0; i<menuList.size(); i++) {
 							System.out.println(menuList.get(i).getAsian());
@@ -669,6 +672,7 @@ public class C206_CaseStudy {
 //       for(int i =0; i< menuList.size(); i++) {
 //       System.out.println(i);
 //       }
+       System.out.println("Menu Added!");
 
 	}
  
@@ -703,6 +707,7 @@ public class C206_CaseStudy {
 	  
 	  public static void doDeleteMonthlyMenu(ArrayList<Menu> menuList) {
 		  menuList.clear();
+		  System.out.println("Monthly Menu Deleted!");
 		}
 	  
 	  
@@ -718,6 +723,7 @@ public class C206_CaseStudy {
 		
 		public static void doDeleteDailyMenu(ArrayList<Menu> menuList, int index) {
 			menuList.remove(index-1);
+			System.out.println("Daily Menu Deleted!");
 		}
 		 
 		public static void updateDailyMenu(ArrayList <Menu> menuList) {
@@ -745,6 +751,12 @@ public class C206_CaseStudy {
 				
 			}
 		}
+		
+		public static void doLoop (ArrayList <Menu> menuList) {
+			for (int i=0; i<menuList.size(); i++) {
+				System.out.println(menuList.get(i).toString());
+			}
+		}
 			
 		public static void doEditDailyMenu(ArrayList<Menu> menuList, int index, int userID, String userWestern, String userAsian, String userVeg, String userDrink1, 
 					String userDrink2, String userFruit1, String userFruit2 ) {
@@ -758,6 +770,7 @@ public class C206_CaseStudy {
 			menuList.get(index).setFruit1(userFruit1);
 			menuList.get(index).setFruit2(userFruit2);
 			System.out.println(menuList.get(index).toString());
+			System.out.println("Daily Menu Edit Successful");
 			}
 			
 		

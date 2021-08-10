@@ -243,12 +243,15 @@ public class C206_CaseStudyTest {
 		
 		// Went through it with you and mentioned testing is very complex
 		// and would not be needed
+		C206_CaseStudy.addDailyMenu(menuList, mm1);
+		C206_CaseStudy.addDailyMenu(menuList, mm2);
+		assertFalse(menuList.isEmpty());
 	
 			
 	} 
 	
 	@Test
-	public void deleteMonthlyMenuTest() {
+	public void deleteMonthlyMenuTest() { 
 		
 		// Test that Menu list is not empty
 		C206_CaseStudy.addDailyMenu(menuList, mm1);
@@ -283,13 +286,14 @@ public class C206_CaseStudyTest {
 	public void editDailyMenuTest() {
 		//The item just added is as same as the first item of the list
 		C206_CaseStudy.addDailyMenu(menuList, mm1);
-		C206_CaseStudy.addDailyMenu(menuList, mm2);
 		assertSame("Check that Menu is added", mm1, menuList.get(0));
-		assertSame(mm2, menuList.get(1));
 		
-		//Test that after editing the first item of the list is no longer the same
+		//Test that after editing the the item matches the changes
+		assertEquals(mm1.getAsian(), "Chilli Crab");
 		C206_CaseStudy.doEditDailyMenu(menuList, 0, 4, "Fish & Chips", "Cai Fan", "Pumpkin Soup",  "Water", "Juice", "Mango", "Papaya");
-		assertNotSame(mm1, menuList.get(0));
+		
+		assertEquals(menuList.get(0).getAsian(), "Cai Fan");
+
 	}
 	
 	//=============================================== OPTION 4 LUNCH BOX ORDER ==================================================

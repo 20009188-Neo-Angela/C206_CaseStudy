@@ -94,7 +94,7 @@ public class Menu {
 	
 	public String toString() {
 		String dailyInfo = String.format("     %5s: %s \n", "ID",  ID);
-		dailyInfo = String.format("     %5s: %s \n", "Western",  Western);
+		dailyInfo += String.format("     %5s: %s \n", "Western",  Western);
 		dailyInfo += String.format("     %5s: %s \n", "Asian",  Asian);
 		dailyInfo += String.format("     %5s: %s \n", "Vegetarian",  Vegetarian);
 		dailyInfo += String.format("     %5s: %s \n", "Drinks",  Drink1);
